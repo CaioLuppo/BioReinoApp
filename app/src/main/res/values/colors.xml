@@ -10,7 +10,6 @@
     <color name="mustard">#FFEBD40C</color>
     <color name="orange">#FFEB7817</color>
     <color name="red">#FFF54725</color>
-    <color name="light_gray">#FFF6F6F6</color>
 
 <!--    Default Colors-->
     <color name="purple_200">#FFBB86FC</color>
@@ -18,7 +17,11 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+
+<!--    Black and White-->
     <color name="black">#FF000000</color>
+    <color name="scroll_light_gray">#80E8E8E8</color>
+    <color name="scroll_lighter_gray">#80F6F6F6</color>
     <color name="white">#FFFFFFFF</color>
 
 </resources>

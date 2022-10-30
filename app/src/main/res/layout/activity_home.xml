@@ -12,10 +12,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activity_home_courses_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:scrollbars="horizontal"
+
+        android:fadingEdge="horizontal"
+        android:fadingEdgeLength="10dp"
+
+        android:scrollbarStyle="outsideInset"
+        android:scrollbarThumbHorizontal="@drawable/thumb_scroll_horizontal"
+        android:scrollbarTrackHorizontal="@drawable/track_scroll_horizontal"
 
         />
 
