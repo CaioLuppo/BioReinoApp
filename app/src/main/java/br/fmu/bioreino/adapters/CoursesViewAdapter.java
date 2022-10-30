@@ -27,7 +27,11 @@ public class CoursesViewAdapter extends RecyclerView.Adapter<CoursesViewAdapter.
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(
+<<<<<<< HEAD
                 R.layout.item_lesson_card,
+=======
+                R.layout.item_aula_card,
+>>>>>>> 44098e7 (Criado item_aulas_curso.xml)
                 parent,
                 false
         );

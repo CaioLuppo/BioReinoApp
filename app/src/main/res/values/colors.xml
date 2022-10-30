@@ -2,6 +2,7 @@
 <resources>
 
 <!--    Project Colors-->
+<<<<<<< HEAD
     <color name="cyan">#FF0BD4BC</color>
     <color name="blue">#FF0CD2F6</color>
     <color name="green">#FF0BDE38</color>
@@ -10,6 +11,18 @@
     <color name="mustard">#FFEBD40C</color>
     <color name="orange">#FFEB7817</color>
     <color name="red">#FFF54725</color>
+=======
+    <color name="c3">#FF0BD4BC</color>
+    <color name="c2">#FF0CD2F6</color>
+    <color name="c1">#FF0BDE38</color>
+    <color name="c5">#0CF614</color>
+    <color name="c8">#FFA1F500</color>
+    <color name="c4">#FFEBD40C</color>
+    <color name="c6">#FFEB7817</color>
+    <color name="c7">#FFF54725</color>
+
+    <color name="gray">#676767</color>
+>>>>>>> 44098e7 (Criado item_aulas_curso.xml)
     <color name="light_gray">#FFF6F6F6</color>
 
 <!--    Default Colors-->

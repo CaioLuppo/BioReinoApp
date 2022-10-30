@@ -14,8 +14,13 @@
             <shape>
                 <gradient
                     android:angle="0"
+<<<<<<< HEAD
                     android:endColor="@color/lighter_green"
                     android:startColor="@color/green" />
+=======
+                    android:endColor="@color/c8"
+                    android:startColor="@color/c1" />
+>>>>>>> 44098e7 (Criado item_aulas_curso.xml)
                 <size android:height="40dp" />
                 <corners android:radius="10dp" />
 
