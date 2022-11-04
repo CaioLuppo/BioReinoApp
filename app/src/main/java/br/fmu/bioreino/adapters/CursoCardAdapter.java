@@ -18,11 +18,12 @@ import br.fmu.bioreino.model.Curso;
 
 public class CursoCardAdapter extends RecyclerView.Adapter<CursoCardAdapter.Holder> {
 
-    ArrayList<Curso> cursos = CursosDAO.getCursos();
+    ArrayList<Curso> cursos;
     private final Context context;
 
-    public CursoCardAdapter(ArrayList<Curso> data, Context context) {
+    public CursoCardAdapter(ArrayList<Curso> cursos, Context context) {
         this.context = context;
+        this.cursos = cursos;
     }
 
     @NonNull
