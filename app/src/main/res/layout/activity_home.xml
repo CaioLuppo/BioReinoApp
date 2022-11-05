@@ -4,31 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+
+    android:background="@color/white"
 
     android:gravity="center"
 
     >
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/activity_home_appbar"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/white"
+        app:elevation="0dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <ImageButton
+                android:id="@+id/activity_home_appbar_menu"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+
+                android:background="@color/white"
+                android:contentDescription="@string/descricao_menu"
+                android:src="@drawable/menu_hamburguer"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/activity_home_appbar_logo"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+
+                android:contentDescription="@string/descricao_logo_appbar"
+                android:src="@drawable/logo_extenso"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/activity_home_seus_cursos"
+        android:id="@+id/activity_home_lista_seus_cursos"
+
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-
         android:fadingEdge="horizontal"
         android:fadingEdgeLength="10dp"
-
         android:orientation="horizontal"
-        android:scrollbarStyle="outsideInset"
 
+        android:scrollbarStyle="outsideInset"
         android:scrollbarThumbHorizontal="@drawable/thumb_scroll_horizontal"
         android:scrollbarTrackHorizontal="@drawable/track_scroll_horizontal"
         android:scrollbars="horizontal"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_home_appbar"
 
         />
 

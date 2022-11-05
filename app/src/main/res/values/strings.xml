@@ -2,4 +2,6 @@
     <string name="app_name">BioReino</string>
     <string name="imagem_do_cartao">Imagem do cartão</string>
     <string name="icone_da_aula">Icone da aula</string>
+    <string name="descricao_logo_appbar">Logo BioReino da AppBar</string>
+    <string name="descricao_menu">menu</string>
 </resources>

@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        cursosView = findViewById(R.id.activity_home_seus_cursos);
+        cursosView = findViewById(R.id.activity_home_lista_seus_cursos);
 
         linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         cursoCardAdapter = new CursoCardAdapter(CursosDAO.getCursos(), this);
