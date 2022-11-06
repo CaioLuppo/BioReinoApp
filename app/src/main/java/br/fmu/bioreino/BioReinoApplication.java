@@ -12,6 +12,7 @@ public class BioReinoApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         CursosDAO.adicionaCurso(new Curso(
                 1,
                 "Biologia Forense: Investigando a vida",

@@ -4,15 +4,16 @@
 <!--    Project Colors-->
     <color name="c3">#FF0BD4BC</color>
     <color name="c2">#FF0CD2F6</color>
-    <color name="c1">#FF0BDE38</color>
+    <color name="c1">#36A32C</color>
     <color name="c5">#0CF614</color>
-    <color name="c8">#FFA1F500</color>
+    <color name="c8">#B0D606</color>
     <color name="c4">#FFEBD40C</color>
     <color name="c6">#FFEB7817</color>
     <color name="c7">#FFF54725</color>
 
-    <color name="gray">#676767</color>
+    <color name="gray">#737373</color>
     <color name="light_gray">#939393</color>
+    <color name="background">#FFFFFF</color>
     <color name="lighter_gray">#FFF6F6F6</color>
 
 <!--    Default Colors-->

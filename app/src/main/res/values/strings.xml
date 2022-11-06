@@ -4,4 +4,6 @@
     <string name="icone_da_aula">Icone da aula</string>
     <string name="descricao_logo_appbar">Logo BioReino da AppBar</string>
     <string name="descricao_menu">menu</string>
+    <string name="seus_cursos">seus cursos</string>
+    <string name="botao_mostrar_tudo">Mostrar tudo</string>
 </resources>
