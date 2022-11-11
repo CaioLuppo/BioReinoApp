@@ -31,7 +31,7 @@
 
             android:layout_marginBottom="30dp"
 
-            android:src="@drawable/image_jaguar"
+            android:src="@color/verde_escuro"
             android:scaleType="centerCrop"
 
             />
