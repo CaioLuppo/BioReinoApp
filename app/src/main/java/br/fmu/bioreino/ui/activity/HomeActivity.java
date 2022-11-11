@@ -9,7 +9,7 @@ import android.os.Bundle;
 import java.util.ArrayList;
 
 import br.fmu.bioreino.R;
-import br.fmu.bioreino.adapters.CursoCardAdapter;
+import br.fmu.bioreino.adapter.CursoCardAdapter;
 import br.fmu.bioreino.dao.CursosDAO;
 
 public class HomeActivity extends AppCompatActivity {

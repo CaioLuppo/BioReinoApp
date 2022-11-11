@@ -1,4 +1,4 @@
-package br.fmu.bioreino.adapters;
+package br.fmu.bioreino.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
