@@ -8,6 +8,7 @@ public class CursosDAO {
 
     /// Lista de todos os cursos que formos adicionar, simula um banco de dados
     private static final ArrayList<Curso> cursos = new ArrayList<Curso>();
+    public static Curso ultimoCurso;
 
     /// Retorna a lista de todos os cursos
     public static ArrayList<Curso> getCursos() {

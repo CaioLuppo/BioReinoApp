@@ -99,7 +99,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="25dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
 
                 android:fontFamily="@font/catamaran_semibold"
                 android:text="@string/ultimo_curso"
@@ -114,20 +114,21 @@
 
                 />
 
-            <include
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/activity_home_sessao_ultimo_curso_conteudo"
-
-                layout="@layout/item_card_aula_ultimo_curso"
                 android:layout_width="0dp"
-                android:layout_height="310dp"
-                android:layout_marginBottom="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="21dp"
 
+                app:layout_constrainedHeight="true"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/activity_home_lista_ultimo_curso_label"
-                app:layout_constraintStart_toStartOf="@id/activity_home_lista_ultimo_curso_label"
-                app:layout_constraintTop_toBottomOf="@id/activity_home_lista_ultimo_curso_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_max="350dp"
+                app:layout_constraintHeight_min="200dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_home_lista_ultimo_curso_label">
 
-                />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -139,9 +140,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
 
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/activity_home_sessao_ultimo_curso"
-            app:layout_constraintBottom_toBottomOf="parent"
 
             >
 
