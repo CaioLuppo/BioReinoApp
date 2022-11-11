@@ -4,11 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -49,6 +52,7 @@ public class CursoCardAdapter extends RecyclerView.Adapter<CursoCardAdapter.Card
         TextView professor;
         TextView porcentagem;
         ProgressBar barraDeProgresso;
+        ImageView imagem;
 
         public CardLayout(@NonNull View itemView) {
             super(itemView);
@@ -56,6 +60,7 @@ public class CursoCardAdapter extends RecyclerView.Adapter<CursoCardAdapter.Card
             professor = itemView.findViewById(R.id.item_card_aula_professor);
             porcentagem = itemView.findViewById(R.id.item_card_aula_porcentagem);
             barraDeProgresso = itemView.findViewById(R.id.item_card_aula_progress_bar);
+            imagem = itemView.findViewById(R.id.item_card_aula_imagem);
         }
 
     }
@@ -73,6 +78,7 @@ public class CursoCardAdapter extends RecyclerView.Adapter<CursoCardAdapter.Card
         views.professor.setText(String.format("Prof: %s", curso.getProfessor()));
         views.barraDeProgresso.setProgress(formataProgressoBarra(curso.getProgresso()));
         views.porcentagem.setText(String.format("%s%%", curso.getProgresso()));
+        Picasso.get().load(curso.getLinkImagem()).into(views.imagem);
     }
 
     private int formataProgressoBarra(int progresso) {

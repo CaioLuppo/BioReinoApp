@@ -11,6 +11,7 @@ public class Curso {
     // Constantes para o card
     private final String titulo;
     private final String professor;
+    private final String linkImagem;
 
     // Variáveis de progresso
     private final int etapas;
@@ -20,13 +21,14 @@ public class Curso {
     private final String plano;
     private final ArrayList<Aula> aulas;
 
-    public Curso(int id, String titulo, String professor, int etapas, String plano, ArrayList<Aula> aulas) {
+    public Curso(int id, String titulo, String professor, int etapas, String plano, ArrayList<Aula> aulas, String linkImagem) {
         this.id = id;
         this.titulo = titulo;
         this.professor = professor;
         this.etapas = etapas;
         this.plano = plano;
         this.aulas = aulas;
+        this.linkImagem = linkImagem;
     }
 
     public int getId() {
@@ -57,4 +59,7 @@ public class Curso {
         this.etapaAtual = etapaAtual;
     }
 
+    public String getLinkImagem() {
+        return linkImagem;
+    }
 }
