@@ -13,8 +13,9 @@
             <shape>
                 <gradient
                     android:angle="0"
-                    android:endColor="@color/c8"
-                    android:startColor="@color/c1" />
+                    android:startColor="@color/verde_claro"
+                    android:endColor="@color/verde_claro_azulado"
+                    />
                 <size android:height="40dp" />
                 <corners android:radius="10dp" />
 

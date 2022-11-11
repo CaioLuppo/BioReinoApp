@@ -3,9 +3,9 @@
 
     <style name="Theme.BioReino" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/c1</item>
-        <item name="colorPrimaryDark">@color/c1</item>
-        <item name="colorAccent">@color/c3</item>
+        <item name="colorPrimary">@color/verde_escuro</item>
+        <item name="colorPrimaryDark">@color/verde_escuro</item>
+        <item name="colorAccent">@color/azul_esverdeado</item>
         <!-- Customize your theme here. -->
         <item name="android:colorEdgeEffect">@color/white</item>
         <item name="android:statusBarColor">@color/white</item>

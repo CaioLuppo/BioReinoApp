@@ -6,4 +6,7 @@
     <string name="descricao_menu">menu</string>
     <string name="seus_cursos">seus cursos</string>
     <string name="botao_mostrar_tudo">Mostrar tudo</string>
+    <string name="ultimo_curso">último curso</string>
+    <string name="folhas_secas">Folhas secas indicando que não há curso</string>
+    <string name="ultimo_curso_continuar">Continuar de onde parou:</string>
 </resources>

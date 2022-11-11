@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="wrap_content"
     android:layout_margin="16dp"
     app:cardCornerRadius="10dp"
-    app:cardElevation="11dp"
+    app:cardElevation="8dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
@@ -17,44 +17,49 @@
 
         <ImageView
             android:id="@+id/item_aulas_curso_icone"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:contentDescription="@string/icone_da_aula"
             android:src="@drawable/svg_claquete"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/item_aulas_curso_descricao"
+            app:layout_constraintEnd_toStartOf="@id/item_aulas_curso_titulo"
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/item_aulas_curso_titulo" />
 
         <TextView
+            android:layout_marginTop="10dp"
             android:id="@+id/item_aulas_curso_titulo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/valeraround_regular"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/item_aulas_curso_icone"
-            app:layout_constraintTop_toTopOf="@id/item_aulas_curso_icone"
-            tools:text="Aula 1: Os Reinos" />
+            app:layout_constraintBottom_toTopOf="@id/item_aulas_curso_descricao"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Aula 1: Os Reinos" />
 
         <TextView
+            android:layout_marginBottom="10dp"
             android:id="@+id/item_aulas_curso_descricao"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
+            android:ellipsize="end"
             android:fontFamily="@font/valeraround_regular"
             android:lineSpacingExtra="-3dp"
             android:maxLines="1"
             android:textColor="@color/gray"
             android:textSize="16sp"
-            android:ellipsize="end"
-            app:layout_constraintBottom_toBottomOf="@id/item_aulas_curso_icone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/item_aulas_curso_titulo"
             app:layout_constraintTop_toBottomOf="@id/item_aulas_curso_titulo"
-            tools:text="Aprendendo quais são os reinos do nossasd" />
+            android:text="Aprendendo quais são os reinos do nossasd" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
