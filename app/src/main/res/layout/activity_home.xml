@@ -208,6 +208,38 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!--Categorias-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_home_sessao_categorias"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toBottomOf="@id/activity_home_sessao_seus_cursos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+            <TextView
+                android:id="@+id/activity_home_sessao_categorias_label"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="25dp"
+
+                android:fontFamily="@font/catamaran_semibold"
+                android:text="@string/sessao_categoria_label"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+
+                app:layout_constraintStart_toStartOf="@id/activity_home_sessao_categorias"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

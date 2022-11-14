@@ -9,4 +9,5 @@
     <string name="ultimo_curso">último curso</string>
     <string name="folhas_secas">Folhas secas indicando que não há curso</string>
     <string name="ultimo_curso_continuar">Continuar de onde parou:</string>
+    <string name="sessao_categoria_label">por categoria</string>
 </resources>

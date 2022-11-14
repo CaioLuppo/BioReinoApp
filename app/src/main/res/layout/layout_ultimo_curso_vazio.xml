@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
 
-        android:fontFamily="@font/valeraround_regular"
+        android:fontFamily="@font/fredoka_regular"
         android:text="Nenhum curso foi\n iniciado 😢"
         android:textAlignment="center"
         android:lineSpacingExtra="3dp"

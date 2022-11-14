@@ -63,7 +63,7 @@
                     android:layout_marginTop="10dp"
                     android:ellipsize="end"
 
-                    android:fontFamily="@font/valeraround_regular"
+                    android:fontFamily="@font/fredoka_medium"
                     android:lines="1"
                     android:scrollHorizontally="true"
 
@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
 
-                    android:fontFamily="@font/valeraround_regular"
+                    android:fontFamily="@font/fredoka_medium"
                     android:lines="1"
                     android:textSize="12sp"
 
@@ -122,7 +122,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginHorizontal="14dp"
 
-                    android:fontFamily="@font/valeraround_regular"
+                    android:fontFamily="@font/fredoka_medium"
                     android:includeFontPadding="false"
                     android:textColor="@color/black"
                     android:textDirection="rtl"
