@@ -3,12 +3,12 @@
 
 <!--    Project Colors-->
     <color name="azul_esverdeado">#FF0BD4BC</color>
-    <color name="ciano">#FF0CD2F6</color>
+    <color name="ciano">#09BDDD</color>
     <color name="verde_escuro">#36A32C</color>
     <color name="verde_claro">#0EB301</color>
     <color name="verde_claro_azulado">#26DA77</color>
     <color name="verde_amarelado">#B0D606</color>
-    <color name="amarelho">#FFEBD40C</color>
+    <color name="amarelo">#ECCD00</color>
     <color name="laranja">#FFEB7817</color>
     <color name="laranja_avermelhado">#FFF54725</color>
 
@@ -26,8 +26,8 @@
 
 <!--    Black and White-->
     <color name="black">#FF000000</color>
-    <color name="scroll_light_gray">#80E8E8E8</color>
-    <color name="scroll_lighter_gray">#80F6F6F6</color>
+    <color name="scrollbar_track">#99E6E6E6</color>
+    <color name="scrollbar_thumb">#E6E6E6</color>
     <color name="white">#FFFFFFFF</color>
 
 </resources>

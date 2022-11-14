@@ -3,11 +3,13 @@ package br.fmu.bioreino.model;
 import android.graphics.Color;
 
 public class Categoria {
+    private final String plano;
     private final String nome;
-    private Color corFundo;
-    private Color corTexto;
+    private int corFundo;
+    private int corTexto;
 
-    Categoria(String nome, Color corFundo, Color corTexto) {
+    public Categoria(String plano, String nome, int corFundo, int corTexto) {
+        this.plano = plano;
         this.nome = nome;
         this.corFundo = corFundo;
         this.corTexto = corTexto;
@@ -17,20 +19,23 @@ public class Categoria {
         return nome;
     }
 
-    public Color getCorFundo() {
+    public int getCorFundo() {
         return corFundo;
     }
 
-    public Color getCorTexto() {
+    public int getCorTexto() {
         return corTexto;
     }
 
-    public void setCorFundo(Color corFundo) {
+    public void setCorFundo(int corFundo) {
         this.corFundo = corFundo;
     }
 
-    public void setCorTexto(Color corTexto) {
+    public void setCorTexto(int corTexto) {
         this.corTexto = corTexto;
     }
 
+    public String getPlano() {
+        return plano;
+    }
 }

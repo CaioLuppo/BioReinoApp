@@ -18,12 +18,12 @@ import java.util.ArrayList;
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.model.Curso;
 
-public class CursoCardAdapter extends RecyclerView.Adapter<CursoCardAdapter.CardLayout> {
+public class ListaSeusCursosAdapter extends RecyclerView.Adapter<ListaSeusCursosAdapter.CardLayout> {
 
-    ArrayList<Curso> cursos;
+    private final ArrayList<Curso> cursos;
     private final Context context;
 
-    public CursoCardAdapter(ArrayList<Curso> cursos, Context context) {
+    public ListaSeusCursosAdapter(ArrayList<Curso> cursos, Context context) {
         this.context = context;
         this.cursos = cursos;
     }
@@ -31,8 +31,7 @@ public class CursoCardAdapter extends RecyclerView.Adapter<CursoCardAdapter.Card
     @NonNull
     @Override
     public CardLayout onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = retornaLayoutInflado(parent);
-        return new CardLayout(view);
+        return new CardLayout(retornaLayoutInflado(parent));
     }
 
     @Override

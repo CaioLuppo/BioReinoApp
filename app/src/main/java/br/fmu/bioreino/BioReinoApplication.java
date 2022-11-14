@@ -2,9 +2,13 @@ package br.fmu.bioreino;
 
 import android.app.Application;
 
+import androidx.core.content.ContextCompat;
+
 import java.util.ArrayList;
 
+import br.fmu.bioreino.adapter.ListaCategoriasAdapter;
 import br.fmu.bioreino.dao.CursosDAO;
+import br.fmu.bioreino.model.Categoria;
 import br.fmu.bioreino.model.Curso;
 
 public class BioReinoApplication extends Application {
@@ -41,5 +45,13 @@ public class BioReinoApplication extends Application {
                 new ArrayList<>(),
                 "https://conexaoplaneta.com.br/wp-content/uploads/2020/02/descoberta-nova-especie-louva-deus-mata-atlantica-conexao-planeta.jpg"
         ));
+
+        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "teste", ContextCompat.getColor(this, R.color.azul_esverdeado), ContextCompat.getColor(this, R.color.white)));
+        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "teste", ContextCompat.getColor(this, R.color.ciano), ContextCompat.getColor(this, R.color.white)));
+        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "teste", ContextCompat.getColor(this, R.color.verde_escuro), ContextCompat.getColor(this, R.color.white)));
+        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "teste", ContextCompat.getColor(this, R.color.amarelo), ContextCompat.getColor(this, R.color.white)));
+        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "teste", ContextCompat.getColor(this, R.color.laranja_avermelhado), ContextCompat.getColor(this, R.color.white)));
+        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "teste", ContextCompat.getColor(this, R.color.laranja), ContextCompat.getColor(this, R.color.white)));
+
     }
 }

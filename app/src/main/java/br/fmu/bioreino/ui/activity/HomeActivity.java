@@ -1,36 +1,39 @@
 package br.fmu.bioreino.ui.activity;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import br.fmu.bioreino.R;
-import br.fmu.bioreino.adapter.CursoCardAdapter;
+import br.fmu.bioreino.adapter.ListaCategoriasAdapter;
+import br.fmu.bioreino.adapter.ListaSeusCursosAdapter;
 import br.fmu.bioreino.dao.CursosDAO;
+import br.fmu.bioreino.model.Categoria;
 
 public class HomeActivity extends AppCompatActivity {
 
-    // Views
-    RecyclerView cursosView;
+    // Categorias
+    RecyclerView categoriasRecyclerView;
+    ListaCategoriasAdapter listaCategoriasAdapter;
+
+    // Seus Cursos
+    RecyclerView cursosRecyclerView;
+    LinearLayoutManager linearLayoutManager;
+    ListaSeusCursosAdapter listaSeusCursosAdapter;
+
+    // Ultimo Curso
     ConstraintLayout sessaoUltimoCurso;
     ConstraintLayout conteudoUltimoCurso;
 
     // DataSource
     ArrayList<String> dataSource;
-
-    // RecyclerView
-    LinearLayoutManager linearLayoutManager;
-    CursoCardAdapter cursoCardAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,16 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         // Código
         configuraListaSeusCursos();
+        configuraListaCategorias();
 
+
+    }
+
+    private void configuraListaCategorias() {
+        categoriasRecyclerView = findViewById(R.id.activity_home_sessao_categorias_lista);
+        listaCategoriasAdapter = new ListaCategoriasAdapter(this);
+
+        categoriasRecyclerView.setAdapter(listaCategoriasAdapter);
     }
 
     @Override
@@ -85,13 +97,13 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void configuraListaSeusCursos() {
-        cursosView = findViewById(R.id.activity_home_lista_seus_cursos);
+        cursosRecyclerView = findViewById(R.id.activity_home_lista_seus_cursos);
 
         linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-        cursoCardAdapter = new CursoCardAdapter(CursosDAO.getCursos(), this);
+        listaSeusCursosAdapter = new ListaSeusCursosAdapter(CursosDAO.getCursos(), this);
 
-        cursosView.setLayoutManager(linearLayoutManager);
-        cursosView.setAdapter(cursoCardAdapter);
+        cursosRecyclerView.setLayoutManager(linearLayoutManager);
+        cursosRecyclerView.setAdapter(listaSeusCursosAdapter);
     }
 
 }

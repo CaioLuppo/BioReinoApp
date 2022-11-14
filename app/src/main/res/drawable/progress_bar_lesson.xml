@@ -3,7 +3,7 @@
 
     <item android:id="@android:id/background">
         <shape>
-            <solid android:color="@color/scroll_lighter_gray" />
+            <solid android:color="@color/scrollbar_track" />
             <corners android:radius="10dp" />
         </shape>
     </item>
