@@ -1,0 +1,65 @@
+<com.google.android.material.appbar.AppBarLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/activity_home_appbar"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+
+    app:elevation="0dp">
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_scrollFlags="scroll|enterAlways"
+
+        app:toolbarId="@+id/toolbar">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <ImageButton
+                android:id="@+id/activity_home_appbar_menu"
+
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16.5dp"
+
+                android:background="@color/background"
+                android:contentDescription="@string/descricao_menu"
+                android:src="@drawable/ic_menu_hamburguer"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+            <ImageView
+                android:id="@+id/activity_home_appbar_logo"
+
+                android:layout_width="180dp"
+                android:layout_height="45dp"
+                android:layout_marginVertical="20dp"
+
+                android:contentDescription="@string/descricao_logo_appbar"
+                android:src="@drawable/logo_extenso"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+</com.google.android.material.appbar.AppBarLayout>

@@ -1,269 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none"
+    android:layout_height="match_parent">
 
+    <!--AppBar-->
+    <include layout="@layout/appbar_home" />
 
-    >
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-
+    <!--Conteúdo-->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        android:background="@color/background"
-
-        android:gravity="center"
-
-        >
-
-        <!--AppBar-->
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/activity_home_appbar"
-
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:background="@color/background"
-            app:elevation="0dp"
+            android:gravity="center">
 
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            <!--Último Curso-->
+            <include
+                layout="@layout/sessao_ultimo_curso"
 
-            >
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                >
-
-                <ImageButton
-                    android:id="@+id/activity_home_appbar_menu"
-
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="16.5dp"
-
-                    android:background="@color/background"
-                    android:contentDescription="@string/descricao_menu"
-                    android:src="@drawable/ic_menu_hamburguer"
-
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-
-                    />
-
-                <ImageView
-                    android:id="@+id/activity_home_appbar_logo"
-
-                    android:layout_width="180dp"
-                    android:layout_height="45dp"
-                    android:layout_marginVertical="20dp"
-
-                    android:contentDescription="@string/descricao_logo_appbar"
-                    android:src="@drawable/logo_extenso"
-
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-
-                    />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <!--Último Curso-->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_home_sessao_ultimo_curso"
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-
-            app:layout_constraintBottom_toTopOf="@id/activity_home_sessao_ultimo_curso"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_home_appbar"
-
-            >
-
-            <TextView
-                android:id="@+id/activity_home_lista_ultimo_curso_label"
-
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="25dp"
-                android:layout_marginBottom="12dp"
-
-                android:fontFamily="@font/catamaran_semibold"
-                android:text="@string/ultimo_curso"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-
-                app:layout_constraintBottom_toTopOf="@id/activity_home_sessao_ultimo_curso_conteudo"
+                app:layout_constraintBottom_toTopOf="@id/activity_home_sessao_ultimo_curso"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
 
                 />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/activity_home_sessao_ultimo_curso_conteudo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="21dp"
+            <!--Seus Cursos-->
+            <include
+                layout="@layout/sessao_seus_cursos"
 
-                app:layout_constrainedHeight="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_home_sessao_ultimo_curso"
+
+                />
+
+            <!--Categorias-->
+            <include
+                layout="@layout/sessao_categorias"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_max="350dp"
-                app:layout_constraintHeight_min="200dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/activity_home_lista_ultimo_curso_label">
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!--Seus Cursos-->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_home_sessao_seus_cursos"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_home_sessao_ultimo_curso"
-
-            >
-
-            <TextView
-                android:id="@+id/activity_home_lista_seus_cursos_label"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginStart="25dp"
-
-                android:fontFamily="@font/catamaran_semibold"
-                android:text="@string/seus_cursos"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-
-                app:layout_constraintStart_toStartOf="@id/activity_home_lista_seus_cursos"
-                app:layout_constraintTop_toTopOf="parent"
-
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="25dp"
-
-                android:fontFamily="@font/catamaran_medium"
-                android:text="@string/botao_mostrar_tudo"
-                android:textColor="@color/gray"
-                android:textSize="17sp"
-
-                app:layout_constraintBottom_toBottomOf="@id/activity_home_lista_seus_cursos_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toEndOf="@id/activity_home_lista_seus_cursos_label"
-                app:layout_constraintTop_toTopOf="@id/activity_home_lista_seus_cursos_label"
-
-                />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/activity_home_lista_seus_cursos"
-
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-
-                android:paddingStart="0dp"
-                android:paddingEnd="25dp"
-                android:paddingBottom="8dp"
-
-                android:scrollbarStyle="outsideInset"
-                android:scrollbarThumbHorizontal="@drawable/scrollbar_thumb_horizontal"
-                android:scrollbarTrackHorizontal="@drawable/scrollbar_track_horizontal"
-                android:scrollbars="horizontal"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/activity_home_lista_seus_cursos_label"
+                app:layout_constraintTop_toBottomOf="@id/activity_home_sessao_seus_cursos"
 
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!--Categorias-->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_home_sessao_categorias"
+    </androidx.core.widget.NestedScrollView>
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_home_sessao_seus_cursos">
-
-            <TextView
-                android:id="@+id/activity_home_sessao_categorias_label"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginStart="25dp"
-
-                android:fontFamily="@font/catamaran_semibold"
-                android:text="@string/sessao_categoria_label"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-
-                app:layout_constraintStart_toStartOf="@id/activity_home_sessao_categorias"
-                app:layout_constraintTop_toTopOf="parent"
-
-                />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/activity_home_sessao_categorias_lista"
-
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:layout_marginHorizontal="17dp"
-
-                android:scrollbarStyle="outsideInset"
-                android:orientation="vertical"
-                android:scrollbarThumbHorizontal="@drawable/scrollbar_thumb_horizontal"
-                android:scrollbarTrackHorizontal="@drawable/scrollbar_track_horizontal"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/activity_home_sessao_categorias_label"
-
-                app:spanCount="2"
-
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

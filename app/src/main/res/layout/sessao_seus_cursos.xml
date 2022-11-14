@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/activity_home_sessao_seus_cursos"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/activity_home_sessao_ultimo_curso"
+
+    >
+
+    <TextView
+        android:id="@+id/activity_home_lista_seus_cursos_label"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="25dp"
+
+        android:fontFamily="@font/catamaran_semibold"
+        android:text="@string/seus_cursos"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+
+        app:layout_constraintStart_toStartOf="@id/activity_home_lista_seus_cursos"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+
+        android:fontFamily="@font/catamaran_medium"
+        android:text="@string/botao_mostrar_tudo"
+        android:textColor="@color/gray"
+        android:textSize="17sp"
+
+        app:layout_constraintBottom_toBottomOf="@id/activity_home_lista_seus_cursos_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toEndOf="@id/activity_home_lista_seus_cursos_label"
+        app:layout_constraintTop_toTopOf="@id/activity_home_lista_seus_cursos_label"
+
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_home_lista_seus_cursos"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+
+        android:paddingStart="0dp"
+        android:paddingEnd="25dp"
+        android:paddingBottom="8dp"
+
+        android:nestedScrollingEnabled="false"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbarThumbHorizontal="@drawable/scrollbar_thumb_horizontal"
+        android:scrollbarTrackHorizontal="@drawable/scrollbar_track_horizontal"
+        android:scrollbars="horizontal"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_home_lista_seus_cursos_label"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
