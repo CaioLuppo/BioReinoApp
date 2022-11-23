@@ -11,18 +11,15 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.model.Categoria;
-import br.fmu.bioreino.ui.activity.HomeActivity;
 
 public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategoriasAdapter.CategoriaLayout> {
 
     public static String filtro = "kids";
     private final Context contexto;
-    public static ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+    public static final ArrayList<Categoria> categorias = new ArrayList<>();
 
     public ListaCategoriasAdapter(Context contexto) {
         this.contexto = contexto;
@@ -54,8 +51,8 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
 
     public static class CategoriaLayout extends RecyclerView.ViewHolder {
 
-        CardView cardFundo;
-        TextView texto;
+        final CardView cardFundo;
+        final TextView texto;
 
         public CategoriaLayout(@NonNull View itemView) {
             super(itemView);

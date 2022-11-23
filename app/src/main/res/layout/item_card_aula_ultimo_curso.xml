@@ -41,7 +41,6 @@
                 android:lines="1"
                 android:scrollHorizontally="true"
 
-                android:text="O Título do Curso"
                 android:textColor="@color/black"
 
                 android:textSize="18sp"
@@ -60,7 +59,6 @@
 
                 android:fontFamily="@font/fredoka_medium"
                 android:lines="1"
-                android:text="Prof: LUPPO C. e NOVAES P."
 
                 android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@id/item_card_aula_ultimo_curso_divisao"

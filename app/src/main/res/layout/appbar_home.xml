@@ -31,7 +31,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="16.5dp"
 
-                android:background="@color/background"
+                android:background="@android:color/transparent"
                 android:contentDescription="@string/descricao_menu"
                 android:src="@drawable/ic_menu_hamburguer"
 

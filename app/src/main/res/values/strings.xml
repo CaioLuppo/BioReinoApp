@@ -10,4 +10,13 @@
     <string name="folhas_secas">Folhas secas indicando que não há curso</string>
     <string name="ultimo_curso_continuar">Continuar de onde parou:</string>
     <string name="sessao_categoria_label">por categoria</string>
+    <string name="spinner_descrição">Filtro por plano</string>
+    <string name="nenhum_curso_iniciado">Nenhum curso foi\n iniciado 😢</string>
+
+    <string-array name="categorias">
+        <item>Kids</item>
+        <item>Scholar</item>
+        <item>Professional</item>
+    </string-array>
+    
 </resources>

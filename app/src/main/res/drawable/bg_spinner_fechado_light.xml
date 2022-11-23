@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/bg_spinner_borda" android:gravity="center_vertical" >
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="1.5dp"
+                android:color="@color/light_gray" />
+            <corners android:radius="10dp" />
+            <padding android:right="32dp" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/ic_seta_light" android:gravity="center_vertical|end"
+        android:top="4dp"
+        android:bottom="4dp"
+        android:right="-22dp"
+        android:left="4dp"
+        />
+</layer-list>

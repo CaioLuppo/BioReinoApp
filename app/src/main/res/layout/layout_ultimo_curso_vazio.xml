@@ -13,7 +13,7 @@
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"
 
-        android:src="@drawable/folhas"
+        android:src="@drawable/svg_folhas"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
         android:layout_margin="10dp"
 
         android:fontFamily="@font/fredoka_regular"
-        android:text="Nenhum curso foi\n iniciado 😢"
+        android:text="@string/nenhum_curso_iniciado"
         android:textAlignment="center"
         android:lineSpacingExtra="3dp"
         android:textColor="@color/black"

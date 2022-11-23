@@ -47,11 +47,11 @@ public class ListaSeusCursosAdapter extends RecyclerView.Adapter<ListaSeusCursos
 
     public static class CardLayout extends RecyclerView.ViewHolder {
 
-        TextView titulo;
-        TextView professor;
-        TextView porcentagem;
-        ProgressBar barraDeProgresso;
-        ImageView imagem;
+        final TextView titulo;
+        final TextView professor;
+        final TextView porcentagem;
+        final ProgressBar barraDeProgresso;
+        final ImageView imagem;
 
         public CardLayout(@NonNull View itemView) {
             super(itemView);

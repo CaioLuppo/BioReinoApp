@@ -2,26 +2,23 @@ package br.fmu.bioreino.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
 import br.fmu.bioreino.R;
-import br.fmu.bioreino.adapter.ListaCategoriasAdapter;
 import br.fmu.bioreino.adapter.ListaSeusCursosAdapter;
+import br.fmu.bioreino.componentes.SessaoCategoriaSpinner;
 import br.fmu.bioreino.dao.CursosDAO;
-import br.fmu.bioreino.model.Categoria;
+import br.fmu.bioreino.util.SessaoCategoriasUtil;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements SessaoCategoriaSpinner.SpinnerListener {
 
     // Categorias
-    RecyclerView categoriasRecyclerView;
-    ListaCategoriasAdapter listaCategoriasAdapter;
+    SessaoCategoriasUtil categoriasUtil;
 
     // Seus Cursos
     RecyclerView cursosRecyclerView;
@@ -32,25 +29,13 @@ public class HomeActivity extends AppCompatActivity {
     ConstraintLayout sessaoUltimoCurso;
     ConstraintLayout conteudoUltimoCurso;
 
-    // DataSource
-    ArrayList<String> dataSource;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         // Código
         configuraListaSeusCursos();
-        configuraListaCategorias();
-
-
-    }
-
-    private void configuraListaCategorias() {
-        categoriasRecyclerView = findViewById(R.id.activity_home_sessao_categorias_lista);
-        listaCategoriasAdapter = new ListaCategoriasAdapter(this);
-
-        categoriasRecyclerView.setAdapter(listaCategoriasAdapter);
+        onCreateSessaoCategorias();
     }
 
     @Override
@@ -58,7 +43,13 @@ public class HomeActivity extends AppCompatActivity {
         super.onResume();
         // Código
         mostraConteudoUltimoCurso();
+        categoriasUtil.atualizaTemaSeletor();
+    }
 
+    private void onCreateSessaoCategorias() {
+        categoriasUtil = new SessaoCategoriasUtil(this);
+        categoriasUtil.configuraSessaoCategorias();
+        categoriasUtil.atualizaTemaSeletor();
     }
 
     private void mostraConteudoUltimoCurso() {
@@ -92,10 +83,6 @@ public class HomeActivity extends AppCompatActivity {
         conteudoUltimoCurso.setLayoutParams(parametros);
     }
 
-    private View pegaLayout(int layout) {
-        return getLayoutInflater().inflate(layout, null);
-    }
-
     private void configuraListaSeusCursos() {
         cursosRecyclerView = findViewById(R.id.activity_home_lista_seus_cursos);
 
@@ -104,6 +91,24 @@ public class HomeActivity extends AppCompatActivity {
 
         cursosRecyclerView.setLayoutManager(linearLayoutManager);
         cursosRecyclerView.setAdapter(listaSeusCursosAdapter);
+    }
+
+    // SessaoCategoriaSpinner ----------------------------------------------------------------------
+
+    @Override
+    public void aberturaPopUp(Spinner spinner) {
+        spinner.setBackground(categoriasUtil.backgroundSpinnerAberto);
+    }
+
+    @Override
+    public void fechamentoPopUp(Spinner spinner) {
+        spinner.setBackground(categoriasUtil.backgroundSpinnerFechado);
+    }
+
+    // Helpers -------------------------------------------------------------------------------------
+
+    private View pegaLayout(int layout) {
+        return getLayoutInflater().inflate(layout, null);
     }
 
 }
