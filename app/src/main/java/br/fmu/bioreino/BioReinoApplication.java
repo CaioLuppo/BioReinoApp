@@ -46,12 +46,12 @@ public class BioReinoApplication extends Application {
                 "https://conexaoplaneta.com.br/wp-content/uploads/2020/02/descoberta-nova-especie-louva-deus-mata-atlantica-conexao-planeta.jpg"
         ));
 
-        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "teste", ContextCompat.getColor(this, R.color.azul_esverdeado), ContextCompat.getColor(this, R.color.white)));
-        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "teste", ContextCompat.getColor(this, R.color.ciano), ContextCompat.getColor(this, R.color.white)));
-        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "teste", ContextCompat.getColor(this, R.color.verde_escuro), ContextCompat.getColor(this, R.color.white)));
-        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "teste", ContextCompat.getColor(this, R.color.amarelo), ContextCompat.getColor(this, R.color.white)));
-        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "teste", ContextCompat.getColor(this, R.color.laranja_avermelhado), ContextCompat.getColor(this, R.color.white)));
-        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "teste", ContextCompat.getColor(this, R.color.laranja), ContextCompat.getColor(this, R.color.white)));
+        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "animais", ContextCompat.getColor(this, R.color.azul_esverdeado), ContextCompat.getColor(this, R.color.white)));
+        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "flores", ContextCompat.getColor(this, R.color.ciano), ContextCompat.getColor(this, R.color.white)));
+        ListaCategoriasAdapter.categorias.add(new Categoria("scholar", "vestibular", ContextCompat.getColor(this, R.color.verde_escuro), ContextCompat.getColor(this, R.color.white)));
+        ListaCategoriasAdapter.categorias.add(new Categoria("professional", "forense", ContextCompat.getColor(this, R.color.amarelo), ContextCompat.getColor(this, R.color.white)));
+        ListaCategoriasAdapter.categorias.add(new Categoria("scholar", "E. médio", ContextCompat.getColor(this, R.color.laranja_avermelhado), ContextCompat.getColor(this, R.color.white)));
+        ListaCategoriasAdapter.categorias.add(new Categoria("kids", "histórias", ContextCompat.getColor(this, R.color.laranja), ContextCompat.getColor(this, R.color.white)));
 
     }
 }

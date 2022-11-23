@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,18 +13,22 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.model.Categoria;
 
-public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategoriasAdapter.CategoriaLayout> {
+public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategoriasAdapter.CategoriaLayout> implements Filterable {
 
-    public static String filtro = "kids";
     private final Context contexto;
+
     public static final ArrayList<Categoria> categorias = new ArrayList<>();
+    private ArrayList<Categoria> categoriasCompleta;
 
     public ListaCategoriasAdapter(Context contexto) {
         this.contexto = contexto;
+        categoriasCompleta = new ArrayList<>(categorias);
     }
 
     @NonNull
@@ -39,14 +45,7 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
 
     @Override
     public int getItemCount() {
-        int count = 0;
-        for (Categoria categoria:
-             categorias) {
-            if (categoria.getPlano().equals(filtro)) {
-                count++;
-            }
-        }
-        return count;
+        return categorias.size();
     }
 
     public static class CategoriaLayout extends RecyclerView.ViewHolder {
@@ -70,10 +69,48 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
 
     private void atualizaInformacoes(@NonNull CategoriaLayout holder, Categoria categoria) {
 
-        if (categoria.getPlano().equals(filtro)) {
-            holder.cardFundo.setCardBackgroundColor(categoria.getCorFundo());
-            holder.texto.setText(categoria.getNome());
-            holder.texto.setTextColor(categoria.getCorTexto());
-        }
+        holder.cardFundo.setCardBackgroundColor(categoria.getCorFundo());
+        holder.texto.setText(categoria.getNome());
+        holder.texto.setTextColor(categoria.getCorTexto());
+
     }
+
+
+    @Override
+    public Filter getFilter() {
+        return filtro;
+    }
+
+    private Filter filtro = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<Categoria> listaFiltrada = new ArrayList<>();
+
+            if (charSequence == null || charSequence.length() == 0) {
+                listaFiltrada.addAll(categoriasCompleta);
+            } else {
+                String planoSelecionado = charSequence.toString().toLowerCase(Locale.ROOT).trim();
+
+                for (Categoria categoria : categoriasCompleta) {
+                    if (categoria.getPlano().toLowerCase(Locale.ROOT).contains(planoSelecionado)) {
+                        listaFiltrada.add(categoria);
+                    }
+                }
+            }
+
+            FilterResults resultado = new FilterResults();
+            resultado.values = listaFiltrada;
+
+            return resultado;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            categorias.clear();
+            categorias.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+        
+    };
+
 }

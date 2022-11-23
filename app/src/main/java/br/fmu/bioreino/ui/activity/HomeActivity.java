@@ -1,6 +1,8 @@
 package br.fmu.bioreino.ui.activity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +22,6 @@ public class HomeActivity extends AppCompatActivity implements SessaoCategoriaSp
     SessaoCategoriasUtil categoriasUtil;
     SessaoUltimoCursoUtil ultimoCursoUtil;
 
-
     // Seus Cursos
     RecyclerView cursosRecyclerView;
     LinearLayoutManager linearLayoutManager;
@@ -35,6 +36,7 @@ public class HomeActivity extends AppCompatActivity implements SessaoCategoriaSp
         // Código
         configuraListaSeusCursos();
         configuraSessaoCategorias();
+
     }
 
     @Override
@@ -44,7 +46,6 @@ public class HomeActivity extends AppCompatActivity implements SessaoCategoriaSp
         configuraSessaoUltimoCurso();
         categoriasUtil.atualizaTemaSeletor();
     }
-
 
     // Configurações -------------------------------------------------------------------------------
     private void configuraSessaoCategorias() {

@@ -2,6 +2,9 @@ package br.fmu.bioreino.util;
 
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.TextView;
 
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +16,9 @@ import br.fmu.bioreino.componentes.SessaoCategoriaSpinner;
 import br.fmu.bioreino.ui.activity.HomeActivity;
 
 public class SessaoCategoriasUtil {
+
+    private SessaoCategoriaSpinner spinner;
+    private ListaCategoriasAdapter listaCategoriasAdapter;
 
     private final Drawable abertoLight;
     private final Drawable fechadoLight;
@@ -44,15 +50,14 @@ public class SessaoCategoriasUtil {
 
     public void configuraListaCategorias() {
         RecyclerView categoriasRecyclerView = context.findViewById(R.id.activity_home_sessao_categorias_lista);
-        ListaCategoriasAdapter listaCategoriasAdapter = new ListaCategoriasAdapter(context);
-
+        listaCategoriasAdapter = new ListaCategoriasAdapter(context);
         categoriasRecyclerView.setAdapter(listaCategoriasAdapter);
     }
 
 
     // Spinner
     private void configuraSpinner() {
-        SessaoCategoriaSpinner spinner = context.findViewById(R.id.activity_home_sessao_categorias_spinner);
+        spinner = context.findViewById(R.id.activity_home_sessao_categorias_spinner);
         SeletorCategoriasAdapter spinnerAdapter =
                 new SeletorCategoriasAdapter(
                         context,
@@ -62,6 +67,7 @@ public class SessaoCategoriasUtil {
         spinner.setAdapter(spinnerAdapter);
         spinner.setSpinnerListener(context);
         spinner.setBackground(backgroundSpinnerFechado);
+        setFiltroCategoria();
     }
 
     public void atualizaTemaSeletor() {
@@ -80,5 +86,21 @@ public class SessaoCategoriasUtil {
                 break;
         }
 
+    }
+
+    public void setFiltroCategoria() {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                View layout = spinner.getSelectedView();
+                TextView texto = layout.findViewById(R.id.item_plano_categoria_label);
+                listaCategoriasAdapter.getFilter().filter(texto.getText());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 }
