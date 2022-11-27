@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MenuItemStyle" >
+        <item name="android:fontFamily">@font/catamaran_medium</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="MenuTituloStyle">
+        <item name="android:fontFamily">@font/catamaran_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+</resources>

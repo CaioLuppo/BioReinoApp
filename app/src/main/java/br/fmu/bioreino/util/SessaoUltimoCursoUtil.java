@@ -6,18 +6,20 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.dao.CursosDAO;
-import br.fmu.bioreino.ui.activity.HomeActivity;
+import br.fmu.bioreino.ui.fragments.HomeFragment;
 
 public class SessaoUltimoCursoUtil {
 
-    private final HomeActivity context;
+    private final View view;
+    private final HomeFragment homeFragment;
 
-    public SessaoUltimoCursoUtil(HomeActivity context) {
-        this.context = context;
+    public SessaoUltimoCursoUtil(HomeFragment homeFragment, View view) {
+        this.homeFragment = homeFragment;
+        this.view = view;
     }
 
     public void mostraConteudoUltimoCurso() {
-        ConstraintLayout sessaoUltimoCurso = context.findViewById(R.id.activity_home_sessao_ultimo_curso_conteudo);
+        ConstraintLayout sessaoUltimoCurso = view.findViewById(R.id.sessao_ultimo_curso_conteudo);
         sessaoUltimoCurso.removeAllViews();
         ConstraintLayout conteudoUltimoCurso;
 
@@ -55,7 +57,7 @@ public class SessaoUltimoCursoUtil {
     // Helpers -------------------------------------------------------------------------------------
 
     private View pegaLayout(int layout) {
-        return context.getLayoutInflater().inflate(layout, null);
+        return homeFragment.getLayoutInflater().inflate(layout, null);
     }
 
 }

@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
-    android:id="@+id/activity_home_sessao_categorias"
+    android:id="@+id/sessao_categorias"
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="16dp"
 
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +17,7 @@
 
 
     <TextView
-        android:id="@+id/activity_home_sessao_categorias_label"
+        android:id="@+id/sessao_categorias_label"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,47 +30,46 @@
         android:textColor="@color/black"
         android:textSize="17sp"
 
-        app:layout_constraintStart_toStartOf="@id/activity_home_sessao_categorias"
+        app:layout_constraintBottom_toTopOf="@id/sessao_categorias_lista"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
         />
 
     <br.fmu.bioreino.componentes.SessaoCategoriaSpinner
-        android:id="@+id/activity_home_sessao_categorias_spinner"
+        android:id="@+id/sessao_categorias_spinner"
         android:layout_width="wrap_content"
+        android:layout_height="48dp"
 
-        android:layout_height="0dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/bg_spinner_fechado_light"
         android:contentDescription="@string/spinner_descrição"
-
         android:minWidth="48dp"
-        app:layout_constraintBottom_toBottomOf="@id/activity_home_sessao_categorias_label"
+
+        android:padding="2dp"
+        app:layout_constraintBottom_toTopOf="@id/sessao_categorias_lista"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toEndOf="@id/activity_home_sessao_categorias_label"
+        app:layout_constraintStart_toEndOf="@id/sessao_categorias_label"
 
-        app:layout_constraintTop_toTopOf="@id/activity_home_sessao_categorias_label"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/activity_home_sessao_categorias_lista"
+        android:id="@+id/sessao_categorias_lista"
 
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="17dp"
-        android:clipToPadding="false"
 
         android:orientation="vertical"
-        android:scrollbarStyle="outsideInset"
-        android:scrollbarThumbHorizontal="@drawable/scrollbar_thumb_horizontal"
-        android:scrollbarTrackHorizontal="@drawable/scrollbar_track_horizontal"
+        android:overScrollMode="never"
+        android:scrollbars="none"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_home_sessao_categorias_label"
+        app:layout_constraintTop_toBottomOf="@id/sessao_categorias_spinner"
 
         app:spanCount="2"
 

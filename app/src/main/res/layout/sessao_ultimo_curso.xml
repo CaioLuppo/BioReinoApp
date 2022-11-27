@@ -1,17 +1,15 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/activity_home_sessao_ultimo_curso"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sessao_ultimo_curso"
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
 
     >
 
     <TextView
-        android:id="@+id/activity_home_lista_ultimo_curso_label"
+        android:id="@+id/sessao_ultimo_curso_label"
 
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -24,7 +22,7 @@
         android:textColor="@color/black"
         android:textSize="17sp"
 
-        app:layout_constraintBottom_toTopOf="@id/activity_home_sessao_ultimo_curso_conteudo"
+        app:layout_constraintBottom_toTopOf="@id/sessao_ultimo_curso_conteudo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,7 +30,7 @@
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/activity_home_sessao_ultimo_curso_conteudo"
+        android:id="@+id/sessao_ultimo_curso_conteudo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="21dp"
@@ -43,7 +41,7 @@
         app:layout_constraintHeight_max="350dp"
         app:layout_constraintHeight_min="200dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_home_lista_ultimo_curso_label">
+        app:layout_constraintTop_toBottomOf="@id/sessao_ultimo_curso_label">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

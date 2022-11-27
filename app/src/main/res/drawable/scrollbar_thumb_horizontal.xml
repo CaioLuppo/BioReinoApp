@@ -3,6 +3,7 @@
     <item
         android:left="40dp"
         android:right="40dp"
+        android:top="2dp"
         >
         <shape android:shape="rectangle" >
             <solid android:color="@color/scrollbar_thumb"/>

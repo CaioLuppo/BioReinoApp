@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <!--Último Curso-->
+        <include
+            android:id="@+id/fragment_home_sessao_ultimo_curso"
+
+            layout="@layout/sessao_ultimo_curso"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintBottom_toTopOf="@id/fragment_home_sessao_seus_cursos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <!--Seus Cursos-->
+        <include
+            android:id="@+id/fragment_home_sessao_seus_cursos"
+
+            layout="@layout/sessao_seus_cursos"
+
+            android:layout_marginTop="16dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintBottom_toTopOf="@id/fragment_home_sessao_categorias"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_home_sessao_ultimo_curso"
+
+            />
+
+        <!--Categorias-->
+        <include
+            android:id="@+id/fragment_home_sessao_categorias"
+
+            layout="@layout/sessao_categorias"
+
+            android:layout_marginTop="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_home_sessao_seus_cursos"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.Arrays;
-
 import br.fmu.bioreino.R;
 
 public class SeletorCategoriasAdapter extends BaseAdapter {

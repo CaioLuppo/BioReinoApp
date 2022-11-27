@@ -17,18 +17,18 @@ import java.util.List;
 import java.util.Locale;
 
 import br.fmu.bioreino.R;
+import br.fmu.bioreino.dao.CursosDAO;
 import br.fmu.bioreino.model.Categoria;
 
 public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategoriasAdapter.CategoriaLayout> implements Filterable {
 
     private final Context contexto;
 
-    public static final ArrayList<Categoria> categorias = new ArrayList<>();
-    private ArrayList<Categoria> categoriasCompleta;
+    private final ArrayList<Categoria> categorias = new ArrayList<>();
+    private final ArrayList<Categoria> categoriasCompleta = CursosDAO.getCategorias();
 
     public ListaCategoriasAdapter(Context contexto) {
         this.contexto = contexto;
-        categoriasCompleta = new ArrayList<>(categorias);
     }
 
     @NonNull
@@ -81,7 +81,7 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
         return filtro;
     }
 
-    private Filter filtro = new Filter() {
+    private final Filter filtro = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
             List<Categoria> listaFiltrada = new ArrayList<>();

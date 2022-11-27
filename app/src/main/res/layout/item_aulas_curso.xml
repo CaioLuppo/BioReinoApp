@@ -19,7 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:contentDescription="@string/icone_da_aula"
-            android:src="@drawable/svg_claquete"
+            android:src="@drawable/ic_claquete"
             app:layout_constraintBottom_toBottomOf="@id/item_aulas_curso_descricao"
             app:layout_constraintEnd_toStartOf="@id/item_aulas_curso_titulo"
             app:layout_constraintHorizontal_bias="0.05"
@@ -27,11 +27,11 @@
             app:layout_constraintTop_toTopOf="@id/item_aulas_curso_titulo" />
 
         <TextView
-            android:layout_marginTop="10dp"
             android:id="@+id/item_aulas_curso_titulo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/fredoka_medium"
             android:textColor="@color/black"
@@ -42,11 +42,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_marginBottom="10dp"
             android:id="@+id/item_aulas_curso_descricao"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:ellipsize="end"
             android:fontFamily="@font/fredoka_medium"
             android:lineSpacingExtra="-3dp"

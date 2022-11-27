@@ -18,5 +18,10 @@
         <item>Scholar</item>
         <item>Professional</item>
     </string-array>
-    
+
+    <string name="titulo_home">Home</string>
+    <string name="titulo_conta">Conta</string>
+    <string name="menu_menu">Menu</string>
+    <string name="menu_perfil">Perfil</string>
+
 </resources>

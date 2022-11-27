@@ -2,6 +2,7 @@ package br.fmu.bioreino.util;
 
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
@@ -13,7 +14,6 @@ import br.fmu.bioreino.R;
 import br.fmu.bioreino.adapter.ListaCategoriasAdapter;
 import br.fmu.bioreino.adapter.SeletorCategoriasAdapter;
 import br.fmu.bioreino.componentes.SessaoCategoriaSpinner;
-import br.fmu.bioreino.ui.activity.HomeActivity;
 
 public class SessaoCategoriasUtil {
 
@@ -28,15 +28,17 @@ public class SessaoCategoriasUtil {
     public Drawable backgroundSpinnerAberto;
     public Drawable backgroundSpinnerFechado;
 
-    final HomeActivity context;
+    final SessaoCategoriaSpinner.SpinnerListener spinnerListener;
+    final View view;
 
-    public SessaoCategoriasUtil(HomeActivity context) {
-        this.context = context;
+    public SessaoCategoriasUtil(SessaoCategoriaSpinner.SpinnerListener spinnerListener, View view) {
+        this.spinnerListener = spinnerListener;
+        this.view = view;
 
-        this.abertoLight = ResourcesCompat.getDrawable(context.getResources() ,R.drawable.bg_spinner_aberto_light, context.getTheme());
-        this.fechadoLight = ResourcesCompat.getDrawable(context.getResources() ,R.drawable.bg_spinner_fechado_light, context.getTheme());
-        this.abertoDark = ResourcesCompat.getDrawable(context.getResources() ,R.drawable.bg_spinner_aberto_dark, context.getTheme());
-        this.fechadoDark = ResourcesCompat.getDrawable(context.getResources() ,R.drawable.bg_spinner_fechado_dark, context.getTheme());
+        this.abertoLight = ResourcesCompat.getDrawable(view.getResources() ,R.drawable.bg_spinner_aberto_light, view.getContext().getTheme());
+        this.fechadoLight = ResourcesCompat.getDrawable(view.getResources() ,R.drawable.bg_spinner_fechado_light, view.getContext().getTheme());
+        this.abertoDark = ResourcesCompat.getDrawable(view.getResources() ,R.drawable.bg_spinner_aberto_dark, view.getContext().getTheme());
+        this.fechadoDark = ResourcesCompat.getDrawable(view.getResources() ,R.drawable.bg_spinner_fechado_dark, view.getContext().getTheme());
         atualizaTemaSeletor();
 
     }
@@ -49,29 +51,30 @@ public class SessaoCategoriasUtil {
     }
 
     public void configuraListaCategorias() {
-        RecyclerView categoriasRecyclerView = context.findViewById(R.id.activity_home_sessao_categorias_lista);
-        listaCategoriasAdapter = new ListaCategoriasAdapter(context);
+        RecyclerView categoriasRecyclerView = view.findViewById(R.id.sessao_categorias_lista);
+        listaCategoriasAdapter = new ListaCategoriasAdapter(view.getContext());
         categoriasRecyclerView.setAdapter(listaCategoriasAdapter);
     }
 
 
     // Spinner
     private void configuraSpinner() {
-        spinner = context.findViewById(R.id.activity_home_sessao_categorias_spinner);
+        spinner = view.findViewById(R.id.sessao_categorias_spinner);
         SeletorCategoriasAdapter spinnerAdapter =
                 new SeletorCategoriasAdapter(
-                        context,
-                        context.getResources().getStringArray(R.array.categorias)
+                        view.getContext(),
+                        view.getResources().getStringArray(R.array.categorias)
                 );
 
         spinner.setAdapter(spinnerAdapter);
-        spinner.setSpinnerListener(context);
+        spinner.setSpinnerListener(spinnerListener);
         spinner.setBackground(backgroundSpinnerFechado);
         setFiltroCategoria();
+        Log.d("teste", "configurou spinner");
     }
 
     public void atualizaTemaSeletor() {
-        int nightModeFlags = context.getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        int nightModeFlags = view.getContext().getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
 
         switch (nightModeFlags) {
             case Configuration.UI_MODE_NIGHT_YES:

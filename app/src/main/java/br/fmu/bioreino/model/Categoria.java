@@ -4,7 +4,7 @@ public class Categoria {
     private final String plano;
     private final String nome;
     private final int corFundo;
-    private int corTexto;
+    private final int corTexto;
 
     public Categoria(String plano, String nome, int corFundo, int corTexto) {
         this.plano = plano;
