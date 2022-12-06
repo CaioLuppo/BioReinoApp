@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import br.fmu.bioreino.R;
@@ -23,6 +25,7 @@ public class AulasFragment extends Fragment {
     RecyclerView listaAulas;
     TextView titulo;
     TextView professor;
+    ImageView imagem;
 
     Curso curso;
 
@@ -33,11 +36,13 @@ public class AulasFragment extends Fragment {
 
         recebeCurso();
         configuraListaAulas();
-        configuraTituloSubtitulo();
+        configuraTituloProfessor();
+        configuraImagem();
 
         return aulasFragment;
     }
 
+    // Comunicação ---------------------------------------------------------------------------------
     private void recebeCurso() {
         if (getArguments() != null) {
             curso = (Curso) getArguments().getSerializable("curso");
@@ -49,18 +54,26 @@ public class AulasFragment extends Fragment {
         }
     }
 
-    private void configuraTituloSubtitulo() {
+    // Configurações -------------------------------------------------------------------------------
+    private void configuraTituloProfessor() {
         titulo = aulasFragment.findViewById(R.id.fragment_aulas_titulo);
         professor = aulasFragment.findViewById(R.id.fragment_aulas_professor);
 
         titulo.setText(curso.getTitulo());
-        professor.setText(curso.getProfessor());
+        professor.setText(String.format("Prof: %s", curso.getProfessor()));
+    }
+
+    private void configuraImagem() {
+        imagem = aulasFragment.findViewById(R.id.fragment_aulas_imagem);
+        curso.setImagem(imagem);
     }
 
     private void configuraListaAulas() {
         listaAulas = aulasFragment.findViewById(R.id.fragment_aulas_lista_aulas);
         ListaAulasAdapter adapter = new ListaAulasAdapter(CursosDAO.getCursos().get(1));
-    }
 
+        listaAulas.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        listaAulas.setAdapter(adapter);
+    }
 
 }

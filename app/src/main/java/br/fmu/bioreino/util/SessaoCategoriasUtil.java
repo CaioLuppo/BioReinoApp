@@ -2,7 +2,6 @@ package br.fmu.bioreino.util;
 
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.adapter.ListaCategoriasAdapter;
-import br.fmu.bioreino.adapter.SeletorCategoriasAdapter;
+import br.fmu.bioreino.adapter.SpinnerCategoriasAdapter;
 import br.fmu.bioreino.componentes.SessaoCategoriaSpinner;
 
 public class SessaoCategoriasUtil {
@@ -60,8 +59,7 @@ public class SessaoCategoriasUtil {
     // Spinner
     private void configuraSpinner() {
         spinner = view.findViewById(R.id.sessao_categorias_spinner);
-        SeletorCategoriasAdapter spinnerAdapter = new SeletorCategoriasAdapter(
-                view.getContext(),
+        SpinnerCategoriasAdapter spinnerAdapter = new SpinnerCategoriasAdapter(
                 view.getResources().getStringArray(R.array.categorias)
         );
 

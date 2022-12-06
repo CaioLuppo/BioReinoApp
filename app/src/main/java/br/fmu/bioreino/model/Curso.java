@@ -1,5 +1,10 @@
 package br.fmu.bioreino.model;
 
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -60,7 +65,7 @@ public class Curso implements Serializable {
         this.etapaAtual = etapaAtual;
     }
 
-    public String getLinkImagem() {
-        return linkImagem;
+    public void setImagem(ImageView target) {
+        Picasso.get().load(linkImagem).into(target);
     }
 }

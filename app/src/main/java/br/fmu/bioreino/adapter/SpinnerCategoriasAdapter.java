@@ -1,21 +1,19 @@
 package br.fmu.bioreino.adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import br.fmu.bioreino.R;
+import br.fmu.bioreino.util.ListaUtil;
 
-public class SeletorCategoriasAdapter extends BaseAdapter {
+public class SpinnerCategoriasAdapter extends BaseAdapter {
 
-    private final Context contexto;
     private final String[] planos;
 
-    public SeletorCategoriasAdapter(Context contexto, String[] planos) {
-        this.contexto = contexto;
+    public SpinnerCategoriasAdapter(String[] planos) {
         this.planos = planos;
     }
 
@@ -36,7 +34,7 @@ public class SeletorCategoriasAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View layout = pegaLayout(viewGroup);
+        View layout = ListaUtil.inflaLayout(viewGroup, R.layout.item_plano_categoria);
 
         TextView label = layout.findViewById(R.id.item_plano_categoria_label);
         label.setText(planos[i]);
@@ -44,7 +42,4 @@ public class SeletorCategoriasAdapter extends BaseAdapter {
         return layout;
     }
 
-    private View pegaLayout(ViewGroup viewGroup) {
-        return LayoutInflater.from(contexto).inflate(R.layout.item_plano_categoria, viewGroup, false);
-    }
 }

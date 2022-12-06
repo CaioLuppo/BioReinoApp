@@ -19,6 +19,7 @@ import java.util.Locale;
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.dao.CursosDAO;
 import br.fmu.bioreino.model.Categoria;
+import br.fmu.bioreino.util.ListaUtil;
 
 public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategoriasAdapter.CategoriaLayout> implements Filterable {
 
@@ -31,10 +32,12 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
         this.contexto = contexto;
     }
 
+
+    // Métodos Padrão ------------------------------------------------------------------------------
     @NonNull
     @Override
     public CategoriaLayout onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new CategoriaLayout(retornaLayoutInflado(parent));
+        return new CategoriaLayout(ListaUtil.inflaLayout(parent, R.layout.item_categoria));
     }
 
     @Override
@@ -63,19 +66,8 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
 
     }
 
-    private View retornaLayoutInflado(ViewGroup parent) {
-        return LayoutInflater.from(contexto).inflate(R.layout.item_categoria, parent, false);
-    }
 
-    private void atualizaInformacoes(@NonNull CategoriaLayout holder, Categoria categoria) {
-
-        holder.cardFundo.setCardBackgroundColor(categoria.getCorFundo());
-        holder.texto.setText(categoria.getNome());
-        holder.texto.setTextColor(categoria.getCorTexto());
-
-    }
-
-
+    // Filtro --------------------------------------------------------------------------------------
     @Override
     public Filter getFilter() {
         return filtro;
@@ -112,5 +104,15 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
         }
         
     };
+
+
+    // Helpers -------------------------------------------------------------------------------------
+    private void atualizaInformacoes(@NonNull CategoriaLayout holder, Categoria categoria) {
+
+        holder.cardFundo.setCardBackgroundColor(categoria.getCorFundo());
+        holder.texto.setText(categoria.getNome());
+        holder.texto.setTextColor(categoria.getCorTexto());
+
+    }
 
 }

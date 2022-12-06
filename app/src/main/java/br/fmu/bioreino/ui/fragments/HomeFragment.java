@@ -80,8 +80,7 @@ public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.Spi
         );
 
         ListaSeusCursosAdapter listaSeusCursosAdapter = new ListaSeusCursosAdapter(
-                this, listaSeusCursosData,
-                this.getContext()
+                this, listaSeusCursosData
         );
 
         cursosRecyclerView.setLayoutManager(linearLayoutManager);

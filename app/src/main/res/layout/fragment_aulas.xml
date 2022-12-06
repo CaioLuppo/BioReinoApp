@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".AulasFragment">
+    tools:context=".ui.fragments.AulasFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,13 +15,13 @@
             android:id="@+id/fragment_aulas_imagem"
 
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="200dp"
 
             android:contentDescription="@string/imagem_do_curso"
+            android:scaleType="centerCrop"
             android:src="@color/verde_claro"
 
             app:layout_constraintStart_toStartOf="parent"
-
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.core.widget.NestedScrollView
@@ -83,7 +83,9 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
 
-                            android:fontFamily="@font/catamaran_regular"
+                            android:fontFamily="@font/fredoka_regular"
+                            android:textColor="@color/gray"
+                            android:textSize="17sp"
 
                             app:layout_constraintEnd_toEndOf="@id/fragment_aulas_titulo"
                             app:layout_constraintStart_toStartOf="@id/fragment_aulas_titulo"
@@ -113,13 +115,16 @@
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
                             android:layout_marginTop="16dp"
-
                             android:clipToPadding="false"
+                            android:minHeight="350dp"
+                            android:overScrollMode="never"
                             android:paddingHorizontal="25dp"
                             android:paddingTop="16dp"
+                            android:scrollbars="none"
+
                             app:layout_constraintTop_toBottomOf="@id/fragment_aulas_professor"
+
                             tools:listitem="@layout/item_aulas_curso" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>

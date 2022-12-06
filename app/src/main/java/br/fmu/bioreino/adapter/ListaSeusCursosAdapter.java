@@ -1,7 +1,5 @@
 package br.fmu.bioreino.adapter;
 
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,23 +16,22 @@ import java.util.ArrayList;
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.model.Curso;
 import br.fmu.bioreino.util.ListaCursosInterface;
+import br.fmu.bioreino.util.ListaUtil;
 
 public class ListaSeusCursosAdapter extends RecyclerView.Adapter<ListaSeusCursosAdapter.CardLayout> {
 
     private final ListaCursosInterface listaCursosInterface;
     private final ArrayList<Curso> cursos;
-    private final Context context;
 
-    public ListaSeusCursosAdapter(ListaCursosInterface listaCursosInterface, ArrayList<Curso> cursos, Context context) {
+    public ListaSeusCursosAdapter(ListaCursosInterface listaCursosInterface, ArrayList<Curso> cursos) {
         this.listaCursosInterface = listaCursosInterface;
-        this.context = context;
         this.cursos = cursos;
     }
 
     @NonNull
     @Override
     public CardLayout onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new CardLayout(retornaLayoutInflado(parent), listaCursosInterface);
+        return new CardLayout(ListaUtil.inflaLayout(parent, R.layout.item_card_aula), listaCursosInterface);
     }
 
     @Override
@@ -77,20 +74,12 @@ public class ListaSeusCursosAdapter extends RecyclerView.Adapter<ListaSeusCursos
 
     }
 
-    private View retornaLayoutInflado(@NonNull ViewGroup parent) {
-        return LayoutInflater.from(context).inflate(
-                R.layout.item_card_aula,
-                parent,
-                false
-        );
-    }
-
     private void atualizaInformacoes(@NonNull CardLayout views, Curso curso) {
         views.titulo.setText(curso.getTitulo());
         views.professor.setText(String.format("Prof: %s", curso.getProfessor()));
         views.barraDeProgresso.setProgress(formataProgressoBarra(curso.getProgresso()));
         views.porcentagem.setText(String.format("%s%%", curso.getProgresso()));
-        Picasso.get().load(curso.getLinkImagem()).into(views.imagem);
+        curso.setImagem(views.imagem);
     }
 
     private int formataProgressoBarra(int progresso) {
