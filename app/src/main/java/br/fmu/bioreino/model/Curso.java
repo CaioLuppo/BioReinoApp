@@ -1,9 +1,10 @@
 package br.fmu.bioreino.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /// Modelo de curso
-public class Curso {
+public class Curso implements Serializable {
 
     // Identificador
     private final int id;

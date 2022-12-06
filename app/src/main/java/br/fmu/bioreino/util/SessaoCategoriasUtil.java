@@ -35,10 +35,10 @@ public class SessaoCategoriasUtil {
         this.spinnerListener = spinnerListener;
         this.view = view;
 
-        this.abertoLight = ResourcesCompat.getDrawable(view.getResources() ,R.drawable.bg_spinner_aberto_light, view.getContext().getTheme());
-        this.fechadoLight = ResourcesCompat.getDrawable(view.getResources() ,R.drawable.bg_spinner_fechado_light, view.getContext().getTheme());
-        this.abertoDark = ResourcesCompat.getDrawable(view.getResources() ,R.drawable.bg_spinner_aberto_dark, view.getContext().getTheme());
-        this.fechadoDark = ResourcesCompat.getDrawable(view.getResources() ,R.drawable.bg_spinner_fechado_dark, view.getContext().getTheme());
+        this.abertoLight = ResourcesCompat.getDrawable(view.getResources(), R.drawable.bg_spinner_aberto_light, view.getContext().getTheme());
+        this.fechadoLight = ResourcesCompat.getDrawable(view.getResources(), R.drawable.bg_spinner_fechado_light, view.getContext().getTheme());
+        this.abertoDark = ResourcesCompat.getDrawable(view.getResources(), R.drawable.bg_spinner_aberto_dark, view.getContext().getTheme());
+        this.fechadoDark = ResourcesCompat.getDrawable(view.getResources(), R.drawable.bg_spinner_fechado_dark, view.getContext().getTheme());
         atualizaTemaSeletor();
 
     }
@@ -60,21 +60,23 @@ public class SessaoCategoriasUtil {
     // Spinner
     private void configuraSpinner() {
         spinner = view.findViewById(R.id.sessao_categorias_spinner);
-        SeletorCategoriasAdapter spinnerAdapter =
-                new SeletorCategoriasAdapter(
-                        view.getContext(),
-                        view.getResources().getStringArray(R.array.categorias)
-                );
+        SeletorCategoriasAdapter spinnerAdapter = new SeletorCategoriasAdapter(
+                view.getContext(),
+                view.getResources().getStringArray(R.array.categorias)
+        );
 
         spinner.setAdapter(spinnerAdapter);
         spinner.setSpinnerListener(spinnerListener);
         spinner.setBackground(backgroundSpinnerFechado);
+        spinner.setSelection(0);
         setFiltroCategoria();
-        Log.d("teste", "configurou spinner");
+        listaCategoriasAdapter.getFilter().filter("Kids");
     }
 
     public void atualizaTemaSeletor() {
-        int nightModeFlags = view.getContext().getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        int nightModeFlags = view
+                .getContext().getApplicationContext()
+                .getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
 
         switch (nightModeFlags) {
             case Configuration.UI_MODE_NIGHT_YES:
@@ -95,9 +97,7 @@ public class SessaoCategoriasUtil {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                View layout = spinner.getSelectedView();
-                TextView texto = layout.findViewById(R.id.item_plano_categoria_label);
-                listaCategoriasAdapter.getFilter().filter(texto.getText());
+                filtraLista();
             }
 
             @Override
@@ -106,4 +106,13 @@ public class SessaoCategoriasUtil {
             }
         });
     }
+
+    private void filtraLista() {
+        View opcaoSelecionada = spinner.getSelectedView();
+        if (opcaoSelecionada != null) {
+            TextView texto = opcaoSelecionada.findViewById(R.id.item_plano_categoria_label);
+            listaCategoriasAdapter.getFilter().filter(texto.getText());
+        }
+    }
+
 }

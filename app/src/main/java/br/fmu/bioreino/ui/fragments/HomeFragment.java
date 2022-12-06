@@ -12,21 +12,32 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.adapter.ListaSeusCursosAdapter;
 import br.fmu.bioreino.componentes.SessaoCategoriaSpinner;
 import br.fmu.bioreino.dao.CursosDAO;
+import br.fmu.bioreino.model.Curso;
+import br.fmu.bioreino.util.Comunicador;
+import br.fmu.bioreino.util.ListaCursosInterface;
 import br.fmu.bioreino.util.SessaoCategoriasUtil;
 import br.fmu.bioreino.util.SessaoUltimoCursoUtil;
 
-public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.SpinnerListener {
+public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.SpinnerListener, ListaCursosInterface {
 
     // Binding
-    View homeFragmentView;
+    private View homeFragmentView;
 
     // Sessões
     private SessaoCategoriasUtil categoriasUtil;
     private SessaoUltimoCursoUtil ultimoCursoUtil;
+
+    // Comunicador
+    private Comunicador comunicador;
+
+    // DataSet
+    private ArrayList<Curso> listaSeusCursosData = CursosDAO.getCursos();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -43,11 +54,7 @@ public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.Spi
         return homeFragmentView;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-    }
 
     // Configurações -------------------------------------------------------------------------------
     private void configuraSessaoCategorias() {
@@ -73,14 +80,23 @@ public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.Spi
         );
 
         ListaSeusCursosAdapter listaSeusCursosAdapter = new ListaSeusCursosAdapter(
-                CursosDAO.getCursos(),
+                this, listaSeusCursosData,
                 this.getContext()
         );
 
         cursosRecyclerView.setLayoutManager(linearLayoutManager);
         cursosRecyclerView.setAdapter(listaSeusCursosAdapter);
+
     }
 
+    @Override
+    public void quandoClicarNoItem(int posicao) {
+        comunicador = (Comunicador) getActivity();
+
+        if (comunicador != null) {
+            comunicador.enviaCurso(listaSeusCursosData.get(posicao));
+        }
+    }
 
     // SessaoCategoriaSpinner ----------------------------------------------------------------------
     @Override

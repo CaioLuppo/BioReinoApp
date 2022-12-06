@@ -2,6 +2,7 @@ package br.fmu.bioreino.dao;
 
 import java.util.ArrayList;
 
+import br.fmu.bioreino.model.Aula;
 import br.fmu.bioreino.model.Categoria;
 import br.fmu.bioreino.model.Curso;
 
@@ -25,5 +26,8 @@ public class CursosDAO {
     private static final ArrayList<Categoria> categorias = new ArrayList<>();
     public static void adicionaCategoria(Categoria categoria) {categorias.add(categoria);}
     public static ArrayList<Categoria> getCategorias() {return categorias;}
+
+    /// Lista de aulas
+
 
 }

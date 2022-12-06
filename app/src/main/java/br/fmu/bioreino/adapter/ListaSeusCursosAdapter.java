@@ -17,13 +17,16 @@ import java.util.ArrayList;
 
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.model.Curso;
+import br.fmu.bioreino.util.ListaCursosInterface;
 
 public class ListaSeusCursosAdapter extends RecyclerView.Adapter<ListaSeusCursosAdapter.CardLayout> {
 
+    private final ListaCursosInterface listaCursosInterface;
     private final ArrayList<Curso> cursos;
     private final Context context;
 
-    public ListaSeusCursosAdapter(ArrayList<Curso> cursos, Context context) {
+    public ListaSeusCursosAdapter(ListaCursosInterface listaCursosInterface, ArrayList<Curso> cursos, Context context) {
+        this.listaCursosInterface = listaCursosInterface;
         this.context = context;
         this.cursos = cursos;
     }
@@ -31,7 +34,7 @@ public class ListaSeusCursosAdapter extends RecyclerView.Adapter<ListaSeusCursos
     @NonNull
     @Override
     public CardLayout onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new CardLayout(retornaLayoutInflado(parent));
+        return new CardLayout(retornaLayoutInflado(parent), listaCursosInterface);
     }
 
     @Override
@@ -53,13 +56,23 @@ public class ListaSeusCursosAdapter extends RecyclerView.Adapter<ListaSeusCursos
         final ProgressBar barraDeProgresso;
         final ImageView imagem;
 
-        public CardLayout(@NonNull View itemView) {
+        public CardLayout(@NonNull View itemView, ListaCursosInterface listaCursosInterface) {
             super(itemView);
             titulo = itemView.findViewById(R.id.item_card_aula_titulo);
             professor = itemView.findViewById(R.id.item_card_aula_professor);
             porcentagem = itemView.findViewById(R.id.item_card_aula_porcentagem);
             barraDeProgresso = itemView.findViewById(R.id.item_card_aula_progress_bar);
             imagem = itemView.findViewById(R.id.item_card_aula_imagem);
+
+            itemView.setOnClickListener(view -> {
+                if (listaCursosInterface != null) {
+                    int posicao = getAbsoluteAdapterPosition();
+
+                    if (posicao != RecyclerView.NO_POSITION) {
+                        listaCursosInterface.quandoClicarNoItem(posicao);
+                    }
+                }
+            });
         }
 
     }
