@@ -28,6 +28,8 @@ public class CursosDAO {
     public static ArrayList<Categoria> getCategorias() {return categorias;}
 
     /// Lista de aulas
-
+    public static void setAulaVista(int aulaIndex, Curso curso) {
+        cursos.get(cursos.indexOf(curso)).getAulas().get(aulaIndex).setAulaVista(true);
+    }
 
 }

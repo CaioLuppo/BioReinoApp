@@ -1,7 +1,6 @@
 package br.fmu.bioreino.ui.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +11,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.adapter.ListaAulasAdapter;
 import br.fmu.bioreino.dao.CursosDAO;
+import br.fmu.bioreino.model.Aula;
 import br.fmu.bioreino.model.Curso;
 import br.fmu.bioreino.util.Comunicador;
+import br.fmu.bioreino.util.ListaAulasInterface;
 
-public class AulasFragment extends Fragment {
+public class AulasFragment extends Fragment implements ListaAulasInterface {
 
     View aulasFragment;
     Comunicador comunicador;
@@ -71,10 +74,16 @@ public class AulasFragment extends Fragment {
 
     private void configuraListaAulas() {
         listaAulas = aulasFragment.findViewById(R.id.fragment_aulas_lista_aulas);
-        ListaAulasAdapter adapter = new ListaAulasAdapter(curso);
+        ListaAulasAdapter listaAulasAdapter = new ListaAulasAdapter(curso, this);
 
         listaAulas.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        listaAulas.setAdapter(adapter);
+        listaAulas.setAdapter(listaAulasAdapter);
     }
 
+    // Listener ------------------------------------------------------------------------------------
+    @Override
+    public void quandoClicarNaAula(int aulaIndex) {
+        curso.getAulas().get(aulaIndex).setAulaVista(true);
+        CursosDAO.setAulaVista(aulaIndex, curso);
+    }
 }

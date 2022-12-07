@@ -4,6 +4,7 @@ public class Aula {
 
     private final String titulo;
     private final String Subtitulo;
+    private boolean aulaVista = false;
 
 
     public Aula(String titulo, String subtitulo) {
@@ -17,6 +18,14 @@ public class Aula {
 
     public String getSubtitulo() {
         return Subtitulo;
+    }
+
+    public void setAulaVista(boolean aulaVista) {
+        this.aulaVista = aulaVista;
+    }
+
+    public boolean getAulaFoiVista() {
+        return this.aulaVista;
     }
 
 }
