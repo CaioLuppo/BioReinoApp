@@ -14,8 +14,9 @@
 
     <color name="gray">#737373</color>
     <color name="light_gray">#959595</color>
-    <color name="background">#FFFFFF</color>
+    <color name="light_gray2">#DDDDDD</color>
     <color name="lighter_gray">#FFF6F6F6</color>
+    <color name="background">#FFFFFF</color>
 
 <!--    Default Colors-->
     <color name="purple_200">#FFBB86FC</color>
