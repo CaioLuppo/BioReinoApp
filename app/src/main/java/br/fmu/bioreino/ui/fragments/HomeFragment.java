@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.Spi
     private Comunicador comunicador;
 
     // DataSet
-    private ArrayList<Curso> listaSeusCursosData = CursosDAO.getCursos();
+    private final ArrayList<Curso> listaSeusCursosData = CursosDAO.getCursos();
 
     public HomeFragment() {
         // Required empty public constructor

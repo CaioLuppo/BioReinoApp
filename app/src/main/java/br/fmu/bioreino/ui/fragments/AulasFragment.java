@@ -1,6 +1,7 @@
 package br.fmu.bioreino.ui.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,7 +71,7 @@ public class AulasFragment extends Fragment {
 
     private void configuraListaAulas() {
         listaAulas = aulasFragment.findViewById(R.id.fragment_aulas_lista_aulas);
-        ListaAulasAdapter adapter = new ListaAulasAdapter(CursosDAO.getCursos().get(1));
+        ListaAulasAdapter adapter = new ListaAulasAdapter(curso);
 
         listaAulas.setLayoutManager(new LinearLayoutManager(this.getContext()));
         listaAulas.setAdapter(adapter);

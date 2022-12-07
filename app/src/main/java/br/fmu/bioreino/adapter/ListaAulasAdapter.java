@@ -1,5 +1,6 @@
 package br.fmu.bioreino.adapter;
 
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -15,7 +16,7 @@ import br.fmu.bioreino.util.ListaUtil;
 public class ListaAulasAdapter extends RecyclerView.Adapter<ListaAulasAdapter.LayoutAula> {
 
     private final Curso curso;
-    int quantidadeDeAulas;
+    private final int quantidadeDeAulas;
 
     public ListaAulasAdapter(Curso curso) {
         this.curso = curso;
@@ -82,5 +83,7 @@ public class ListaAulasAdapter extends RecyclerView.Adapter<ListaAulasAdapter.La
     private void exibeMensagemVazia(LayoutAula holder, int mensagem) {
         holder.mensagemVazia.setText(mensagem);
     }
+
+    // TODO: 06/12/2022 Verificar o porquê de não mostrar as aulas da Sophia
 
 }

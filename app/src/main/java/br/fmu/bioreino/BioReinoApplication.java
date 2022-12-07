@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 
 import br.fmu.bioreino.dao.CursosDAO;
+import br.fmu.bioreino.model.Aula;
 import br.fmu.bioreino.model.Categoria;
 import br.fmu.bioreino.model.Curso;
 
@@ -35,13 +36,43 @@ public class BioReinoApplication extends Application {
                 new ArrayList<>(),
                 "https://img.freepik.com/fotos-gratis/maos-segurando-selvagem-passaros-em-um-jardim-zoologico_53876-63246.jpg?w=996&t=st=1668436057~exp=1668436657~hmac=f39eccc10f9f46588e03d5caa7ff4777cffda9294486af8cad90d11840904729"
         ));
+
+        ArrayList<Aula> aulas = new ArrayList<>();
+        aulas.add(
+                new Aula("Não mate os bixinhos!", "Saiba a importância dos insetos.")
+        );
+        aulas.add(
+                new Aula("Louva-a-deus", "Conheça um dos mestre do kung-fu!")
+        );
+        aulas.add(
+                new Aula("Barbeiro", "O que fazer para se proteger.")
+        );
+        aulas.add(
+                new Aula("Não mate os bixinhos!", "Saiba a importância dos insetos.")
+        );
+        aulas.add(
+                new Aula("Louva-a-deus", "Conheça um dos mestre do kung-fu!")
+        );
+        aulas.add(
+                new Aula("Barbeiro", "O que fazer para se proteger.")
+        );
+        aulas.add(
+                new Aula("Não mate os bixinhos!", "Saiba a importância dos insetos.")
+        );
+        aulas.add(
+                new Aula("Louva-a-deus", "Conheça um dos mestre do kung-fu!")
+        );
+        aulas.add(
+                new Aula("Barbeiro", "O que fazer para se proteger.")
+        );
+
         CursosDAO.adicionaCurso(new Curso(
                 1,
                 "Insetos do Brasil",
                 "Sophia Moteki",
                 10,
                 "kids",
-                new ArrayList<>(),
+                aulas,
                 "https://conexaoplaneta.com.br/wp-content/uploads/2020/02/descoberta-nova-especie-louva-deus-mata-atlantica-conexao-planeta.jpg"
         ));
 
