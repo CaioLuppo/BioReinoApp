@@ -19,6 +19,7 @@
             android:id="@+id/item_aulas_curso_icone"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginStart="-1dp"
             android:contentDescription="@string/icone_da_aula"
             android:src="@drawable/ic_claquete"
             app:layout_constraintBottom_toBottomOf="@id/item_aulas_curso_descricao"
