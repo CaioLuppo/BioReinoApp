@@ -84,6 +84,7 @@ public class AulasFragment extends Fragment implements ListaAulasInterface {
     @Override
     public void quandoClicarNaAula(int aulaIndex) {
         curso.getAulas().get(aulaIndex).setAulaVista(true);
+        curso.adicionaProgresso();
         CursosDAO.setAulaVista(aulaIndex, curso);
     }
 }

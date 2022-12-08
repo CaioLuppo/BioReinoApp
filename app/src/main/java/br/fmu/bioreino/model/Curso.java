@@ -21,17 +21,17 @@ public class Curso implements Serializable {
 
     // Variáveis de progresso
     private final int etapas;
-    private double etapaAtual = 10;
+    private double etapaAtual = 0;
 
     // Aulas do curso
     private final String plano;
     private final ArrayList<Aula> aulas;
 
-    public Curso(int id, String titulo, String professor, int etapas, String plano, ArrayList<Aula> aulas, String linkImagem) {
+    public Curso(int id, String titulo, String professor, String plano, ArrayList<Aula> aulas, String linkImagem) {
         this.id = id;
         this.titulo = titulo;
         this.professor = professor;
-        this.etapas = etapas;
+        this.etapas = aulas.size();
         this.plano = plano;
         this.aulas = aulas;
         this.linkImagem = linkImagem;
@@ -61,8 +61,8 @@ public class Curso implements Serializable {
         return plano;
     }
 
-    public void setEtapaAtual(int etapaAtual) {
-        this.etapaAtual = etapaAtual;
+    public void adicionaProgresso() {
+        if (this.etapaAtual <= this.etapas) this.etapaAtual++;
     }
 
     public void setImagem(ImageView target) {
