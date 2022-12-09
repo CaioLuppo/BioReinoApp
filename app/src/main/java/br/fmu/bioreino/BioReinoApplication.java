@@ -28,7 +28,7 @@ public class BioReinoApplication extends Application {
         ));
         CursosDAO.adicionaCurso(new Curso(
                 1,
-                "Reinos: Classificações dos seres",
+                "Reinos: Classificações dos seres vivos",
                 "Pedro H. Sampaio",
                 "schoolar",
                 new ArrayList<>(),

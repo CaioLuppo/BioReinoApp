@@ -26,6 +26,7 @@ public class Curso implements Serializable {
     // Aulas do curso
     private final String plano;
     private final ArrayList<Aula> aulas;
+    private Aula ultimaAula;
 
     public Curso(int id, String titulo, String professor, String plano, ArrayList<Aula> aulas, String linkImagem) {
         this.id = id;
@@ -34,6 +35,7 @@ public class Curso implements Serializable {
         this.etapas = aulas.size();
         this.plano = plano;
         this.aulas = aulas;
+        this.ultimaAula = (aulas.size() > 0) ? aulas.get(0) : null;
         this.linkImagem = linkImagem;
     }
 
@@ -67,5 +69,13 @@ public class Curso implements Serializable {
 
     public void setImagem(ImageView target) {
         Picasso.get().load(linkImagem).into(target);
+    }
+
+    public Aula getUltimaAula() {
+        return ultimaAula;
+    }
+
+    public void setUltimaAula(Aula ultimaAula) {
+        this.ultimaAula = ultimaAula;
     }
 }

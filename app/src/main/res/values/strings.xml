@@ -25,5 +25,7 @@
     <string name="menu_perfil">Perfil</string>
     <string name="imagem_do_curso">Imagem do curso</string>
     <string name="curso_sem_aulas">Este curso ainda não tem aulas 🙇</string>
+    <string name="curso_sem_aula_sub">Aguarde o lançamento de novas aulas!</string>
+    <string name="curso_sem_aula_titulo">Curso sem aulas...</string>
 
 </resources>

@@ -55,7 +55,6 @@ public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.Spi
     }
 
 
-
     // Configurações -------------------------------------------------------------------------------
     private void configuraSessaoCategorias() {
         categoriasUtil = new SessaoCategoriasUtil(this, homeFragmentView.findViewById(R.id.fragment_home_sessao_categorias));
@@ -65,7 +64,7 @@ public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.Spi
 
     private void configuraSessaoUltimoCurso() {
         ultimoCursoUtil = new SessaoUltimoCursoUtil(this, homeFragmentView);
-        ultimoCursoUtil.mostraConteudoUltimoCurso();
+        ultimoCursoUtil.mostraConteudoUltimoCurso((Comunicador) getActivity());
     }
 
     private void configuraListaSeusCursos() {
@@ -89,13 +88,15 @@ public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.Spi
     }
 
     @Override
-    public void quandoClicarNoItem(int posicao) {
+    public void quandoClicarNoCurso(int posicao) {
         comunicador = (Comunicador) getActivity();
 
         if (comunicador != null) {
+            CursosDAO.ultimoCurso = CursosDAO.getCursos().get(posicao);
             comunicador.enviaCurso(listaSeusCursosData.get(posicao));
         }
     }
+
 
     // SessaoCategoriaSpinner ----------------------------------------------------------------------
     @Override

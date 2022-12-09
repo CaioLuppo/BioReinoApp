@@ -21,117 +21,112 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.core.widget.NestedScrollView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/fragment_aulas_vazio"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="130dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fragment_aulas_vazio"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_aulas_vazio">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
-                app:cardBackgroundColor="@android:color/transparent"
-                app:cardElevation="0dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-10dp"
+                <TextView
+                    android:id="@+id/fragment_aulas_titulo"
 
-                app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginTop="16dp"
 
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_aulas_vazio">
+                    android:fontFamily="@font/fredoka_semibold"
+                    android:textColor="@color/black"
+                    android:textSize="32sp"
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    tools:text="Biologia Forense"
+
+                    />
+
+                <TextView
+                    android:id="@+id/fragment_aulas_professor"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="@font/fredoka_regular"
+                    android:textColor="@color/gray"
+                    android:textSize="17sp"
+
+                    app:layout_constraintEnd_toEndOf="@id/fragment_aulas_titulo"
+                    app:layout_constraintStart_toStartOf="@id/fragment_aulas_titulo"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_aulas_titulo"
+
+                    tools:text="Prof: Caio Luppo Ribeiro"
+
+                    />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginTop="8dp"
+
+                    app:cardBackgroundColor="@color/lighter_gray"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+
+                    app:layout_constraintBottom_toTopOf="@id/fragment_aulas_lista_aulas"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_aulas_professor"
+
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_aulas_lista_aulas"
+
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:clipToPadding="false"
+                    android:minHeight="350dp"
+                    android:overScrollMode="never"
+                    android:paddingHorizontal="25dp"
+                    android:paddingTop="16dp"
+                    android:scrollbars="none"
 
-                    <TextView
-                        android:id="@+id/fragment_aulas_titulo"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_aulas_professor"
 
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="25dp"
-                        android:layout_marginTop="16dp"
+                    tools:listitem="@layout/item_aulas_curso" />
 
-                        android:fontFamily="@font/fredoka_semibold"
-                        android:textColor="@color/black"
-                        android:textSize="32sp"
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+        </androidx.cardview.widget.CardView>
 
-                        tools:text="Biologia Forense"
-
-                        />
-
-                    <TextView
-                        android:id="@+id/fragment_aulas_professor"
-
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-
-                        android:fontFamily="@font/fredoka_regular"
-                        android:textColor="@color/gray"
-                        android:textSize="17sp"
-
-                        app:layout_constraintEnd_toEndOf="@id/fragment_aulas_titulo"
-                        app:layout_constraintStart_toStartOf="@id/fragment_aulas_titulo"
-                        app:layout_constraintTop_toBottomOf="@id/fragment_aulas_titulo"
-
-                        tools:text="Prof: Caio Luppo Ribeiro"
-
-                        />
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="4dp"
-                        android:layout_marginHorizontal="25dp"
-                        android:layout_marginTop="8dp"
-
-                        app:cardBackgroundColor="@color/lighter_gray"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="0dp"
-
-                        app:layout_constraintBottom_toTopOf="@id/fragment_aulas_lista_aulas"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/fragment_aulas_professor"
-
-                        />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/fragment_aulas_lista_aulas"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:clipToPadding="false"
-                        android:minHeight="350dp"
-                        android:overScrollMode="never"
-                        android:paddingHorizontal="25dp"
-                        android:paddingTop="16dp"
-                        android:scrollbars="none"
-
-                        app:layout_constraintTop_toBottomOf="@id/fragment_aulas_professor"
-
-                        tools:listitem="@layout/item_aulas_curso" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

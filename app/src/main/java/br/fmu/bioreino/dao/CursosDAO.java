@@ -24,12 +24,29 @@ public class CursosDAO {
 
     /// Liste de categorias
     private static final ArrayList<Categoria> categorias = new ArrayList<>();
-    public static void adicionaCategoria(Categoria categoria) {categorias.add(categoria);}
-    public static ArrayList<Categoria> getCategorias() {return categorias;}
+
+    public static void adicionaCategoria(Categoria categoria) {
+        categorias.add(categoria);
+    }
+
+    public static ArrayList<Categoria> getCategorias() {
+        return categorias;
+    }
 
     /// Lista de aulas
-    public static void setAulaVista(int aulaIndex, Curso curso) {
+    public static void setAulaVistaTrue(int aulaIndex, Curso curso) {
         cursos.get(cursos.indexOf(curso)).getAulas().get(aulaIndex).setAulaVista(true);
     }
+
+    public static void setUltimaAula(int aulaIndex, Curso cursoInformado) {
+        Curso curso = cursos.get(cursos.indexOf(cursoInformado));
+        Aula aula = curso.getAulas().get(aulaIndex);
+        curso.setUltimaAula(aula);
+    }
+
+    public static Aula getUltimaAula(Curso curso) {
+        return cursos.get(cursos.indexOf(curso)).getUltimaAula();
+    }
+
 
 }

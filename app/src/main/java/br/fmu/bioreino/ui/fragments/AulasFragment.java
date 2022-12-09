@@ -11,12 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.adapter.ListaAulasAdapter;
 import br.fmu.bioreino.dao.CursosDAO;
-import br.fmu.bioreino.model.Aula;
 import br.fmu.bioreino.model.Curso;
 import br.fmu.bioreino.util.Comunicador;
 import br.fmu.bioreino.util.ListaAulasInterface;
@@ -85,6 +82,7 @@ public class AulasFragment extends Fragment implements ListaAulasInterface {
     public void quandoClicarNaAula(int aulaIndex) {
         curso.getAulas().get(aulaIndex).setAulaVista(true);
         curso.adicionaProgresso();
-        CursosDAO.setAulaVista(aulaIndex, curso);
+        CursosDAO.setAulaVistaTrue(aulaIndex, curso);
+        CursosDAO.setUltimaAula(aulaIndex, curso);
     }
 }

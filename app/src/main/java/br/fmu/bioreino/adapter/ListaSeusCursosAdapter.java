@@ -9,8 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
 import br.fmu.bioreino.R;
@@ -66,7 +64,7 @@ public class ListaSeusCursosAdapter extends RecyclerView.Adapter<ListaSeusCursos
                     int posicao = getAbsoluteAdapterPosition();
 
                     if (posicao != RecyclerView.NO_POSITION) {
-                        listaCursosInterface.quandoClicarNoItem(posicao);
+                        listaCursosInterface.quandoClicarNoCurso(posicao);
                     }
                 }
             });
