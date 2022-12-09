@@ -19,12 +19,13 @@ import br.fmu.bioreino.adapter.ListaSeusCursosAdapter;
 import br.fmu.bioreino.componentes.SessaoCategoriaSpinner;
 import br.fmu.bioreino.dao.CursosDAO;
 import br.fmu.bioreino.model.Curso;
+import br.fmu.bioreino.util.CategoriaInterface;
 import br.fmu.bioreino.util.Comunicador;
 import br.fmu.bioreino.util.ListaCursosInterface;
 import br.fmu.bioreino.util.SessaoCategoriasUtil;
 import br.fmu.bioreino.util.SessaoUltimoCursoUtil;
 
-public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.SpinnerListener, ListaCursosInterface {
+public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.SpinnerListener, ListaCursosInterface, CategoriaInterface {
 
     // Binding
     private View homeFragmentView;
@@ -58,7 +59,7 @@ public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.Spi
     // Configurações -------------------------------------------------------------------------------
     private void configuraSessaoCategorias() {
         categoriasUtil = new SessaoCategoriasUtil(this, homeFragmentView.findViewById(R.id.fragment_home_sessao_categorias));
-        categoriasUtil.configuraSessaoCategorias();
+        categoriasUtil.configuraSessaoCategorias(this);
         categoriasUtil.atualizaTemaSeletor();
     }
 
@@ -87,6 +88,7 @@ public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.Spi
 
     }
 
+    // Interfaces ----------------------------------------------------------------------------------
     @Override
     public void quandoClicarNoCurso(int posicao) {
         comunicador = (Comunicador) getActivity();
@@ -97,6 +99,14 @@ public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.Spi
         }
     }
 
+    @Override
+    public void quandoClicarNaCategoria(String categoria) {
+        comunicador = (Comunicador) getActivity();
+
+        if (comunicador != null) {
+            comunicador.enviaCategoria(categoria);
+        }
+    }
 
     // SessaoCategoriaSpinner ----------------------------------------------------------------------
     @Override

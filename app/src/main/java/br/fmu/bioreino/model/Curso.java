@@ -3,16 +3,17 @@ package br.fmu.bioreino.model;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /// Modelo de curso
 public class Curso implements Serializable {
 
     // Identificador
     private final int id;
+    private final String categoria;
 
     // Constantes para o card
     private final String titulo;
@@ -28,8 +29,9 @@ public class Curso implements Serializable {
     private final ArrayList<Aula> aulas;
     private Aula ultimaAula;
 
-    public Curso(int id, String titulo, String professor, String plano, ArrayList<Aula> aulas, String linkImagem) {
+    public Curso(int id, String categoria, String titulo, String professor, String plano, ArrayList<Aula> aulas, String linkImagem) {
         this.id = id;
+        this.categoria = categoria.toLowerCase(Locale.ROOT);
         this.titulo = titulo;
         this.professor = professor;
         this.etapas = aulas.size();
@@ -61,6 +63,10 @@ public class Curso implements Serializable {
 
     public String getPlano() {
         return plano;
+    }
+
+    public String getCategoria() {
+        return categoria;
     }
 
     public void adicionaProgresso() {

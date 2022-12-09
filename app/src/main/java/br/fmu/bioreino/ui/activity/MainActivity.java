@@ -3,6 +3,7 @@ package br.fmu.bioreino.ui.activity;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -16,6 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 import br.fmu.bioreino.ui.fragments.AulasFragment;
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.model.Curso;
+import br.fmu.bioreino.ui.fragments.CategoriaFragment;
 import br.fmu.bioreino.ui.fragments.HomeFragment;
 import br.fmu.bioreino.util.Comunicador;
 
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements Comunicador {
     // Fragments -----------------------------------------------------------------------------------
     HomeFragment homeFragment = new HomeFragment();
     AulasFragment aulasFragment = new AulasFragment();
+    CategoriaFragment categoriaFragment = new CategoriaFragment();
 
     // Métodos principais --------------------------------------------------------------------------
     @Override
@@ -101,5 +104,18 @@ public class MainActivity extends AppCompatActivity implements Comunicador {
         bundle.putSerializable("curso", curso);
 
         trocaTela(aulasFragment, bundle);
+    }
+
+    @Override
+    public void enviaCategoria(String categoria) {
+        Bundle bundle = new Bundle();
+        bundle.putString("categoria", categoria);
+
+        trocaTela(categoriaFragment, bundle);
+    }
+
+    @Override
+    public void trocaAppBar(Toolbar toolbar) {
+
     }
 }

@@ -9,7 +9,7 @@
     <string name="ultimo_curso">último curso</string>
     <string name="folhas_secas">Folhas secas indicando que não há curso</string>
     <string name="ultimo_curso_continuar">Continuar de onde parou:</string>
-    <string name="sessao_categoria_label">por categoria</string>
+    <string name="sessao_categoria_label">categorias p/ plano</string>
     <string name="spinner_descrição">Filtro por plano</string>
     <string name="nenhum_curso_iniciado">Nenhum curso foi\n iniciado 😢</string>
 
@@ -25,7 +25,8 @@
     <string name="menu_perfil">Perfil</string>
     <string name="imagem_do_curso">Imagem do curso</string>
     <string name="curso_sem_aulas">Este curso ainda não tem aulas 🙇</string>
-    <string name="curso_sem_aula_sub">Aguarde o lançamento de novas aulas!</string>
-    <string name="curso_sem_aula_titulo">Curso sem aulas...</string>
+    <string name="curso_sem_aula_sub">Aguarde o lançamento!</string>
+    <string name="curso_sem_aula_titulo">Curso sem aulas…</string>
+    <string name="categoria_sem_cursos">Categoria sem cursos… 🙇</string>
 
 </resources>

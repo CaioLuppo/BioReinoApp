@@ -54,8 +54,8 @@
         android:nestedScrollingEnabled="false"
 
         android:orientation="horizontal"
-        android:paddingStart="0dp"
-        android:paddingEnd="25dp"
+        android:paddingStart="9dp"
+        android:paddingEnd="9dp"
 
         android:paddingBottom="8dp"
         android:scrollbarStyle="insideInset"

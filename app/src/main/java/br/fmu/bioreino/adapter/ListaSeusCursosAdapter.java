@@ -75,16 +75,9 @@ public class ListaSeusCursosAdapter extends RecyclerView.Adapter<ListaSeusCursos
     private void atualizaInformacoes(@NonNull CardLayout views, Curso curso) {
         views.titulo.setText(curso.getTitulo());
         views.professor.setText(String.format("Prof: %s", curso.getProfessor()));
-        views.barraDeProgresso.setProgress(formataProgressoBarra(curso.getProgresso()));
+        views.barraDeProgresso.setProgress(ListaUtil.formataProgressoBarra(curso.getProgresso()));
         views.porcentagem.setText(String.format("%s%%", curso.getProgresso()));
         curso.setImagem(views.imagem);
-    }
-
-    private int formataProgressoBarra(int progresso) {
-        if (progresso == 0 || progresso > 10) {
-            return progresso;
-        }
-        return 10;
     }
 
 }

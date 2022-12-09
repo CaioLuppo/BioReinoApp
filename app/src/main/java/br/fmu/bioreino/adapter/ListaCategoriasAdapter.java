@@ -1,7 +1,6 @@
 package br.fmu.bioreino.adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
@@ -19,17 +18,18 @@ import java.util.Locale;
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.dao.CursosDAO;
 import br.fmu.bioreino.model.Categoria;
+import br.fmu.bioreino.util.CategoriaInterface;
 import br.fmu.bioreino.util.ListaUtil;
 
 public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategoriasAdapter.CategoriaLayout> implements Filterable {
 
-    private final Context contexto;
+    private final CategoriaInterface categoriaInterface;
 
     private final ArrayList<Categoria> categorias = new ArrayList<>();
     private final ArrayList<Categoria> categoriasCompleta = CursosDAO.getCategorias();
 
-    public ListaCategoriasAdapter(Context contexto) {
-        this.contexto = contexto;
+    public ListaCategoriasAdapter(CategoriaInterface categoriaInterface) {
+        this.categoriaInterface = categoriaInterface;
     }
 
 
@@ -37,7 +37,10 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
     @NonNull
     @Override
     public CategoriaLayout onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new CategoriaLayout(ListaUtil.inflaLayout(parent, R.layout.item_categoria));
+        return new CategoriaLayout(
+                ListaUtil.inflaLayout(parent, R.layout.item_categoria),
+                categoriaInterface
+        );
     }
 
     @Override
@@ -56,12 +59,20 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
         final CardView cardFundo;
         final TextView texto;
 
-        public CategoriaLayout(@NonNull View itemView) {
+        public CategoriaLayout(@NonNull View itemView, CategoriaInterface categoriaInterface) {
             super(itemView);
 
             cardFundo = itemView.findViewById(R.id.item_categoria_card);
             texto = itemView.findViewById(R.id.item_categoria_texto);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (categoriaInterface != null) {
+                        categoriaInterface.quandoClicarNaCategoria(texto.getText().toString().toLowerCase(Locale.ROOT));
+                    }
+                }
+            });
         }
 
     }
@@ -102,7 +113,7 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
             categorias.addAll((List) filterResults.values);
             notifyDataSetChanged();
         }
-        
+
     };
 
 

@@ -19,7 +19,7 @@ public class BioReinoApplication extends Application {
 
         CursosDAO.adicionaCurso(new Curso(
                 1,
-                "Biologia Forense: Investigando a vida",
+                "forense", "Biologia Forense: Investigando a vida",
                 "Caio Luppo Ribeiro",
                 "schoolar",
                 new ArrayList<>(),
@@ -28,7 +28,7 @@ public class BioReinoApplication extends Application {
         ));
         CursosDAO.adicionaCurso(new Curso(
                 1,
-                "Reinos: Classificações dos seres vivos",
+                "animais|e. médio", "Reinos: Classificações dos seres vivos",
                 "Pedro H. Sampaio",
                 "schoolar",
                 new ArrayList<>(),
@@ -66,7 +66,7 @@ public class BioReinoApplication extends Application {
 
         CursosDAO.adicionaCurso(new Curso(
                 1,
-                "Insetos do Brasil",
+                "animais", "Insetos do Brasil",
                 "Sophia Moteki",
                 "kids",
                 aulas,

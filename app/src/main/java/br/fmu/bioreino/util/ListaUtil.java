@@ -23,4 +23,11 @@ public class ListaUtil {
         return view;
     }
 
+    public static int formataProgressoBarra(int progresso) {
+        if (progresso == 0 || progresso > 10) {
+            return progresso;
+        }
+        return 10;
+    }
+
 }

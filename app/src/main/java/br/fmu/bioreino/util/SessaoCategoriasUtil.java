@@ -44,14 +44,14 @@ public class SessaoCategoriasUtil {
 
 
     // Lista
-    public void configuraSessaoCategorias() {
-        configuraListaCategorias();
+    public void configuraSessaoCategorias(CategoriaInterface categoriaInterface) {
+        configuraListaCategorias(categoriaInterface);
         configuraSpinner();
     }
 
-    public void configuraListaCategorias() {
+    public void configuraListaCategorias(CategoriaInterface categoriaInterface) {
         RecyclerView categoriasRecyclerView = view.findViewById(R.id.sessao_categorias_lista);
-        listaCategoriasAdapter = new ListaCategoriasAdapter(view.getContext());
+        listaCategoriasAdapter = new ListaCategoriasAdapter(categoriaInterface);
         categoriasRecyclerView.setAdapter(listaCategoriasAdapter);
     }
 
