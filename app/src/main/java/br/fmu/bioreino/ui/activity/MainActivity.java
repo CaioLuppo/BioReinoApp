@@ -1,10 +1,14 @@
 package br.fmu.bioreino.ui.activity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -23,7 +27,7 @@ import br.fmu.bioreino.util.Comunicador;
 
 public class MainActivity extends AppCompatActivity implements Comunicador {
 
-    private FragmentManager fragmentManager = getSupportFragmentManager();
+    private final FragmentManager fragmentManager = getSupportFragmentManager();
     private DrawerLayout drawerLayout;
 
     // Fragments -----------------------------------------------------------------------------------
@@ -38,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements Comunicador {
         setContentView(R.layout.activity_main);
         configuraMenu();
 
-        trocaTela(new HomeFragment());
+        trocaTela(homeFragment);
     }
 
     // Configurações -------------------------------------------------------------------------------
@@ -66,23 +70,19 @@ public class MainActivity extends AppCompatActivity implements Comunicador {
                     break;
 
                 default:
-                    Toast.makeText(MainActivity.this, "Ainda não disponível", Toast.LENGTH_SHORT).show();
-
+                    mostraMensagemAindaNaoDisponivel(this);
             }
 
             return false;
         });
     }
 
-    private void configuraBotaoAppbar() {
-        ImageButton botaoMenu = findViewById(R.id.activity_home_appbar_menu);
-        botaoMenu.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
-    }
+
 
     // Helpers -------------------------------------------------------------------------------------
     @Override
     public void trocaTela(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = getFragmentTransaction(fragment);
 
         fragmentTransaction.replace(R.id.activity_home_frameLayout, fragment);
         fragmentTransaction.commit();
@@ -90,12 +90,19 @@ public class MainActivity extends AppCompatActivity implements Comunicador {
 
     @Override
     public void trocaTela(Fragment fragment, Bundle bundle) {
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = getFragmentTransaction(fragment);
 
         fragment.setArguments(bundle);
 
         fragmentTransaction.replace(R.id.activity_home_frameLayout, fragment);
         fragmentTransaction.commit();
+    }
+
+    @NonNull
+    private FragmentTransaction getFragmentTransaction(Fragment fragment) {
+        return (fragment != homeFragment)
+                ? fragmentManager.beginTransaction().addToBackStack(fragment.getTag())
+                : fragmentManager.beginTransaction();
     }
 
     @Override
@@ -118,4 +125,29 @@ public class MainActivity extends AppCompatActivity implements Comunicador {
     public void trocaAppBar(Toolbar toolbar) {
 
     }
+
+    @Override
+    public void configuraBotaoVoltarSistema(Fragment fragmentAtual) {
+        OnBackPressedCallback quandoBotaoVoltarPressionado = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                fragmentAtual.getParentFragmentManager().popBackStack();
+            }
+        };
+        fragmentAtual
+                .requireActivity()
+                .getOnBackPressedDispatcher()
+                .addCallback(fragmentAtual, quandoBotaoVoltarPressionado);
+    }
+
+
+    public void mostraMensagemAindaNaoDisponivel(Context context) {
+        Toast.makeText(context, "Ainda não disponível", Toast.LENGTH_SHORT).show();
+    }
+
+    private void configuraBotaoAppbar() {
+        ImageButton botaoMenu = findViewById(R.id.activity_home_appbar_menu);
+        botaoMenu.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
+    }
+
 }

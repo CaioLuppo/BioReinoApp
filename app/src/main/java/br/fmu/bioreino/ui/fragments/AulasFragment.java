@@ -35,6 +35,7 @@ public class AulasFragment extends Fragment implements ListaAulasInterface {
         // Inflate the layout for this fragment
         aulasFragment = inflater.inflate(R.layout.fragment_aulas, container, false);
 
+        configuraBotaoVoltarSistema();
         recebeCurso();
         configuraListaAulas();
         configuraTituloProfessor();
@@ -48,7 +49,6 @@ public class AulasFragment extends Fragment implements ListaAulasInterface {
         if (getArguments() != null) {
             curso = (Curso) getArguments().getSerializable("curso");
         } else {
-            comunicador = (Comunicador) getActivity();
             if (comunicador != null) {
                 comunicador.trocaTela(new HomeFragment());
             }
@@ -76,6 +76,12 @@ public class AulasFragment extends Fragment implements ListaAulasInterface {
         listaAulas.setLayoutManager(new LinearLayoutManager(this.getContext()));
         listaAulas.setAdapter(listaAulasAdapter);
     }
+
+    private void configuraBotaoVoltarSistema() {
+        comunicador = (Comunicador) getActivity();
+        if (comunicador != null) comunicador.configuraBotaoVoltarSistema(this);
+    }
+
 
     // Listener ------------------------------------------------------------------------------------
     @Override

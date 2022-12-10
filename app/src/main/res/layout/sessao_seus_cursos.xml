@@ -27,6 +27,8 @@
         />
 
     <TextView
+        android:id="@+id/sessao_seus_cursos_mostrar_tudo"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="25dp"

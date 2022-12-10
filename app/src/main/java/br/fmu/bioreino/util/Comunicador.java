@@ -19,4 +19,6 @@ public interface Comunicador {
 
     void trocaAppBar(Toolbar toolbar);
 
+    void configuraBotaoVoltarSistema(Fragment fragmentAtual);
+
 }

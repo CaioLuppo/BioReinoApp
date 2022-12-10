@@ -13,7 +13,6 @@
         android:id="@+id/appbar_toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_scrollFlags="scroll|enterAlways"
 
         app:toolbarId="@+id/toolbar">
 

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import br.fmu.bioreino.R;
 import br.fmu.bioreino.adapter.ListaCursoCategoriaAdapter;
+import br.fmu.bioreino.util.Comunicador;
 
 
 public class CategoriaFragment extends Fragment {
@@ -20,11 +21,27 @@ public class CategoriaFragment extends Fragment {
     RecyclerView listaCursosDaCategoria;
     String categoria;
 
+    Comunicador comunicador;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View fragment = inflater.inflate(R.layout.fragment_categoria, container, false);
 
+        configuraBotaoVoltarSistema();
+        configuraLista(fragment);
+
+        return fragment;
+    }
+
+
+    //  Helpers ------------------------------------------------------------------------------------
+    private void configuraBotaoVoltarSistema() {
+        comunicador = (Comunicador) getActivity();
+        if (comunicador != null) comunicador.configuraBotaoVoltarSistema(this);
+    }
+
+    private void configuraLista(View fragment) {
         listaCursosDaCategoria = fragment.findViewById(R.id.fragment_categoria_lista);
 
         if (getArguments() != null) {
@@ -37,8 +54,6 @@ public class CategoriaFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
         listaCursosDaCategoria.setLayoutManager(linearLayoutManager);
         listaCursosDaCategoria.setAdapter(listaCursoCategoriaAdapter);
-
-        return fragment;
     }
 
 }

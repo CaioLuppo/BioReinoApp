@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,10 +20,12 @@ import br.fmu.bioreino.adapter.ListaSeusCursosAdapter;
 import br.fmu.bioreino.componentes.SessaoCategoriaSpinner;
 import br.fmu.bioreino.dao.CursosDAO;
 import br.fmu.bioreino.model.Curso;
+import br.fmu.bioreino.ui.activity.MainActivity;
 import br.fmu.bioreino.util.CategoriaInterface;
 import br.fmu.bioreino.util.Comunicador;
 import br.fmu.bioreino.util.ListaCursosInterface;
 import br.fmu.bioreino.util.SessaoCategoriasUtil;
+import br.fmu.bioreino.util.SessaoSeusCursosUtil;
 import br.fmu.bioreino.util.SessaoUltimoCursoUtil;
 
 public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.SpinnerListener, ListaCursosInterface, CategoriaInterface {
@@ -33,6 +36,7 @@ public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.Spi
     // Sessões
     private SessaoCategoriasUtil categoriasUtil;
     private SessaoUltimoCursoUtil ultimoCursoUtil;
+    private SessaoSeusCursosUtil seusCursosUtil;
 
     // Comunicador
     private Comunicador comunicador;
@@ -50,7 +54,7 @@ public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.Spi
 
         configuraSessaoCategorias();
         configuraSessaoUltimoCurso();
-        configuraListaSeusCursos();
+        configuraSessaoSeusCursos();
 
         return homeFragmentView;
     }
@@ -68,25 +72,11 @@ public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.Spi
         ultimoCursoUtil.mostraConteudoUltimoCurso((Comunicador) getActivity());
     }
 
-    private void configuraListaSeusCursos() {
-        // Seus Cursos
-        RecyclerView cursosRecyclerView =
-                homeFragmentView.findViewById(R.id.sessao_seus_cursos_lista_seus_cursos);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
-                this.getContext(),
-                RecyclerView.HORIZONTAL,
-                false
-        );
-
-        ListaSeusCursosAdapter listaSeusCursosAdapter = new ListaSeusCursosAdapter(
-                this, listaSeusCursosData
-        );
-
-        cursosRecyclerView.setLayoutManager(linearLayoutManager);
-        cursosRecyclerView.setAdapter(listaSeusCursosAdapter);
-
+    private void configuraSessaoSeusCursos() {
+        seusCursosUtil = new SessaoSeusCursosUtil(homeFragmentView, this, listaSeusCursosData);
+        seusCursosUtil.configuraSessaoSeusCursos();
     }
+
 
     // Interfaces ----------------------------------------------------------------------------------
     @Override
