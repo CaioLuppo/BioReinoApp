@@ -1,13 +1,12 @@
-package br.fmu.bioreino.adapter;
+package br.fmu.bioreino.controller.adapter;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import br.fmu.bioreino.R;
-import br.fmu.bioreino.util.ListaUtil;
+import br.fmu.bioreino.controller.util.ListaUtil;
 
 public class SpinnerCategoriasAdapter extends BaseAdapter {
 

@@ -1,10 +1,10 @@
-package br.fmu.bioreino.dao;
+package br.fmu.bioreino.model.dao;
 
 import java.util.ArrayList;
 
-import br.fmu.bioreino.model.Aula;
-import br.fmu.bioreino.model.Categoria;
-import br.fmu.bioreino.model.Curso;
+import br.fmu.bioreino.model.entities.Aula;
+import br.fmu.bioreino.model.entities.Categoria;
+import br.fmu.bioreino.model.entities.Curso;
 
 public class CursosDAO {
 

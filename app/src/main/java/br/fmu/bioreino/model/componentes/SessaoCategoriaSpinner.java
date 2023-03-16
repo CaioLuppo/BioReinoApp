@@ -1,4 +1,4 @@
-package br.fmu.bioreino.componentes;
+package br.fmu.bioreino.model.componentes;
 
 import android.content.Context;
 import android.content.res.Resources;

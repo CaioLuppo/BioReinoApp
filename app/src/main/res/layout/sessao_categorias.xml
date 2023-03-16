@@ -36,7 +36,7 @@
 
         />
 
-    <br.fmu.bioreino.componentes.SessaoCategoriaSpinner
+    <br.fmu.bioreino.model.componentes.SessaoCategoriaSpinner
         android:id="@+id/sessao_categorias_spinner"
         android:layout_width="wrap_content"
         android:layout_height="48dp"

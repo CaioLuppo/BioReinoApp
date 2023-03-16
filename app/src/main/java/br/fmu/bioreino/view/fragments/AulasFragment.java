@@ -1,4 +1,4 @@
-package br.fmu.bioreino.ui.fragments;
+package br.fmu.bioreino.view.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import br.fmu.bioreino.R;
-import br.fmu.bioreino.adapter.ListaAulasAdapter;
-import br.fmu.bioreino.dao.CursosDAO;
-import br.fmu.bioreino.model.Curso;
-import br.fmu.bioreino.util.Comunicador;
-import br.fmu.bioreino.util.ListaAulasInterface;
+import br.fmu.bioreino.controller.adapter.ListaAulasAdapter;
+import br.fmu.bioreino.model.dao.CursosDAO;
+import br.fmu.bioreino.model.entities.Curso;
+import br.fmu.bioreino.controller.util.Comunicador;
+import br.fmu.bioreino.controller.util.ListaAulasInterface;
 
 public class AulasFragment extends Fragment implements ListaAulasInterface {
 

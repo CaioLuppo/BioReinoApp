@@ -1,4 +1,4 @@
-package br.fmu.bioreino;
+package br.fmu.bioreino.controller;
 
 import android.app.Application;
 
@@ -6,10 +6,11 @@ import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 
-import br.fmu.bioreino.dao.CursosDAO;
-import br.fmu.bioreino.model.Aula;
-import br.fmu.bioreino.model.Categoria;
-import br.fmu.bioreino.model.Curso;
+import br.fmu.bioreino.R;
+import br.fmu.bioreino.model.dao.CursosDAO;
+import br.fmu.bioreino.model.entities.Aula;
+import br.fmu.bioreino.model.entities.Categoria;
+import br.fmu.bioreino.model.entities.Curso;
 
 public class BioReinoApplication extends Application {
 

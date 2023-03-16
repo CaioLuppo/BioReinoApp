@@ -1,8 +1,7 @@
-package br.fmu.bioreino.ui.activity;
+package br.fmu.bioreino.view.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -18,12 +17,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
-import br.fmu.bioreino.ui.fragments.AulasFragment;
+import br.fmu.bioreino.view.fragments.AulasFragment;
 import br.fmu.bioreino.R;
-import br.fmu.bioreino.model.Curso;
-import br.fmu.bioreino.ui.fragments.CategoriaFragment;
-import br.fmu.bioreino.ui.fragments.HomeFragment;
-import br.fmu.bioreino.util.Comunicador;
+import br.fmu.bioreino.model.entities.Curso;
+import br.fmu.bioreino.view.fragments.CategoriaFragment;
+import br.fmu.bioreino.view.fragments.HomeFragment;
+import br.fmu.bioreino.controller.util.Comunicador;
 
 public class MainActivity extends AppCompatActivity implements Comunicador {
 

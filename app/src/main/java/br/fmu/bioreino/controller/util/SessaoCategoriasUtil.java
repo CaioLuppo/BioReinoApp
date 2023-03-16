@@ -1,4 +1,4 @@
-package br.fmu.bioreino.util;
+package br.fmu.bioreino.controller.util;
 
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
@@ -10,9 +10,9 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import br.fmu.bioreino.R;
-import br.fmu.bioreino.adapter.ListaCategoriasAdapter;
-import br.fmu.bioreino.adapter.SpinnerCategoriasAdapter;
-import br.fmu.bioreino.componentes.SessaoCategoriaSpinner;
+import br.fmu.bioreino.controller.adapter.ListaCategoriasAdapter;
+import br.fmu.bioreino.controller.adapter.SpinnerCategoriasAdapter;
+import br.fmu.bioreino.model.componentes.SessaoCategoriaSpinner;
 
 public class SessaoCategoriasUtil {
 

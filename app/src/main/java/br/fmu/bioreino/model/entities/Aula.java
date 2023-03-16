@@ -1,4 +1,4 @@
-package br.fmu.bioreino.model;
+package br.fmu.bioreino.model.entities;
 
 public class Aula {
 

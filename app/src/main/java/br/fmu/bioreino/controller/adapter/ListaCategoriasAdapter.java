@@ -1,6 +1,5 @@
-package br.fmu.bioreino.adapter;
+package br.fmu.bioreino.controller.adapter;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
@@ -16,10 +15,10 @@ import java.util.List;
 import java.util.Locale;
 
 import br.fmu.bioreino.R;
-import br.fmu.bioreino.dao.CursosDAO;
-import br.fmu.bioreino.model.Categoria;
-import br.fmu.bioreino.util.CategoriaInterface;
-import br.fmu.bioreino.util.ListaUtil;
+import br.fmu.bioreino.model.dao.CursosDAO;
+import br.fmu.bioreino.model.entities.Categoria;
+import br.fmu.bioreino.controller.util.CategoriaInterface;
+import br.fmu.bioreino.controller.util.ListaUtil;
 
 public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategoriasAdapter.CategoriaLayout> implements Filterable {
 

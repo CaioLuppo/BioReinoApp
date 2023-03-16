@@ -1,4 +1,4 @@
-package br.fmu.bioreino.ui.fragments;
+package br.fmu.bioreino.view.fragments;
 
 import android.os.Bundle;
 
@@ -6,14 +6,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import br.fmu.bioreino.R;
-import br.fmu.bioreino.adapter.ListaCursoCategoriaAdapter;
-import br.fmu.bioreino.util.Comunicador;
+import br.fmu.bioreino.controller.adapter.ListaCursoCategoriaAdapter;
+import br.fmu.bioreino.controller.util.Comunicador;
 
 
 public class CategoriaFragment extends Fragment {

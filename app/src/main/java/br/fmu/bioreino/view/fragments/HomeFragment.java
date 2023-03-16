@@ -1,32 +1,26 @@
-package br.fmu.bioreino.ui.fragments;
+package br.fmu.bioreino.view.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import br.fmu.bioreino.R;
-import br.fmu.bioreino.adapter.ListaSeusCursosAdapter;
-import br.fmu.bioreino.componentes.SessaoCategoriaSpinner;
-import br.fmu.bioreino.dao.CursosDAO;
-import br.fmu.bioreino.model.Curso;
-import br.fmu.bioreino.ui.activity.MainActivity;
-import br.fmu.bioreino.util.CategoriaInterface;
-import br.fmu.bioreino.util.Comunicador;
-import br.fmu.bioreino.util.ListaCursosInterface;
-import br.fmu.bioreino.util.SessaoCategoriasUtil;
-import br.fmu.bioreino.util.SessaoSeusCursosUtil;
-import br.fmu.bioreino.util.SessaoUltimoCursoUtil;
+import br.fmu.bioreino.model.componentes.SessaoCategoriaSpinner;
+import br.fmu.bioreino.model.dao.CursosDAO;
+import br.fmu.bioreino.model.entities.Curso;
+import br.fmu.bioreino.controller.util.CategoriaInterface;
+import br.fmu.bioreino.controller.util.Comunicador;
+import br.fmu.bioreino.controller.util.ListaCursosInterface;
+import br.fmu.bioreino.controller.util.SessaoCategoriasUtil;
+import br.fmu.bioreino.controller.util.SessaoSeusCursosUtil;
+import br.fmu.bioreino.controller.util.SessaoUltimoCursoUtil;
 
 public class HomeFragment extends Fragment implements SessaoCategoriaSpinner.SpinnerListener, ListaCursosInterface, CategoriaInterface {
 

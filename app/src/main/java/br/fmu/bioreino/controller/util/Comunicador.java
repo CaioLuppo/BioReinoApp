@@ -1,11 +1,11 @@
-package br.fmu.bioreino.util;
+package br.fmu.bioreino.controller.util;
 
 import android.os.Bundle;
 import android.widget.Toolbar;
 
 import androidx.fragment.app.Fragment;
 
-import br.fmu.bioreino.model.Curso;
+import br.fmu.bioreino.model.entities.Curso;
 
 public interface Comunicador {
 

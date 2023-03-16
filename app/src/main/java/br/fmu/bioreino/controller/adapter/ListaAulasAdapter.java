@@ -1,4 +1,4 @@
-package br.fmu.bioreino.adapter;
+package br.fmu.bioreino.controller.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +10,10 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import br.fmu.bioreino.R;
-import br.fmu.bioreino.model.Aula;
-import br.fmu.bioreino.model.Curso;
-import br.fmu.bioreino.util.ListaAulasInterface;
-import br.fmu.bioreino.util.ListaUtil;
+import br.fmu.bioreino.model.entities.Aula;
+import br.fmu.bioreino.model.entities.Curso;
+import br.fmu.bioreino.controller.util.ListaAulasInterface;
+import br.fmu.bioreino.controller.util.ListaUtil;
 
 public class ListaAulasAdapter extends RecyclerView.Adapter<ListaAulasAdapter.LayoutAula> {
 

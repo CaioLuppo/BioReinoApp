@@ -1,13 +1,9 @@
-package br.fmu.bioreino.adapter;
+package br.fmu.bioreino.controller.adapter;
 
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,10 +15,9 @@ import java.util.Locale;
 import java.util.Objects;
 
 import br.fmu.bioreino.R;
-import br.fmu.bioreino.dao.CursosDAO;
-import br.fmu.bioreino.model.Curso;
-import br.fmu.bioreino.util.CategoriaInterface;
-import br.fmu.bioreino.util.ListaUtil;
+import br.fmu.bioreino.model.dao.CursosDAO;
+import br.fmu.bioreino.model.entities.Curso;
+import br.fmu.bioreino.controller.util.ListaUtil;
 
 public class ListaCursoCategoriaAdapter extends RecyclerView.Adapter<ListaCursoCategoriaAdapter.Holder> {
 

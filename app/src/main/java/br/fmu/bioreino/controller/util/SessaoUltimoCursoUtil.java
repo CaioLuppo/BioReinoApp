@@ -1,4 +1,4 @@
-package br.fmu.bioreino.util;
+package br.fmu.bioreino.controller.util;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -8,9 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import br.fmu.bioreino.R;
-import br.fmu.bioreino.dao.CursosDAO;
-import br.fmu.bioreino.model.Aula;
-import br.fmu.bioreino.ui.fragments.HomeFragment;
+import br.fmu.bioreino.model.dao.CursosDAO;
+import br.fmu.bioreino.model.entities.Aula;
+import br.fmu.bioreino.view.fragments.HomeFragment;
 
 public class SessaoUltimoCursoUtil {
 
