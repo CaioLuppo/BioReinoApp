@@ -36,14 +36,15 @@
 
         />
 
-    <br.fmu.bioreino.model.componentes.SessaoCategoriaSpinner
+    <br.fmu.bioreino.model.componentes.CategoriesSessionSpinner
         android:id="@+id/sessao_categorias_spinner"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-
         android:layout_marginEnd="25dp"
+
         android:background="@drawable/bg_spinner_fechado_light"
         android:contentDescription="@string/spinner_descrição"
+        android:importantForAccessibility="no"
         android:minWidth="48dp"
 
         android:padding="2dp"
@@ -51,8 +52,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toEndOf="@id/sessao_categorias_label"
-
         app:layout_constraintTop_toTopOf="parent"
+
         tools:ignore="TouchTargetSizeCheck" />
 
     <androidx.recyclerview.widget.RecyclerView

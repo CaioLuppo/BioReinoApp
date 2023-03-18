@@ -10,4 +10,13 @@
         <item name="android:statusBarColor">@color/white</item>
         <!-- Componentes Personalizados. -->
     </style>
+
+    <style name="Theme.BioReino.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.BioReino.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.BioReino.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
