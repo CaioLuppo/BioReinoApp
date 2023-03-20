@@ -4,7 +4,7 @@ BioReino é uma plataforma online fictícia de cursos de biologia, possuindo div
 # Retomada do desenvolvimento - 14/03/2023 🎉 
 
 #### Checklist:
-- [ ] Migrar o código para Kotlin
+- [ x ] Migrar o código para Kotlin - 18/03/2023
 - [ ] Terminar a documentação do projeto
 - [ ] Desenvolver sistema de login e conta
 - [ ] Possibilidade de ver aulas
