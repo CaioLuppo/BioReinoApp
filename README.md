@@ -9,7 +9,3 @@ BioReino é uma plataforma online fictícia de cursos de biologia, possuindo div
 - [ ] Desenvolver sistema de login e conta
 - [ ] Possibilidade de ver aulas
 - [ ] Sessão com todos os cursos
-
-# Download ⏬
-
-O aplicativo em está disponível na <a href="https://github.com/CaioLuppo/BioReinoApp/releases">*sessão de realeases*</a>.
