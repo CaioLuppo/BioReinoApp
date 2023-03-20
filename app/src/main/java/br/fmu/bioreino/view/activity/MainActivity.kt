@@ -2,18 +2,18 @@ package br.fmu.bioreino.view.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import android.widget.Toolbar
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.core.view.forEach
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import br.fmu.bioreino.LoadingFragment
 import br.fmu.bioreino.R
 import br.fmu.bioreino.controller.util.Comunicator
 import br.fmu.bioreino.databinding.ActivityMainBinding
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), Comunicator {
     private val lessonsFragment = LessonsFragment()
     private val categoriesFragment = CategoriesFragment()
 
-    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var drawer: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), Comunicator {
 
     // Configurations ------------------------------------------------------------------------------
     private fun configurateMenu() {
-        drawerLayout = findViewById(R.id.activity_main_drawerLayout)
+        drawer = findViewById(R.id.activity_main_drawerLayout)
         openDrawerWith(R.id.activity_home_appbar_menu)
         configurateDrawerNavigation()
     }
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity(), Comunicator {
     // Configs -------------------------------------------------------------------------------------
     private fun openDrawerWith(viewId: Int) {
         val view = findViewById<View>(viewId)
-        view.setOnClickListener { drawerLayout.open() }
+        view.setOnClickListener { drawer.open() }
     }
 
     private fun configurateDrawerNavigation() {
@@ -71,14 +71,14 @@ class MainActivity : AppCompatActivity(), Comunicator {
                     subItem.isChecked = false
                 }
             }
-            it.isChecked = true
 
+            it.isChecked = true
             when (itemId) {
-                homeId -> changeFragment(homeFragment)
+                homeId -> changeFragmentFromMenu(homeFragment)
                 else -> showNotYetDefined(this)
             }
 
-            drawerLayout.close()
+
             true
         }
 
@@ -88,10 +88,8 @@ class MainActivity : AppCompatActivity(), Comunicator {
     // Comunicator ---------------------------------------------------------------------------------
     override fun changeFragment(fragment: Fragment, bundle: Bundle?) {
         val fragmentTransaction: FragmentTransaction = getFragmentTransaction(fragment)
-
         bundle.let { fragment.arguments = bundle }
-
-        fragmentTransaction.replace(R.id.activity_home_frameLayout, fragment)
+        fragmentTransaction.replace(R.id.activity_home_frameLayout, fragment, "actual_fragment")
         fragmentTransaction.commit()
     }
 
@@ -118,10 +116,10 @@ class MainActivity : AppCompatActivity(), Comunicator {
                     fragmentAtual.parentFragmentManager.popBackStack()
                 }
             }
-        fragmentAtual
-            .requireActivity()
-            .onBackPressedDispatcher
-            .addCallback(fragmentAtual, quandoBotaoVoltarPressionado)
+        fragmentAtual.requireActivity().onBackPressedDispatcher.addCallback(
+            fragmentAtual,
+            quandoBotaoVoltarPressionado
+        )
     }
 
 
@@ -132,6 +130,24 @@ class MainActivity : AppCompatActivity(), Comunicator {
         } else {
             fragmentManager.beginTransaction()
         }
+    }
+
+    private fun changeFragmentFromMenu(fragment: Fragment) {
+        fragmentManager.findFragmentByTag("actual_fragment")?.let {
+            if (it != fragment) {
+                changeFragment(LoadingFragment())
+                drawer.addDrawerListener(object : DrawerListener {
+                    override fun onDrawerClosed(drawerView: View) {
+                        changeFragment(fragment)
+                    }
+                    override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
+                    override fun onDrawerOpened(drawerView: View) {}
+                    override fun onDrawerStateChanged(newState: Int) {}
+                })
+            }
+            drawer.close()
+        }
+
     }
 
     fun showNotYetDefined(context: Context?) {

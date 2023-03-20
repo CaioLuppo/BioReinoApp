@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/verde_escuro</item>
         <item name="colorPrimaryDark">@color/verde_escuro</item>
-        <item name="colorAccent">@color/azul_esverdeado</item>
+        <item name="colorAccent">@color/verde_claro_azulado</item>
         <!-- Customize your theme here. -->
         <item name="android:colorEdgeEffect">@color/light_gray</item>
         <item name="android:statusBarColor">@color/white</item>
