@@ -1,4 +1,4 @@
-package br.fmu.bioreino.controller.util
+package br.fmu.bioreino.viewModel.util
 
 import android.content.res.Configuration
 import android.graphics.drawable.Drawable
@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import br.fmu.bioreino.R
-import br.fmu.bioreino.controller.adapter.ListaCategoriasAdapter
-import br.fmu.bioreino.controller.adapter.SpinnerCategoriasAdapter
+import br.fmu.bioreino.viewModel.adapter.ListaCategoriasAdapter
+import br.fmu.bioreino.viewModel.adapter.SpinnerCategoriasAdapter
 import br.fmu.bioreino.model.componentes.CategoriesSessionSpinner
 import br.fmu.bioreino.model.componentes.CategoriesSessionSpinner.CategoriesSpinnerListener
 

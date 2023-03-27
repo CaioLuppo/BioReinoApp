@@ -1,4 +1,4 @@
-package br.fmu.bioreino.controller.util
+package br.fmu.bioreino.viewModel.util
 
 import android.os.Bundle
 import android.widget.Toolbar

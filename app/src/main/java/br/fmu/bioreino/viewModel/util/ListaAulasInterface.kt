@@ -1,4 +1,4 @@
-package br.fmu.bioreino.controller.util
+package br.fmu.bioreino.viewModel.util
 
 interface ListaAulasInterface {
     fun quandoClicarNaAula(aulaIndex: Int)

@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import br.fmu.bioreino.LoadingFragment
 import br.fmu.bioreino.R
-import br.fmu.bioreino.controller.util.Comunicator
+import br.fmu.bioreino.viewModel.util.Comunicator
 import br.fmu.bioreino.databinding.ActivityMainBinding
 import br.fmu.bioreino.model.entities.Curso
 import br.fmu.bioreino.view.fragments.CategoriesFragment

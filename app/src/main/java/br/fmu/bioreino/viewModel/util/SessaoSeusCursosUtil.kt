@@ -1,11 +1,11 @@
-package br.fmu.bioreino.controller.util
+package br.fmu.bioreino.viewModel.util
 
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.fmu.bioreino.R
-import br.fmu.bioreino.controller.adapter.ListaSeusCursosAdapter
+import br.fmu.bioreino.viewModel.adapter.ListaSeusCursosAdapter
 import br.fmu.bioreino.model.entities.Curso
 import br.fmu.bioreino.view.activity.MainActivity
 import br.fmu.bioreino.view.fragments.HomeFragment

@@ -1,4 +1,4 @@
-package br.fmu.bioreino.controller
+package br.fmu.bioreino.viewModel
 
 import android.app.Application
 import androidx.core.content.ContextCompat

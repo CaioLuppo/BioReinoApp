@@ -1,4 +1,4 @@
-package br.fmu.bioreino.controller.adapter
+package br.fmu.bioreino.viewModel.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import br.fmu.bioreino.R
-import br.fmu.bioreino.controller.util.ListaUtil.formataProgressoBarra
-import br.fmu.bioreino.controller.util.ListaUtil.inflaLayout
+import br.fmu.bioreino.viewModel.util.ListaUtil.formataProgressoBarra
+import br.fmu.bioreino.viewModel.util.ListaUtil.inflaLayout
 import br.fmu.bioreino.model.dao.CursosDAO
 import br.fmu.bioreino.model.entities.Curso
 

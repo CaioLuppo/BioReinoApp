@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import br.fmu.bioreino.R
-import br.fmu.bioreino.controller.util.*
+import br.fmu.bioreino.viewModel.util.*
 import br.fmu.bioreino.model.componentes.CategoriesSessionSpinner.CategoriesSpinnerListener
 import br.fmu.bioreino.model.dao.CursosDAO
 import br.fmu.bioreino.model.dao.CursosDAO.cursos

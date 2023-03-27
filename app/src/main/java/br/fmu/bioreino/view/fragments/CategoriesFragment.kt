@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.fmu.bioreino.R
-import br.fmu.bioreino.controller.adapter.ListaCursoCategoriaAdapter
-import br.fmu.bioreino.controller.util.Comunicator
+import br.fmu.bioreino.viewModel.adapter.ListaCursoCategoriaAdapter
+import br.fmu.bioreino.viewModel.util.Comunicator
 
 class CategoriesFragment : Fragment() {
     private var listaCursosDaCategoria: RecyclerView? = null

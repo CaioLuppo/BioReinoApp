@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.fmu.bioreino.R
-import br.fmu.bioreino.controller.adapter.ListaAulasAdapter
-import br.fmu.bioreino.controller.util.Comunicator
-import br.fmu.bioreino.controller.util.ListaAulasInterface
+import br.fmu.bioreino.viewModel.adapter.ListaAulasAdapter
+import br.fmu.bioreino.viewModel.util.Comunicator
+import br.fmu.bioreino.viewModel.util.ListaAulasInterface
 import br.fmu.bioreino.model.dao.CursosDAO.setAulaVistaTrue
 import br.fmu.bioreino.model.dao.CursosDAO.setUltimaAula
 import br.fmu.bioreino.model.entities.Curso

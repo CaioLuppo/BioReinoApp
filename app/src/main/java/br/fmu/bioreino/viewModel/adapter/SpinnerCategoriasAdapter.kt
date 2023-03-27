@@ -1,11 +1,11 @@
-package br.fmu.bioreino.controller.adapter
+package br.fmu.bioreino.viewModel.adapter
 
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import br.fmu.bioreino.R
-import br.fmu.bioreino.controller.util.ListaUtil.inflaLayout
+import br.fmu.bioreino.viewModel.util.ListaUtil.inflaLayout
 
 class SpinnerCategoriasAdapter(private val planos: Array<String>) : BaseAdapter() {
     override fun getCount(): Int {

@@ -1,4 +1,4 @@
-package br.fmu.bioreino.controller.adapter
+package br.fmu.bioreino.viewModel.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -7,9 +7,9 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import br.fmu.bioreino.R
-import br.fmu.bioreino.controller.adapter.ListaAulasAdapter.LayoutAula
-import br.fmu.bioreino.controller.util.ListaAulasInterface
-import br.fmu.bioreino.controller.util.ListaUtil.inflaLayout
+import br.fmu.bioreino.viewModel.adapter.ListaAulasAdapter.LayoutAula
+import br.fmu.bioreino.viewModel.util.ListaAulasInterface
+import br.fmu.bioreino.viewModel.util.ListaUtil.inflaLayout
 import br.fmu.bioreino.model.entities.Curso
 
 class ListaAulasAdapter(private val curso: Curso, listaAulasInterface: ListaAulasInterface) :

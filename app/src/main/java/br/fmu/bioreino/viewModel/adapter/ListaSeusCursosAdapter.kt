@@ -1,4 +1,4 @@
-package br.fmu.bioreino.controller.adapter
+package br.fmu.bioreino.viewModel.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -7,9 +7,9 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.fmu.bioreino.R
-import br.fmu.bioreino.controller.util.ListaCursosInterface
-import br.fmu.bioreino.controller.util.ListaUtil.formataProgressoBarra
-import br.fmu.bioreino.controller.util.ListaUtil.inflaLayout
+import br.fmu.bioreino.viewModel.util.ListaCursosInterface
+import br.fmu.bioreino.viewModel.util.ListaUtil.formataProgressoBarra
+import br.fmu.bioreino.viewModel.util.ListaUtil.inflaLayout
 import br.fmu.bioreino.model.entities.Curso
 
 class ListaSeusCursosAdapter(
