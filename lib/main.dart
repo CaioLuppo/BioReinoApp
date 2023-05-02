@@ -14,7 +14,7 @@ class BioReino extends StatelessWidget {
     return MaterialApp(
       theme: BRTheme.lightTheme,
       darkTheme: BRTheme.darkTheme,
-      home: ScreenNavigator(),
+      home: const ScreenNavigator(),
     );
   }
 }
