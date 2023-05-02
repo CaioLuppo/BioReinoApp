@@ -1,12 +1,12 @@
+import 'package:bioreino_mobile/controller/screen_navigator/components/drawer_controller.dart';
 import 'package:bioreino_mobile/controller/util/string_util.dart';
+import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';
 import 'package:bioreino_mobile/view/themes/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../screen_navigator.dart';
-
 class BRDrawer extends Drawer {
-  BRDrawer(final BuildContext context, DrawerNavigator navigator,
+  BRDrawer(final BuildContext context, final DrawerNavigator navigator,
       {super.key})
       : super(
           child: ListView(
@@ -18,6 +18,7 @@ class BRDrawer extends Drawer {
                 page: Pages.home,
                 leadingSvgPath: "assets/drawer_icons/home_icon.svg",
                 text: "home",
+                index: 0,
               ),
               Divider(color: BRColors.greyText),
               DrawerTitle("perfil", context),
@@ -27,6 +28,7 @@ class BRDrawer extends Drawer {
                 page: Pages.account,
                 leadingSvgPath: "assets/drawer_icons/user_icon.svg",
                 text: "conta",
+                index: 1,
               ),
             ],
           ),
@@ -41,6 +43,8 @@ class DrawerTitle extends ListTile {
 }
 
 class DrawerContent extends ListTile {
+  static int selectedIndex = 1;
+
   DrawerContent(
     DrawerNavigator drawerNavigator,
     BuildContext context, {
@@ -48,14 +52,18 @@ class DrawerContent extends ListTile {
     required String text,
     required String leadingSvgPath,
     required Pages page,
+    required int index,
   }) : super(
-          onTap: () => {
-            drawerNavigator.updatePage(page),
-            Navigator.pop(context)
+          onTap: () {
+            drawerOnTap(drawerNavigator, page, context);
+            selectedIndex = index;
           },
           minLeadingWidth: 0,
           leading: ColorFiltered(
-            colorFilter: ColorFilter.mode(BRColors.greyText, BlendMode.srcIn),
+            colorFilter: ColorFilter.mode(
+              selectedIndex == index ? BRColors.green : BRColors.greyText,
+              BlendMode.srcIn,
+            ),
             child: SvgPicture.asset(
               width: 28,
               leadingSvgPath,
@@ -69,6 +77,8 @@ class DrawerContent extends ListTile {
             uppercase: false,
             color: DrawerTextColor.black,
           ),
+          selected: selectedIndex == index,
+          selectedTileColor: BRColors.greenLight.withAlpha(20),
         );
 }
 
