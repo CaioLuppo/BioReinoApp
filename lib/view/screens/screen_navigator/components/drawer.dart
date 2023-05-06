@@ -9,6 +9,11 @@ class BRDrawer extends Drawer {
   BRDrawer(final BuildContext context, final DrawerNavigator navigator,
       {super.key})
       : super(
+          elevation: 0,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
           child: ListView(
             children: [
               DrawerTitle("menu", context),
@@ -33,17 +38,31 @@ class BRDrawer extends Drawer {
             ],
           ),
         );
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(8, 8, 8, 16),
+        child: super.build(context),
+      ),
+    );
+  }
 }
 
 class DrawerTitle extends ListTile {
   DrawerTitle(String text, BuildContext context, {super.key})
       : super(
-          title: DrawerText(text, context),
+          title: DrawerText(
+            text,
+            context,
+            color: BRColors.greyText,
+          ),
         );
 }
 
 class DrawerContent extends ListTile {
-  static int selectedIndex = 1;
+  static int selectedIndex = 0;
 
   DrawerContent(
     DrawerNavigator drawerNavigator,
@@ -54,32 +73,42 @@ class DrawerContent extends ListTile {
     required Pages page,
     required int index,
   }) : super(
-          onTap: () {
-            drawerOnTap(drawerNavigator, page, context);
-            selectedIndex = index;
-          },
-          minLeadingWidth: 0,
-          leading: ColorFiltered(
-            colorFilter: ColorFilter.mode(
-              selectedIndex == index ? BRColors.green : BRColors.greyText,
-              BlendMode.srcIn,
+            onTap: () {
+              drawerOnTap(drawerNavigator, page, context);
+              selectedIndex = index;
+            },
+            minLeadingWidth: 0,
+            leading: ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                selectedIndex == index ? BRColors.green : BRColors.greyText,
+                BlendMode.srcIn,
+              ),
+              child: SvgPicture.asset(
+                width: 28,
+                leadingSvgPath,
+                height: 28,
+                alignment: Alignment.center,
+              ),
             ),
-            child: SvgPicture.asset(
-              width: 28,
-              leadingSvgPath,
-              height: 28,
-              alignment: Alignment.center,
+            title: DrawerText(
+              text,
+              context,
+              uppercase: false,
+              fontWeight:
+                  selectedIndex == index ? FontWeight.w600 : FontWeight.normal,
             ),
-          ),
-          title: DrawerText(
-            text,
-            context,
-            uppercase: false,
-            color: DrawerTextColor.black,
-          ),
-          selected: selectedIndex == index,
-          selectedTileColor: BRColors.greenLight.withAlpha(20),
-        );
+            selected: selectedIndex == index,
+            selectedTileColor: BRColors.greenLight.withAlpha(20),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20)));
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8, right: 8 * 1.06),
+      child: super.build(context),
+    );
+  }
 }
 
 class DrawerText extends Text {
@@ -89,15 +118,11 @@ class DrawerText extends Text {
     super.key,
     FontWeight fontWeight = FontWeight.normal,
     bool uppercase = true,
-    DrawerTextColor color = DrawerTextColor.grey,
+    Color? color,
   }) : super(
           uppercase ? text.toUpperCase() : text.capitalize(),
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: color == DrawerTextColor.grey
-                  ? BRColors.greyText
-                  : Colors.black,
+              color: color,
               fontWeight: fontWeight),
         );
 }
-
-enum DrawerTextColor { black, grey }
