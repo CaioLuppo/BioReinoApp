@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 abstract class BRTheme {
@@ -10,17 +11,29 @@ abstract class BRTheme {
   );
 
   static final ThemeData darkTheme = ThemeData(
+    brightness: Brightness.dark,
     textTheme: _textTheme,
-    appBarTheme: AppBarTheme(color: BRColors.blackDark),
+    appBarTheme: AppBarTheme(
+      color: BRColors.blackDark,
+      systemOverlayStyle: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarBrightness: Brightness.light
+      ),
+    ),
     scaffoldBackgroundColor: BRColors.blackDark,
   );
 
   static final ThemeData lightTheme = ThemeData(
+    brightness: Brightness.light,
     textTheme: _textTheme,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Colors.grey[50],
     appBarTheme: AppBarTheme(
-      color: Colors.white,
+      color: Colors.grey[50],
       foregroundColor: BRColors.greyText,
+      systemOverlayStyle: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+      ),
     ),
   );
 }
