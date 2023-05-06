@@ -1,6 +1,10 @@
+import 'dart:async';
+import 'dart:ui';
+
 import 'package:bioreino_mobile/view/screens/pages/home/home.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/components/Drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'components/app_bar.dart';
 
