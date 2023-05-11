@@ -1,4 +1,4 @@
-import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';
+import 'package:bioreino_mobile/view/screens/splash_screen/splash_screen.dart';
 import 'package:bioreino_mobile/view/themes/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +14,8 @@ class BioReino extends StatelessWidget {
     return MaterialApp(
       theme: BRTheme.lightTheme,
       darkTheme: BRTheme.darkTheme,
-      home: const ScreenNavigator(),
+      home: const SplashScreen(),
     );
   }
+  
 }
