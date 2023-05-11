@@ -11,6 +11,10 @@ dependencies:
     sdk: flutter
   flutter_svg: ^2.0.5
   google_fonts: ^4.0.4
+  connectivity_plus: ^3.0.6
+  internet_connection_checker: ^1.0.0+1
+  mongo_dart: ^0.9.1
+  realm: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -23,3 +27,5 @@ flutter:
   assets:
     - assets/drawer_icons/
     - assets/
+    - assets/splash_screen_icons/
+    - assets/error_images/unknown_error.png
