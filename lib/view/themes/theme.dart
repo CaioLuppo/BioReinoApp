@@ -8,6 +8,10 @@ abstract class BRTheme {
       fontFamily: GoogleFonts.catamaran().fontFamily,
       fontWeight: FontWeight.w600,
     ),
+    headlineLarge: TextStyle(
+      fontFamily: GoogleFonts.catamaran().fontFamily,
+      fontWeight: FontWeight.bold,
+    )
   );
 
   static final ThemeData darkTheme = ThemeData(
