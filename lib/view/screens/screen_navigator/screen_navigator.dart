@@ -1,10 +1,9 @@
-import 'dart:async';
-import 'dart:ui';
-
+import 'package:bioreino_mobile/controller/screens/screen_navigator/connection.dart';
+import 'package:bioreino_mobile/controller/screens/screen_navigator/pages_enum.dart';
+import 'package:bioreino_mobile/controller/screens/screen_navigator/updatable_drawer_mixin.dart';
 import 'package:bioreino_mobile/view/screens/pages/home/home.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/components/Drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'components/app_bar.dart';
 
@@ -16,10 +15,16 @@ class ScreenNavigator extends StatefulWidget {
 }
 
 class _ScreenNavigatorState extends State<ScreenNavigator>
-    with DrawerNavigator {
+    with UpdatableDrawer {
+  // Page stuff
   final List pagesList = [const HomePage(), const Text("ola mundo")];
-
   Pages page = Pages.home;
+
+  @override
+  void initState() {
+    super.initState();
+    verifyConnection(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,21 +36,9 @@ class _ScreenNavigatorState extends State<ScreenNavigator>
   }
 
   @override
-  void updatePage(Pages page) {
+  void updatePage(page) {
     setState(() {
       this.page = page;
     });
   }
-}
-
-mixin DrawerNavigator on State<ScreenNavigator> {
-  void updatePage(Pages page);
-}
-
-enum Pages {
-  home,
-  // lessons,
-  // courses,
-  // categories,
-  account,
 }

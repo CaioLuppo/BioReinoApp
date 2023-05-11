@@ -1,12 +1,13 @@
-import 'package:bioreino_mobile/controller/screen_navigator/components/drawer_controller.dart';
+import 'package:bioreino_mobile/controller/screens/screen_navigator/components/drawer_controller.dart';
+import 'package:bioreino_mobile/controller/screens/screen_navigator/pages_enum.dart';
+import 'package:bioreino_mobile/controller/screens/screen_navigator/updatable_drawer_mixin.dart';
 import 'package:bioreino_mobile/controller/util/string_util.dart';
-import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';
 import 'package:bioreino_mobile/view/themes/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class BRDrawer extends Drawer {
-  BRDrawer(final BuildContext context, final DrawerNavigator navigator,
+  BRDrawer(final BuildContext context, final UpdatableDrawer navigator,
       {super.key})
       : super(
           elevation: 0,
@@ -65,7 +66,7 @@ class DrawerContent extends ListTile {
   static int selectedIndex = 0;
 
   DrawerContent(
-    DrawerNavigator drawerNavigator,
+    UpdatableDrawer updatableDrawer,
     BuildContext context, {
     super.key,
     required String text,
@@ -74,7 +75,7 @@ class DrawerContent extends ListTile {
     required int index,
   }) : super(
             onTap: () {
-              drawerOnTap(drawerNavigator, page, context);
+              drawerOnTap(updatableDrawer, page, context);
               selectedIndex = index;
             },
             minLeadingWidth: 0,
@@ -121,8 +122,9 @@ class DrawerText extends Text {
     Color? color,
   }) : super(
           uppercase ? text.toUpperCase() : text.capitalize(),
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: color,
-              fontWeight: fontWeight),
+          style: Theme.of(context)
+              .textTheme
+              .titleMedium
+              ?.copyWith(color: color, fontWeight: fontWeight),
         );
 }
