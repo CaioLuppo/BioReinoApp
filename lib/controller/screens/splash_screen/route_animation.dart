@@ -1,13 +1,13 @@
 import 'package:bioreino_mobile/controller/database/mongodb.dart';
-import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';
 import 'package:bioreino_mobile/view/screens/error_screen/error_screen.dart';
+import 'package:bioreino_mobile/view/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
 Future<void> connectAndChangeScreen(BuildContext context) async {
   final bool connected = await Database.connect();
   if (context.mounted) {
     connected == true
-        ? changeScreen(context, const ScreenNavigator())
+        ? changeScreen(context, const LoginScreen())
         : changeScreen(context, const ConnectionErrorScreen());
   }
 }

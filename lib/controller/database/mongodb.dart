@@ -6,7 +6,9 @@ import 'package:mongo_dart/mongo_dart.dart';
 
 abstract class Database {
   static Db? db;
-  static DbCollection? userCollection;
+  static DbCollection? coursesCollection;
+  static DbCollection? studentsCollection;
+  static DbCollection? categoriesCollection;
 
   static Future<bool> connect() async {
     bool isUserConnected = await isConnected();
@@ -24,7 +26,9 @@ abstract class Database {
       if (db != null) {
         await db!.open();
         inspect(db);
-        userCollection = db!.collection(collectionName);
+        studentsCollection = db!.collection(studentsCollectionName);
+        coursesCollection = db!.collection(coursesCollectionName);
+        categoriesCollection = db!.collection(categoriesCollectionName);
       }
       return true;
     } on MongoDartError {
