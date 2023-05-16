@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+
 import 'package:bioreino_mobile/controller/screens/login_screen/login_controller.dart';
+import 'package:bioreino_mobile/controller/screens/login_screen/login_form_controller.dart';
 import 'package:bioreino_mobile/view/global_components/widgets/loading_bar.dart';
 import 'package:bioreino_mobile/view/screens/login/components/arara_bg.dart';
 import 'package:bioreino_mobile/view/screens/login/components/login_box_bg.dart';
-import 'package:bioreino_mobile/view/screens/login/components/login_field_box.dart';
 import 'package:bioreino_mobile/view/screens/login/components/login_button.dart';
+import 'package:bioreino_mobile/view/screens/login/components/login_field_box.dart';
 import 'package:bioreino_mobile/view/screens/login/components/login_header.dart';
-import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -102,7 +104,4 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     }
   }
-
 }
-
-
