@@ -1,22 +1,22 @@
-import 'package:flutter/material.dart';
-
 import 'package:bioreino_mobile/controller/screens/error_screen/error_screen_controller.dart';
 import 'package:bioreino_mobile/controller/util/theme_util.dart';
-import 'package:bioreino_mobile/view/screens/error_screen/components/try_again_button.dart';
-import 'package:bioreino_mobile/view/screens/splash_screen/components/loading.dart';
+import 'package:bioreino_mobile/view/global_components/widgets/green_button.dart';
+import 'package:bioreino_mobile/view/global_components/widgets/loading_bar.dart';
+import 'package:flutter/material.dart';
 
 class ConnectionErrorScreen extends StatefulWidget {
   const ConnectionErrorScreen({super.key});
   static bool buttonJustPressed = false;
+  final errorTitleText = "Houve um erro!";
+  final errorBodyText =
+      "Verifique se está conectado à internet, e tente novamente!";
+  final buttonText = "TENTAR NOVAMENTE";
+
   @override
   State<ConnectionErrorScreen> createState() => _ConnectionErrorScreenState();
 }
 
 class _ConnectionErrorScreenState extends State<ConnectionErrorScreen> {
-  final errorTitleText = "Houve um erro!";
-  final errorBodyText =
-      "Verifique se está conectado à internet, e tente novamente!";
-  final buttonText = "TENTAR NOVAMENTE";
   final Image errorImage = Image.asset(
     "assets/error_images/unknown_error.png",
     width: 300,
@@ -37,10 +37,11 @@ class _ConnectionErrorScreenState extends State<ConnectionErrorScreen> {
       ),
     );
 
-    Widget bottomWidget = TryAgainButton(
-      buttonText,
+    Widget bottomWidget = GreenButton(
+      widget.buttonText,
+      const Size(300, 48),
       () => setState(
-        () => setButtonJustPressed(),
+        () => setButtonJustPressed(true),
       ),
     );
 
@@ -55,7 +56,8 @@ class _ConnectionErrorScreenState extends State<ConnectionErrorScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Flexible( // Image
+            Flexible(
+              // Image
               fit: FlexFit.loose,
               flex: 4,
               child: Padding(
@@ -63,10 +65,11 @@ class _ConnectionErrorScreenState extends State<ConnectionErrorScreen> {
                 child: errorImage,
               ),
             ),
-            Flexible( // Title
+            Flexible(
+              // Title
               flex: 2,
               child: Text(
-                errorTitleText,
+                widget.errorTitleText,
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                       color: fromBrightnessColor(
                         context,
@@ -76,15 +79,17 @@ class _ConnectionErrorScreenState extends State<ConnectionErrorScreen> {
                     ),
               ),
             ),
-            Flexible( // Body
+            Flexible(
+              // Body
               flex: 2,
               child: Text(
-                errorBodyText,
+                widget.errorBodyText,
                 style: Theme.of(context).textTheme.bodyLarge,
                 textAlign: TextAlign.center,
               ),
             ),
-            Flexible( // Bottom Widget (Loading or Button)
+            Flexible(
+              // Bottom Widget (Loading or Button)
               flex: 2,
               child: Padding(
                 padding: const EdgeInsets.only(top: 32.0),

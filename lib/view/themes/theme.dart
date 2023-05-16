@@ -11,7 +11,12 @@ abstract class BRTheme {
     headlineLarge: TextStyle(
       fontFamily: GoogleFonts.catamaran().fontFamily,
       fontWeight: FontWeight.bold,
-    )
+    ),
+    bodyLarge: TextStyle(
+      fontSize: 18,
+      fontFamily: GoogleFonts.fredoka().fontFamily,
+      fontWeight: FontWeight.normal,
+    ),
   );
 
   static final ThemeData darkTheme = ThemeData(
@@ -20,26 +25,26 @@ abstract class BRTheme {
     appBarTheme: AppBarTheme(
       color: BRColors.blackDark,
       systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarBrightness: Brightness.light
-      ),
+          statusBarColor: Colors.transparent,
+          statusBarBrightness: Brightness.light),
     ),
     scaffoldBackgroundColor: BRColors.blackDark,
+    cardColor: BRColors.cardDark,
   );
 
   static final ThemeData lightTheme = ThemeData(
-    brightness: Brightness.light,
-    textTheme: _textTheme,
-    scaffoldBackgroundColor: Colors.grey[50],
-    appBarTheme: AppBarTheme(
-      color: Colors.grey[50],
-      foregroundColor: BRColors.greyText,
-      systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
+      brightness: Brightness.light,
+      textTheme: _textTheme,
+      scaffoldBackgroundColor: Colors.grey[50],
+      appBarTheme: AppBarTheme(
+        color: Colors.grey[50],
+        foregroundColor: BRColors.greyText,
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark,
+        ),
       ),
-    ),
-  );
+      cardColor: Colors.white);
 }
 
 abstract class BRColors {
@@ -59,4 +64,5 @@ abstract class BRColors {
 
   static Color greyText = const Color(0xFF737373);
   static Color blackDark = const Color(0xFF0E1013);
+  static Color cardDark = const Color(0xFF1A1D22);
 }

@@ -1,3 +1,4 @@
+import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -8,7 +9,7 @@ final AppBar appBar = AppBar(
   title: Padding(
     padding: const EdgeInsets.only(left: 0.0),
     child: SvgPicture.asset(
-      "assets/bioreino_logo.svg",
+      BRAssets.bioreinoExtense,
       height: 42,
     ),
   ),
