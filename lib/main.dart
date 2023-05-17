@@ -1,3 +1,4 @@
+import 'package:bioreino_mobile/controller/util/theme_util.dart';
 import 'package:bioreino_mobile/view/screens/splash_screen/splash_screen.dart';
 import 'package:bioreino_mobile/view/themes/theme.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class BioReino extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    handleUIStyle();
     return MaterialApp(
       theme: BRTheme.lightTheme,
       darkTheme: BRTheme.darkTheme,

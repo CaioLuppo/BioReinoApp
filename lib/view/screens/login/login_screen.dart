@@ -1,24 +1,35 @@
-import 'package:flutter/material.dart';
+library login_screen;
 
-import 'package:bioreino_mobile/controller/screens/login_screen/login_controller.dart';
 import 'package:bioreino_mobile/controller/screens/login_screen/login_form_controller.dart';
-import 'package:bioreino_mobile/view/global_components/widgets/loading_bar.dart';
-import 'package:bioreino_mobile/view/screens/login/components/arara_bg.dart';
-import 'package:bioreino_mobile/view/screens/login/components/login_box_bg.dart';
-import 'package:bioreino_mobile/view/screens/login/components/login_button.dart';
-import 'package:bioreino_mobile/view/screens/login/components/login_field_box.dart';
-import 'package:bioreino_mobile/view/screens/login/components/login_header.dart';
+import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
+import 'package:bioreino_mobile/view/global_components/widgets/green_button.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+part 'components/arara_bg.dart';
+part 'components/login_box_bg.dart';
+part 'components/login_button.dart';
+part 'components/login_field.dart';
+part 'components/login_field_box.dart';
+part 'components/login_header.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  // Strings
   final String _buttonText = "Entrar";
   final String _headerText = "Entre com sua conta!";
 
+  // ScaffoldKey -> Para mostrar snackbar
   static final GlobalKey<ScaffoldState> scaffoldKey =
       GlobalKey<ScaffoldState>();
+
+  // Controllers
   static final TextEditingController emailController = TextEditingController();
   static final TextEditingController passwordController =
       TextEditingController();
+
+  // States
   static bool wrongCredentials = false;
   static bool failedConnection = false;
   static bool buttonPressed = false;
@@ -28,13 +39,31 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  Widget? bottomWidget;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
+  void initState() {
+    super.initState();
+    clearFields();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    _tryLoginOnButtonPressed(context);
-    _changeBottomWidget();
+    tryLoginOnButtonPressed(
+      context: context,
+      formKey: _formKey,
+      onWrongCredentials: () => setState(() => setWrongCredentials(
+            true,
+            _formKey,
+          )),
+      onConnectionError: () => setState(() => onFailedConnection()),
+    );
+    final bottomWidget = chooseBottomWidget(
+      buttonText: widget._buttonText,
+      formKey: _formKey,
+      onPressed: () => setState(() => setLoginButtonPressed(true)),
+    );
+
     return Stack(
       children: [
         const AraraBackGround(),
@@ -50,12 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   LoginScreen.passwordController,
                   onTextChanged: () {
                     if (LoginScreen.wrongCredentials) {
-                      setState(
-                        () {
-                          setWrongCredentials(false, _formKey);
-                          validateLoginForm(_formKey);
-                        },
-                      );
+                      setState(() => setWrongCredentials(false, _formKey));
                     }
                   },
                 ),
@@ -72,36 +96,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ],
     );
-  }
-
-  void _changeBottomWidget() {
-    bottomWidget = LoginScreen.buttonPressed
-        ? const Padding(
-            padding: EdgeInsets.only(bottom: 20.0),
-            child: LoadingBar(),
-          )
-        : LoginButtonBar(
-            widget._buttonText,
-            formKey: _formKey,
-            onPressed: () => setState(() => setLoginButtonPressed(true)),
-          );
-  }
-
-  void _tryLoginOnButtonPressed(BuildContext context) {
-    if (LoginScreen.buttonPressed) {
-      tryLogin(
-        context: context,
-        formKey: _formKey,
-        email: LoginScreen.emailController.text,
-        password: LoginScreen.passwordController.text,
-        onWrongCredentials: () => setState(() {
-          setWrongCredentials(true, _formKey);
-        }),
-        onConnectionError: () => setState(() {
-          setFailedConnection(true);
-          showErrorSnackBar();
-        }),
-      );
-    }
   }
 }

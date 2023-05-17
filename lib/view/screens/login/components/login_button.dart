@@ -1,7 +1,4 @@
-import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
-import 'package:bioreino_mobile/view/global_components/widgets/green_button.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+part of login_screen;
 
 class LoginButtonBar extends StatelessWidget {
   final GlobalKey<FormState> formKey;

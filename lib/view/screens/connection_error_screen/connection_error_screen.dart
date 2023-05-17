@@ -6,21 +6,28 @@ import 'package:flutter/material.dart';
 
 class ConnectionErrorScreen extends StatefulWidget {
   const ConnectionErrorScreen({super.key});
-  static bool buttonJustPressed = false;
+
+  // Strings
   final errorTitleText = "Houve um erro!";
   final errorBodyText =
       "Verifique se está conectado à internet, e tente novamente!";
   final buttonText = "TENTAR NOVAMENTE";
+
+  // Images
+  static final Image errorImage = Image.asset(
+    "assets/error_images/unknown_error.png",
+    width: 300,
+  );
+
+  // States
+  static bool buttonJustPressed = false;
 
   @override
   State<ConnectionErrorScreen> createState() => _ConnectionErrorScreenState();
 }
 
 class _ConnectionErrorScreenState extends State<ConnectionErrorScreen> {
-  final Image errorImage = Image.asset(
-    "assets/error_images/unknown_error.png",
-    width: 300,
-  );
+  
 
   @override
   void initState() {
@@ -62,7 +69,7 @@ class _ConnectionErrorScreenState extends State<ConnectionErrorScreen> {
               flex: 4,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 32.0, top: 8),
-                child: errorImage,
+                child: ConnectionErrorScreen.errorImage,
               ),
             ),
             Flexible(

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of login_screen;
 
 class Header extends StatelessWidget {
   const Header(

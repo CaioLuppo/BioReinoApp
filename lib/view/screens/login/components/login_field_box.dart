@@ -1,5 +1,4 @@
-import 'package:bioreino_mobile/view/screens/login/components/login_field.dart';
-import 'package:flutter/material.dart';
+part of login_screen;
 
 class LoginFieldBox extends StatelessWidget {
   final TextEditingController emailController;

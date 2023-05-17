@@ -5,4 +5,5 @@ abstract class BRAssets {
       "assets/splash_screen_icons/araradevs_icon.svg";
   static const String araraImage = "assets/login_images/arara.jpg";
   static const String bioreinoExtense = "assets/bioreino_logo.svg";
+  static const String brokenHeart = "assets/login_images/sad-girl.png";
 }

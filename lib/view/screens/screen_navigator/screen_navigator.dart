@@ -1,11 +1,15 @@
+library screen_navigator;
+
 import 'package:bioreino_mobile/controller/screens/screen_navigator/connection.dart';
 import 'package:bioreino_mobile/controller/screens/screen_navigator/pages_enum.dart';
 import 'package:bioreino_mobile/controller/screens/screen_navigator/updatable_drawer_mixin.dart';
-import 'package:bioreino_mobile/view/screens/pages/home/home.dart';
-import 'package:bioreino_mobile/view/screens/screen_navigator/components/Drawer.dart';
+import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
+import 'package:bioreino_mobile/view/screens/screen_navigator/pages/home/home.dart';
+import 'package:bioreino_mobile/view/screens/screen_navigator/components/drawer/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-import 'components/app_bar.dart';
+part 'components/app_bar.dart';
 
 class ScreenNavigator extends StatefulWidget {
   const ScreenNavigator({super.key});
@@ -16,7 +20,6 @@ class ScreenNavigator extends StatefulWidget {
 
 class _ScreenNavigatorState extends State<ScreenNavigator>
     with UpdatableDrawer {
-  // Page stuff
   final List pagesList = [const HomePage(), const Text("ola mundo")];
   Pages page = Pages.home;
 

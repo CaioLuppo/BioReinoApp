@@ -1,7 +1,7 @@
 import 'package:realm/realm.dart';
 
 class Student {
-  final ObjectId _id;
+  final ObjectId id;
   final String cpf;
   final String name;
   final String plan;
@@ -12,7 +12,7 @@ class Student {
   final LastCourse? lastCourse;
 
   Student(
-    this._id,
+    this.id,
     this.cpf,
     this.name,
     this.plan,

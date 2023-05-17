@@ -1,9 +1,12 @@
 import 'dart:convert';
 
+import 'package:bioreino_mobile/controller/screens/splash_screen/route_animation.dart';
+import 'package:bioreino_mobile/view/screens/splash_screen/splash_screen.dart';
 import 'package:dbcrypt/dbcrypt.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bioreino_mobile/controller/database/mongodb.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class StudentDAO {
@@ -71,6 +74,14 @@ abstract class StudentDAO {
         jsonEncode(convertedMap),
       );
     }
+  }
+
+  static Future<void> logout(BuildContext context) async {
+    final SharedPreferences preferences = await SharedPreferences.getInstance();
+    await Future.delayed(const Duration(seconds: 1));
+    preferences.clear();
+    student = null;
+    await DefaultCacheManager().emptyCache();
   }
 }
 

@@ -1,5 +1,4 @@
-import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
-import 'package:flutter/material.dart';
+part of login_screen;
 
 class AraraBackGround extends StatelessWidget {
   const AraraBackGround({super.key});

@@ -1,6 +1,4 @@
-import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+part of screen_navigator;
 
 final AppBar appBar = AppBar(
   toolbarHeight: 86,

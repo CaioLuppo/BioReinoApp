@@ -1,7 +1,4 @@
-import 'package:bioreino_mobile/controller/util/theme_util.dart';
-import 'package:bioreino_mobile/view/screens/splash_screen/splash_screen.dart';
-import 'package:bioreino_mobile/view/themes/theme.dart';
-import 'package:flutter/material.dart';
+part of splash_screen;
 
 class AraradevsIcon extends StatelessWidget {
   const AraradevsIcon({super.key});
@@ -15,7 +12,11 @@ class AraradevsIcon extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(32.0),
-        child: araradevsIcon,
+        child: SvgPicture.asset(
+          BRAssets.araradevsIcon,
+          alignment: Alignment.center,
+          height: 32,
+        ),
       ),
     );
   }

@@ -1,7 +1,4 @@
-import 'package:bioreino_mobile/controller/util/theme_util.dart';
-import 'package:bioreino_mobile/view/global_components/widgets/loading_bar.dart';
-import 'package:bioreino_mobile/view/screens/splash_screen/splash_screen.dart';
-import 'package:flutter/material.dart';
+part of splash_screen;
 
 class Loading extends StatelessWidget {
   const Loading({super.key});
@@ -12,13 +9,19 @@ class Loading extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         isThemeLight(context)
-            ? bioreinoSimple
+            ? SvgPicture.asset(
+                BRAssets.bioreinoSimple,
+                height: 80,
+              )
             : ColorFiltered(
                 colorFilter: const ColorFilter.mode(
                   Colors.white,
                   BlendMode.srcIn,
                 ),
-                child: bioreinoSimple,
+                child: SvgPicture.asset(
+                  BRAssets.bioreinoSimple,
+                  height: 80,
+                ),
               ),
         const SizedBox(height: 32),
         const LoadingBar()
@@ -26,5 +29,3 @@ class Loading extends StatelessWidget {
     );
   }
 }
-
-
