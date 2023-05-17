@@ -4,6 +4,7 @@ import 'package:bioreino_mobile/controller/screens/login_screen/login_form_contr
 import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
 import 'package:bioreino_mobile/view/global_components/widgets/green_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 part 'components/arara_bg.dart';
@@ -23,6 +24,7 @@ class LoginScreen extends StatefulWidget {
   // ScaffoldKey -> Para mostrar snackbar
   static final GlobalKey<ScaffoldState> scaffoldKey =
       GlobalKey<ScaffoldState>();
+  static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   // Controllers
   static final TextEditingController emailController = TextEditingController();
@@ -39,8 +41,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   @override
   void initState() {
     super.initState();
@@ -51,16 +51,18 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     tryLoginOnButtonPressed(
       context: context,
-      formKey: _formKey,
-      onWrongCredentials: () => setState(() => setWrongCredentials(
-            true,
-            _formKey,
-          )),
+      formKey: LoginScreen.formKey,
+      onWrongCredentials: () => setState(() {
+        setWrongCredentials(true);
+        SchedulerBinding.instance.addPostFrameCallback((_) {
+          LoginScreen.formKey.currentState?.validate();
+        });
+      }),
       onConnectionError: () => setState(() => onFailedConnection()),
     );
     final bottomWidget = chooseBottomWidget(
       buttonText: widget._buttonText,
-      formKey: _formKey,
+      formKey: LoginScreen.formKey,
       onPressed: () => setState(() => setLoginButtonPressed(true)),
     );
 
@@ -70,18 +72,13 @@ class _LoginScreenState extends State<LoginScreen> {
         LoginBoxBg(
           scaffoldKey: LoginScreen.scaffoldKey,
           child: Form(
-            key: _formKey,
+            key: LoginScreen.formKey,
             child: Stack(
               children: [
                 Header(widget._headerText),
                 LoginFieldBox(
                   LoginScreen.emailController,
                   LoginScreen.passwordController,
-                  onTextChanged: () {
-                    if (LoginScreen.wrongCredentials) {
-                      setState(() => setWrongCredentials(false, _formKey));
-                    }
-                  },
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,

@@ -1,11 +1,10 @@
 import 'dart:convert';
 
+import 'package:bioreino_mobile/controller/database/mongodb.dart';
 import 'package:bioreino_mobile/controller/screens/splash_screen/route_animation.dart';
-import 'package:bioreino_mobile/view/screens/splash_screen/splash_screen.dart';
+import 'package:bioreino_mobile/view/screens/connection_error_screen/connection_error_screen.dart';
 import 'package:dbcrypt/dbcrypt.dart';
 import 'package:flutter/material.dart';
-
-import 'package:bioreino_mobile/controller/database/mongodb.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -21,22 +20,20 @@ abstract class StudentDAO {
     bool isLogged = false;
     dynamic catchedError;
 
-    if (formKey.currentState!.validate()) {
-      await Database.studentsCollection?.findOne({"email": email}).then(
-        (queryStudent) {
-          isLogged = _checkPassword(password, queryStudent?["password"]);
-          if (isLogged) {
-            student = queryStudent;
-            _storeStudentPrefs();
-          }
-        },
-      ).catchError(
-        (error, stackTrace) {
-          isLogged = false;
-          catchedError = error;
-        },
-      );
-    }
+    await Database.studentsCollection?.findOne({"email": email}).then(
+      (queryStudent) {
+        isLogged = _checkPassword(password, queryStudent?["password"]);
+        if (isLogged) {
+          student = queryStudent;
+          _storeStudentPrefs();
+        }
+      },
+    ).catchError(
+      (error, stackTrace) {
+        isLogged = false;
+        catchedError = error;
+      },
+    );
 
     if (catchedError != null && catchedError.runtimeType == TypeError) {
       return LoginState.error;

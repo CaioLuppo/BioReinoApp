@@ -16,13 +16,16 @@ class LoginBoxBg extends StatelessWidget {
           focusColor: Colors.transparent,
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
           child: Center(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: Container(
                 height: 400,
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 decoration: BoxDecoration(
                   boxShadow: const [
                     BoxShadow(

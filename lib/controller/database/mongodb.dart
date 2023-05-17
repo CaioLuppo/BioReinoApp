@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bioreino_mobile/controller/database/credentials.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mongo_dart/mongo_dart.dart';
@@ -25,7 +23,6 @@ abstract class Database {
       db = await Db.create(mongoUrl);
       if (db != null) {
         await db!.open();
-        inspect(db);
         studentsCollection = db!.collection(studentsCollectionName);
         coursesCollection = db!.collection(coursesCollectionName);
         categoriesCollection = db!.collection(categoriesCollectionName);

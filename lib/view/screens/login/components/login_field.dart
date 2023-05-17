@@ -4,11 +4,9 @@ class LoginField extends StatelessWidget {
   final String label;
   final TextEditingController controller;
   final LoginFieldType type;
-  final Function onChanged;
   final GlobalKey<FormFieldState> fieldKey = GlobalKey();
 
-  LoginField(this.label, this.controller, this.type,
-      {required this.onChanged, super.key});
+  LoginField(this.label, this.controller, this.type, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +16,6 @@ class LoginField extends StatelessWidget {
       },
       child: TextFormField(
         key: fieldKey,
-
         controller: controller,
         validator: (value) {
           if (controller.text.isEmpty) {
@@ -42,7 +39,12 @@ class LoginField extends StatelessWidget {
         style: Theme.of(context).textTheme.bodyLarge,
         keyboardType:
             type == LoginFieldType.email ? TextInputType.emailAddress : null,
-        onChanged: (_) => onChanged(),
+        onChanged: (_) {
+          if (LoginScreen.wrongCredentials) {
+            setWrongCredentials(false);
+            LoginScreen.formKey.currentState?.validate();
+          }
+        },
       ),
     );
   }

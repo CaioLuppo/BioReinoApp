@@ -1,7 +1,7 @@
 import 'package:bioreino_mobile/controller/database/mongodb.dart';
 import 'package:bioreino_mobile/controller/screens/splash_screen/route_animation.dart';
 import 'package:bioreino_mobile/view/screens/connection_error_screen/connection_error_screen.dart';
-import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';
+import 'package:bioreino_mobile/view/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/widgets.dart';
 
 void setButtonJustPressed([bool buttonPressed = true]) {
@@ -12,7 +12,7 @@ retryConnectionIfCan(BuildContext context, Function onError) async {
   if (ConnectionErrorScreen.buttonJustPressed) {
     await Future.delayed(const Duration(seconds: 1));
     await Database.connect().then((connected) {
-      connected ? changeScreen(context, const ScreenNavigator()) : onError();
+      connected ? changeScreen(context, const SplashScreen()) : onError();
     });
   }
 }

@@ -3,12 +3,10 @@ part of login_screen;
 class LoginFieldBox extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
-  final Function onTextChanged;
 
   const LoginFieldBox(
     this.emailController,
     this.passwordController, {
-    required this.onTextChanged,
     super.key,
   });
 
@@ -23,13 +21,11 @@ class LoginFieldBox extends StatelessWidget {
             "E-mail",
             emailController,
             LoginFieldType.email,
-            onChanged: () => onTextChanged()
           ),
           LoginField(
             "Senha",
             passwordController,
             LoginFieldType.password,
-            onChanged: () => onTextChanged(),
           ),
         ],
       ),

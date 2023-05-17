@@ -9,13 +9,8 @@ void setLoginButtonPressed(bool value) {
   LoginScreen.buttonPressed = value;
 }
 
-void setWrongCredentials(bool value, GlobalKey<FormState> formKey) {
+void setWrongCredentials(bool value) {
   LoginScreen.wrongCredentials = value;
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    if (LoginScreen.wrongCredentials) {
-      validateLoginForm(formKey);
-    }
-  });
 }
 
 void onFailedConnection() {
@@ -69,8 +64,8 @@ void tryLoginOnButtonPressed({
       formKey: formKey,
       email: LoginScreen.emailController.text,
       password: LoginScreen.passwordController.text,
-      onWrongCredentials: () => onWrongCredentials,
-      onConnectionError: () => onConnectionError,
+      onWrongCredentials: () => onWrongCredentials(),
+      onConnectionError: () => onConnectionError(),
     );
   }
 }
