@@ -1,8 +1,6 @@
 import 'dart:convert';
 
 import 'package:bioreino_mobile/controller/database/mongodb.dart';
-import 'package:bioreino_mobile/controller/screens/splash_screen/route_animation.dart';
-import 'package:bioreino_mobile/view/screens/connection_error_screen/connection_error_screen.dart';
 import 'package:dbcrypt/dbcrypt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -22,7 +20,11 @@ abstract class StudentDAO {
 
     await Database.studentsCollection?.findOne({"email": email}).then(
       (queryStudent) {
-        isLogged = _checkPassword(password, queryStudent?["password"]);
+        try {
+          isLogged = _checkPassword(password, queryStudent?["password"]);
+        } on TypeError {
+          throw WrongCredentialsException();
+        }
         if (isLogged) {
           student = queryStudent;
           _storeStudentPrefs();
@@ -35,9 +37,9 @@ abstract class StudentDAO {
       },
     );
 
-    if (catchedError != null && catchedError.runtimeType == TypeError) {
+    if (catchedError == WrongCredentialsException()) {
       return LoginState.error;
-    } else if (!isLogged) {
+    } else if (catchedError != null) {
       return LoginState.wrongCredentials;
     } else {
       return LoginState.logged;
@@ -81,5 +83,7 @@ abstract class StudentDAO {
     await DefaultCacheManager().emptyCache();
   }
 }
+
+class WrongCredentialsException implements Exception {}
 
 enum LoginState { logged, wrongCredentials, error }

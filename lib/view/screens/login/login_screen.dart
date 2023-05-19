@@ -1,6 +1,7 @@
 library login_screen;
 
 import 'package:bioreino_mobile/controller/screens/login_screen/login_form_controller.dart';
+import 'package:bioreino_mobile/controller/screens/screen_navigator/connection.dart';
 import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
 import 'package:bioreino_mobile/view/global_components/widgets/green_button.dart';
 import 'package:flutter/material.dart';
@@ -45,10 +46,12 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
     clearFields();
+    ConnectionChecker(context).setConnectionListener();
   }
 
   @override
   Widget build(BuildContext context) {
+
     tryLoginOnButtonPressed(
       context: context,
       formKey: LoginScreen.formKey,

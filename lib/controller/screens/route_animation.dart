@@ -20,16 +20,21 @@ Future<void> connectAndChangeScreen(BuildContext context) async {
   }
 }
 
-Future<dynamic> changeScreen(BuildContext context, Widget page) {
-  return Navigator.pushReplacement(context, _animatedRoute(page));
+Future<dynamic> changeScreen(
+  BuildContext context,
+  Widget page, {
+  bool leftToRight = false,
+}) {
+  return Navigator.pushReplacement(context, _animatedRoute(page, leftToRight));
 }
 
-PageRouteBuilder _animatedRoute(Widget page) {
+PageRouteBuilder _animatedRoute(Widget page, bool leftToRight) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => page,
     transitionDuration: const Duration(seconds: 1),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      const begin = Offset(1.0, 0.0);
+      final begin =
+          leftToRight ? const Offset(-1.0, 00) : const Offset(1.0, 0.0);
       const end = Offset.zero;
       const curve = Curves.ease;
 

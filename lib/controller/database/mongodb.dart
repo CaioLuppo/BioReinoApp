@@ -7,15 +7,23 @@ abstract class Database {
   static DbCollection? coursesCollection;
   static DbCollection? studentsCollection;
   static DbCollection? categoriesCollection;
+  static bool connecting = false;
 
   static Future<bool> connect() async {
-    bool isUserConnected = await isConnected();
-    if (isUserConnected == false) {
-      return false;
-    } else if (db == null || !db!.isConnected) {
-      return await _tryConnection();
-    }
-    return true;
+      _cleanCollections();
+      bool isUserConnected = await isConnected();
+      if (!isUserConnected) {
+        connecting = false;
+        return false;
+      } else {
+        return await _tryConnection();
+      }
+  }
+
+  static void _cleanCollections() {
+    coursesCollection = null;
+    studentsCollection = null;
+    categoriesCollection = null;
   }
 
   static Future<bool> _tryConnection() async {
@@ -31,6 +39,8 @@ abstract class Database {
     } on MongoDartError {
       return false;
     } on Exception {
+      return false;
+    } on Error {
       return false;
     }
   }

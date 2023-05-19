@@ -1,10 +1,11 @@
 library splash_screen;
 
 import 'package:bioreino_mobile/controller/database/dao/student_dao.dart';
-import 'package:bioreino_mobile/controller/screens/splash_screen/route_animation.dart';
+import 'package:bioreino_mobile/controller/screens/route_animation.dart';
 import 'package:bioreino_mobile/controller/util/theme_util.dart';
 import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
 import 'package:bioreino_mobile/view/global_components/widgets/loading_bar.dart';
+import 'package:bioreino_mobile/view/screens/login/login_screen.dart';
 import 'package:bioreino_mobile/view/themes/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -15,8 +16,13 @@ part 'components/loading.dart';
 
 class SplashScreen extends StatefulWidget {
   final bool isLogout;
+  final bool lostedConnection;
 
-  const SplashScreen({this.isLogout = false, super.key});
+  const SplashScreen({
+    this.isLogout = false,
+    this.lostedConnection = false,
+    super.key,
+  });
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -29,6 +35,11 @@ class _SplashScreenState extends State<SplashScreen> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (widget.isLogout) {
         await StudentDAO.logout(context);
+      } else if (widget.lostedConnection) {
+        return changeScreen(
+          context,
+          const LoginScreen(),
+        );
       }
       if (context.mounted) {
         connectAndChangeScreen(context);

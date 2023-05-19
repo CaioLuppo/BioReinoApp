@@ -15,6 +15,7 @@ class LogoutDialog extends StatelessWidget {
           onPressed: () => changeScreen(
             context,
             const SplashScreen(isLogout: true),
+            leftToRight: true,
           ),
           style: flatButtonStyle(),
           child: DrawerText(

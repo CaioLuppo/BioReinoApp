@@ -4,8 +4,8 @@ import 'package:bioreino_mobile/controller/screens/screen_navigator/connection.d
 import 'package:bioreino_mobile/controller/screens/screen_navigator/pages_enum.dart';
 import 'package:bioreino_mobile/controller/screens/screen_navigator/updatable_drawer_mixin.dart';
 import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
-import 'package:bioreino_mobile/view/screens/screen_navigator/pages/home/home.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/components/drawer/drawer.dart';
+import 'package:bioreino_mobile/view/screens/screen_navigator/pages/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -26,7 +26,7 @@ class _ScreenNavigatorState extends State<ScreenNavigator>
   @override
   void initState() {
     super.initState();
-    verifyConnection(context);
+    ConnectionChecker(context).setConnectionListener();
   }
 
   @override

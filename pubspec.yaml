@@ -1,5 +1,5 @@
 name: bioreino_mobile
-description: A new Flutter project.
+description: Plataforma de cursos online de biologia.
 publish_to: 'none'
 version: 0.1.0
 
@@ -18,11 +18,21 @@ dependencies:
   shared_preferences: ^2.1.1
   dbcrypt: ^2.0.0
   flutter_cache_manager: ^3.3.0
+  crypto: ^3.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.1
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  min_sdk_android: 19
+  image_path: "assets/app_logo_default.png"
+  adaptive_icon_background: "assets/app_bg.png"
+  adaptive_icon_foreground: "assets/app_logo.png"
+
 
 flutter:
   uses-material-design: true
