@@ -22,12 +22,15 @@ abstract class StudentDAO {
       (queryStudent) {
         try {
           isLogged = _checkPassword(password, queryStudent?["password"]);
+          print(isLogged);
         } on TypeError {
           throw WrongCredentialsException();
         }
         if (isLogged) {
           student = queryStudent;
           _storeStudentPrefs();
+        } else {
+          throw WrongCredentialsException();
         }
       },
     ).catchError(
@@ -37,10 +40,10 @@ abstract class StudentDAO {
       },
     );
 
-    if (catchedError == WrongCredentialsException()) {
-      return LoginState.error;
-    } else if (catchedError != null) {
+    if (catchedError is WrongCredentialsException) {
       return LoginState.wrongCredentials;
+    } else if (catchedError != null) {
+      return LoginState.error;
     } else {
       return LoginState.logged;
     }
