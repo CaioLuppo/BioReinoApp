@@ -3,10 +3,12 @@ part of login_screen;
 class LoginFieldBox extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final void Function() enterKeyboardPressed;
 
   const LoginFieldBox(
     this.emailController,
-    this.passwordController, {
+    this.passwordController,
+    this.enterKeyboardPressed, {
     super.key,
   });
 
@@ -17,19 +19,17 @@ class LoginFieldBox extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          LoginField(
+          EmailField(
             "E-mail",
             emailController,
-            LoginFieldType.email,
           ),
-          LoginField(
+          PasswordField(
             "Senha",
             passwordController,
-            LoginFieldType.password,
+            enterKeyboardPressed
           ),
         ],
       ),
     );
   }
-
 }

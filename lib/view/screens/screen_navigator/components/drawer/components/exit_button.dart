@@ -9,8 +9,8 @@ class ExitButton extends StatelessWidget {
       alignment: Alignment.bottomRight,
       child: Padding(
         padding: const EdgeInsets.only(
-          right: 16,
-          bottom: 16,
+          right: 8,
+          bottom: 8,
         ),
         child: ElevatedButton(
           onPressed: () => showExitConfirmation(context),

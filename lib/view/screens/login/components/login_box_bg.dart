@@ -7,25 +7,19 @@ class LoginBoxBg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.transparent,
-      body: SafeArea(
-        child: InkWell(
-          focusColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          onTap: () {
-            FocusScope.of(context).unfocus();
-          },
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        resizeToAvoidBottomInset: true,
+        backgroundColor: Colors.transparent,
+        body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: Container(
                 height: 400,
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 decoration: BoxDecoration(
                   boxShadow: const [
                     BoxShadow(

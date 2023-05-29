@@ -82,6 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 LoginFieldBox(
                   LoginScreen.emailController,
                   LoginScreen.passwordController,
+                  () => setState(() => setLoginButtonPressed(true))
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,

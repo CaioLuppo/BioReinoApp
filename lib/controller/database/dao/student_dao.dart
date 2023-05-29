@@ -1,10 +1,10 @@
 import 'dart:convert';
-
-import 'package:bioreino_mobile/controller/database/mongodb.dart';
-import 'package:dbcrypt/dbcrypt.dart';
+import 'package:crypto/crypto.dart' show sha256;
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:bioreino_mobile/controller/database/mongodb.dart';
 
 abstract class StudentDAO {
   static Map<String, dynamic>? student;
@@ -22,7 +22,6 @@ abstract class StudentDAO {
       (queryStudent) {
         try {
           isLogged = _checkPassword(password, queryStudent?["password"]);
-          print(isLogged);
         } on TypeError {
           throw WrongCredentialsException();
         }
@@ -50,10 +49,7 @@ abstract class StudentDAO {
   }
 
   static bool _checkPassword(String password, String hashedPassword) {
-    return DBCrypt().checkpw(
-      password,
-      hashedPassword,
-    );
+    return sha256.convert(password.codeUnits).toString() == hashedPassword;
   }
 
   static Future<void> _storeStudentPrefs() async {

@@ -1,4 +1,4 @@
-import 'package:bioreino_mobile/controller/database/credentials.dart';
+import 'package:bioreino_mobile/controller/database/private/credentials.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
