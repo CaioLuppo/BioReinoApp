@@ -3,7 +3,7 @@ part of br_themes;
 final TextTheme textTheme = TextTheme(
     titleMedium: TextStyle(
       fontFamily: GoogleFonts.catamaran().fontFamily,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.bold,
     ),
     headlineLarge: TextStyle(
       fontFamily: GoogleFonts.catamaran().fontFamily,
@@ -13,5 +13,16 @@ final TextTheme textTheme = TextTheme(
       fontSize: 18,
       fontFamily: GoogleFonts.fredoka().fontFamily,
       fontWeight: FontWeight.normal,
+    ),
+    labelLarge: TextStyle(
+      fontSize: 18,
+      fontFamily: GoogleFonts.fredoka().fontFamily,
+      fontWeight: FontWeight.bold
+    ),
+    labelMedium: TextStyle(
+      fontSize: 16,
+      fontFamily: GoogleFonts.fredoka().fontFamily,
+      fontWeight: FontWeight.bold,
+      color: BRColors.greyText
     ),
   );

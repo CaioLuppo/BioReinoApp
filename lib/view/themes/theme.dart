@@ -10,7 +10,6 @@ part 'text_themes.dart';
 part 'button_styles.dart';
 
 abstract class BRTheme {
-
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     textTheme: textTheme,
@@ -19,6 +18,19 @@ abstract class BRTheme {
     ),
     scaffoldBackgroundColor: BRColors.blackDark,
     cardColor: BRColors.cardDark,
+    colorScheme: ColorScheme(
+      brightness: Brightness.dark,
+      primary: BRColors.greenDark,
+      onPrimary: Colors.white,
+      secondary: BRColors.greenYellow,
+      onSecondary: Colors.black,
+      error: BRColors.orangeRed,
+      onError: Colors.white,
+      background: BRColors.blackDark,
+      onBackground: Colors.white,
+      surface: BRColors.blackDark,
+      onSurface: Colors.white,
+    ),
   );
 
   static final ThemeData lightTheme = ThemeData(
@@ -30,6 +42,19 @@ abstract class BRTheme {
       foregroundColor: BRColors.greyText,
     ),
     cardColor: Colors.white,
+    colorScheme: ColorScheme(
+      brightness: Brightness.light,
+      primary: BRColors.greenDark,
+      onPrimary: Colors.white,
+      secondary: BRColors.greenYellow,
+      onSecondary: Colors.black,
+      error: BRColors.orangeRed,
+      onError: Colors.white,
+      background: Colors.white,
+      onBackground: Colors.black,
+      surface: Colors.white,
+      onSurface: Colors.black,
+    ),
   );
 
   static final SystemUiOverlayStyle uiOverlayStyleDark = SystemUiOverlayStyle(
@@ -45,5 +70,4 @@ abstract class BRTheme {
     systemNavigationBarColor: Colors.grey[50],
     systemNavigationBarIconBrightness: Brightness.dark,
   );
-
 }

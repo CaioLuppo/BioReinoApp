@@ -1,13 +1,14 @@
 import 'dart:convert';
-import 'package:crypto/crypto.dart' show sha256;
+import 'package:bioreino_mobile/model/student.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:bcrypt/bcrypt.dart';
 
 import 'package:bioreino_mobile/controller/database/mongodb.dart';
 
 abstract class StudentDAO {
-  static Map<String, dynamic>? student;
+  static Student? student;
   static const String studentKey = "student";
 
   static Future<LoginState> login(
@@ -26,7 +27,7 @@ abstract class StudentDAO {
           throw WrongCredentialsException();
         }
         if (isLogged) {
-          student = queryStudent;
+          student = Student.fromMap(queryStudent!);
           _storeStudentPrefs();
         } else {
           throw WrongCredentialsException();
@@ -49,7 +50,7 @@ abstract class StudentDAO {
   }
 
   static bool _checkPassword(String password, String hashedPassword) {
-    return sha256.convert(password.codeUnits).toString() == hashedPassword;
+    return BCrypt.checkpw(password, hashedPassword);
   }
 
   static Future<void> _storeStudentPrefs() async {
@@ -57,19 +58,9 @@ abstract class StudentDAO {
       final SharedPreferences preferences =
           await SharedPreferences.getInstance();
 
-      Map<String, dynamic> convertedMap = StudentDAO.student!.map(
-        (key, value) {
-          if (key == "subscriptionDate") {
-            value as DateTime;
-            return MapEntry(key, value.millisecondsSinceEpoch);
-          }
-          return MapEntry(key, value);
-        },
-      );
-
       preferences.setString(
         StudentDAO.studentKey,
-        jsonEncode(convertedMap),
+        jsonEncode(StudentDAO.student?.toMap()),
       );
     }
   }

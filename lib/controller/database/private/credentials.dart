@@ -7,3 +7,4 @@ const mongoUrl =
 const coursesCollectionName = "courses";
 const studentsCollectionName = "students";
 const categoriesCollectionName = "categories";
+const lessonsCollectionName = "lessons";

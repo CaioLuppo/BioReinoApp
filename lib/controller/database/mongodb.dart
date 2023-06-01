@@ -7,6 +7,7 @@ abstract class Database {
   static DbCollection? coursesCollection;
   static DbCollection? studentsCollection;
   static DbCollection? categoriesCollection;
+  static DbCollection? lessonsCollection;
   static bool connecting = false;
 
   static Future<bool> connect() async {
@@ -34,6 +35,7 @@ abstract class Database {
         studentsCollection = db!.collection(studentsCollectionName);
         coursesCollection = db!.collection(coursesCollectionName);
         categoriesCollection = db!.collection(categoriesCollectionName);
+        lessonsCollection = db!.collection(lessonsCollectionName);
       }
       return true;
     } on MongoDartError {

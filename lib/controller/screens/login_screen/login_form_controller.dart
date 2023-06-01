@@ -14,7 +14,6 @@ void setWrongCredentials(bool value) {
 }
 
 void onFailedConnection() {
-  debugPrint("Conexão Falhou");
   LoginScreen.failedConnection = true;
   showErrorSnackBar();
 }
