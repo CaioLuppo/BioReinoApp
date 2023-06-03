@@ -9,12 +9,13 @@ class CourseList extends StatefulWidget {
 
 class _CourseListState extends State<CourseList> {
   final String myCoursesTitle = "MEUS CURSOS";
+  final String allText = "Mostrar tudo";
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 250,
+      height: 268,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -24,9 +25,23 @@ class _CourseListState extends State<CourseList> {
               right: 24.0,
               bottom: 4,
             ),
-            child: Text(
-              myCoursesTitle,
-              style: Theme.of(context).textTheme.titleMedium,
+            child: Row(
+              children: [
+                Text(
+                  myCoursesTitle,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const Spacer(),
+                TextButton(
+                  child: Text(
+                    allText,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: BRColors.greyText,
+                        ),
+                  ),
+                  onPressed: () {},
+                )
+              ],
             ),
           ),
           FutureBuilder(
@@ -49,11 +64,16 @@ class _CourseListState extends State<CourseList> {
                           vertical: 8,
                         ),
                         scrollDirection: Axis.horizontal,
-                        itemCount: CoursesDAO.coursesList.length,
+                        itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
+                          Course course = CoursesDAO.coursesList[index];
                           return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                            child: CourseCard(CoursesDAO.coursesList[index]),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 12.0),
+                            child: CourseCard(
+                              course: course,
+                              progress: StudentDAO.student!.getProgress(course),
+                            ),
                           );
                         },
                       ),

@@ -1,26 +1,13 @@
 part of home_page;
 
-class CourseCard extends StatefulWidget {
+class CourseCard extends StatelessWidget {
   final Course course;
+  final double progress;
 
-  const CourseCard(this.course, {super.key});
-
-  @override
-  State<CourseCard> createState() => _CourseCardState();
-}
-
-class _CourseCardState extends State<CourseCard> {
-  Widget? progressWidget;
+  const CourseCard({required this.course, required this.progress, super.key});
 
   @override
   Widget build(BuildContext context) {
-    StudentDAO.student?.getProgress(widget.course);
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await StudentDAO.student?.getProgress(widget.course);
-      final double progress =
-          await StudentDAO.student?.getProgress(widget.course) ?? 0;
-      setState(() => progressWidget = ProgressBar(progress));
-    });
     return SizedBox(
       height: 100,
       width: 300,
@@ -36,7 +23,7 @@ class _CourseCardState extends State<CourseCard> {
               child: Column(
                 children: [
                   Image.network(
-                    widget.course.imageUrl,
+                    course.imageUrl,
                     fit: BoxFit.cover,
                     height: 190,
                     width: double.maxFinite,
@@ -65,11 +52,11 @@ class _CourseCardState extends State<CourseCard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.course.name,
+                        course.name,
                         style: Theme.of(context).textTheme.labelLarge,
                       ),
                       Text(
-                        "Prof: ${widget.course.professor}",
+                        "Prof: ${course.professor}",
                         style: Theme.of(context).textTheme.labelMedium,
                       ),
                       Expanded(
@@ -78,7 +65,7 @@ class _CourseCardState extends State<CourseCard> {
                             padding: const EdgeInsets.only(
                               top: 8.0,
                             ),
-                            child: progressWidget ?? const LoadingBar(),
+                            child: ProgressBar(progress),
                           ),
                         ),
                       )

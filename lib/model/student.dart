@@ -1,4 +1,3 @@
-import 'package:bioreino_mobile/controller/database/dao/lessons_dao.dart';
 import 'package:bioreino_mobile/model/course.dart';
 import 'package:realm/realm.dart';
 
@@ -44,17 +43,19 @@ class Student {
       "subscriptionDate": subscriptionDate.millisecondsSinceEpoch,
       "email": email,
       "password": password,
-      "progressArray": coursesProgress,
+      "coursesProgress": coursesProgress,
       "lastCourse": lastCourse,
     };
   }
 
-  Future<double> getProgress(Course course) async {
+  double getProgress(Course course) {
     if (coursesProgress?[course.name] == null) {
       return 0;
     } else {
       final List<dynamic> lessons = coursesProgress?[course.name];
-      final int max = await _getMax(course);
+      final int? max = course.lessons?.length;
+
+      if (max == null) return 0;
 
       int completed = 0;
       for (var _ in lessons) {
@@ -62,15 +63,6 @@ class Student {
       }
 
       return (completed * 100) / max;
-    }
-  }
-
-  Future<int> _getMax(Course course) async {
-    if (course.lessons == null) {
-      return await LessonsDAO.getAllFrom(course.name)
-          .then((value) => value.length);
-    } else {
-      return course.lessons!.length;
     }
   }
 }

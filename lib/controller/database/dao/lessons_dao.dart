@@ -16,12 +16,12 @@ class LessonsDAO {
     return lessonsList;
   }
 
-  static void _setLessonsToCourse(String courseTitle, List<Lesson> lessonsList) {
+  static void _setLessonsToCourse(
+      String courseTitle, List<Lesson> lessonsList) {
     for (var course in CoursesDAO.coursesList) {
       if (course.name == courseTitle) {
         course.lessons = lessonsList;
       }
     }
   }
-
 }
