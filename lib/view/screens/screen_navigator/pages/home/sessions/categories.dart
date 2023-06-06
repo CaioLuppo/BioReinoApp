@@ -22,30 +22,36 @@ class CategoriesSession extends StatelessWidget {
           child: SizedBox(
             height: 250,
             child: FutureBuilder(
-              future: CoursesDAO.getCategories(),
+              future: CoursesDAO.getCategories(context),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.hasData) {
                     final defaultList = snapshot.data!;
-                    final List<List<Category>> lists = [];
-                    organizeLists(defaultList, lists, 6);
+                    final List<List<Category>> adaptedList = [];
+                    organizeLists(defaultList, adaptedList, 6);
                     return Column(
                       children: [
                         CategoriesList(
-                          lists: lists,
+                          adaptedList: adaptedList,
                           defaultList: defaultList,
                           controller: _pageController,
                           bulletKey: _bulletKey,
                         ),
                         Bullet(
-                          lists: lists,
+                          adaptedList: adaptedList,
                           pageController: _pageController,
                           key: _bulletKey,
                         ),
                       ],
                     );
                   }
-                  return const EmptyList("Nenhuma categoria disponível");
+                  return const EmptyList(
+                    "Nenhuma categoria disponível.",
+                  );
+                } else if (snapshot.connectionState == ConnectionState.none) {
+                  return const EmptyList(
+                    "Houve um erro. Por favor, reinicie o app.",
+                  );
                 }
                 return const LoadingBar();
               },

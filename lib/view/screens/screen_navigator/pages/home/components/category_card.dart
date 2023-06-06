@@ -6,7 +6,12 @@ class CategoryCard extends StatelessWidget {
   int get index {
     final indexString = _index.toString();
     if (indexString.length > 1) {
-      return int.parse(indexString.substring(indexString.length - 1));
+      int adaptedIndex =
+          int.parse(indexString.substring(indexString.length - 1));
+      while (adaptedIndex > 9) {
+        adaptedIndex -= 9;
+      }
+      return adaptedIndex;
     }
     return _index;
   }
@@ -18,9 +23,9 @@ class CategoryCard extends StatelessWidget {
     BRColors.orangeRed,
     BRColors.blueGreen,
     BRColors.greenDark,
+    BRColors.orange,
     BRColors.greenYellow,
     BRColors.greenLight,
-    BRColors.orange,
     BRColors.greenLightBlue,
   ];
 
@@ -28,8 +33,9 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = _colorsList[index];
     return Card(
-      color: _colorsList[index],
+      color: fromBrightnessColor(context, color, color.withOpacity(0.85)),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),

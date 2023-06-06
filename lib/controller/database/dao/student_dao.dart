@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:bioreino_mobile/controller/screens/route_animation.dart';
 import 'package:bioreino_mobile/model/student.dart';
+import 'package:bioreino_mobile/view/screens/connection_error_screen/connection_error_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,12 +14,15 @@ abstract class StudentDAO {
   static const String studentKey = "student";
 
   static Future<LoginState> login(
+    BuildContext context,
     GlobalKey<FormState> formKey,
     String email,
     String password,
   ) async {
     bool isLogged = false;
     dynamic catchedError;
+    
+    await Database.connectOrError(context);
 
     await Database.studentsCollection?.findOne({"email": email}).then(
       (queryStudent) {

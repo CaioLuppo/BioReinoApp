@@ -1,14 +1,14 @@
-void organizeLists(List list, List<List> lists, int max) {
+void organizeLists(List list, List<List> adaptedList, int max) {
   final List sublist;
   if (list.length > max) {
-    lists.add(list.sublist(0, max));
+    adaptedList.add(list.sublist(0, max));
     sublist = list.sublist(max);
     if (sublist.length > max) {
-      organizeLists(sublist, lists, max);
+      organizeLists(sublist, adaptedList, max);
     } else {
-      lists.add(sublist);
+      adaptedList.add(sublist);
     }
   } else {
-    lists.add(list);
+    adaptedList.add(list);
   }
 }

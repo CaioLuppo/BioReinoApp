@@ -1,12 +1,12 @@
 part of home_page;
 
 class Bullet extends StatefulWidget {
-  final List<List<Category>> lists;
+  final List<List<Category>> adaptedList;
   final PageController pageController;
 
   const Bullet({
     required this.pageController,
-    required this.lists,
+    required this.adaptedList,
     super.key,
   });
 
@@ -25,14 +25,16 @@ class BulletState extends State<Bullet> {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: widget.lists.map(
+      children: widget.adaptedList.map(
         (c) {
-          final double size = currentPage == widget.lists.indexOf(c) ? 10 : 8;
+          final double size =
+              currentPage == widget.adaptedList.indexOf(c) ? 8 : 6;
 
           return InkWell(
+            borderRadius: BorderRadius.circular(30),
             onTap: () => setState(
               () => widget.pageController.jumpToPage(
-                widget.lists.indexOf(c),
+                widget.adaptedList.indexOf(c),
               ),
             ),
             child: AnimatedContainer(
@@ -43,8 +45,12 @@ class BulletState extends State<Bullet> {
               height: size,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                color: currentPage == widget.lists.indexOf(c)
-                    ? BRColors.greenLightBlue
+                color: currentPage == widget.adaptedList.indexOf(c)
+                    ? fromBrightnessColor(
+                        context,
+                        BRColors.greenLight,
+                        BRColors.greenLight.withOpacity(0.85),
+                      )
                     : fromBrightnessColor(
                         context,
                         Colors.black12,

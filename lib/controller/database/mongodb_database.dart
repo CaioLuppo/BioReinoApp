@@ -1,4 +1,7 @@
 import 'package:bioreino_mobile/controller/database/private/credentials.dart';
+import 'package:bioreino_mobile/controller/screens/route_animation.dart';
+import 'package:bioreino_mobile/view/screens/connection_error_screen/connection_error_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
@@ -11,14 +14,34 @@ abstract class Database {
   static bool connecting = false;
 
   static Future<bool> connect() async {
-      _cleanCollections();
-      bool isUserConnected = await isConnected();
-      if (!isUserConnected) {
+    _cleanCollections();
+    bool isUserConnected = await isConnected();
+    if (!isUserConnected) {
+      connecting = false;
+      return false;
+    } else {
+      bool connected = await _tryConnection();
+      if (connected) {
+        connecting = false;
+        return true;
+      } else {
         connecting = false;
         return false;
-      } else {
-        return await _tryConnection();
       }
+    }
+  }
+
+  static Future<void> connectOrError(BuildContext context) async {
+    while (connecting) {}
+    if (!Database.db!.isConnected) {
+      await connect().then(
+        (connected) {
+          if (!connected) {
+            changeScreen(context, const ConnectionErrorScreen());
+          }
+        },
+      );
+    }
   }
 
   static void _cleanCollections() {
@@ -29,6 +52,7 @@ abstract class Database {
 
   static Future<bool> _tryConnection() async {
     try {
+      connecting = true;
       db = await Db.create(mongoUrl);
       if (db != null) {
         await db!.open();

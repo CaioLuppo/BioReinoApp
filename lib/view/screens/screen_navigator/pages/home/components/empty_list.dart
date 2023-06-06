@@ -10,15 +10,13 @@ class EmptyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Center(
-        child: SizedBox(
-          width: 150,
-          child: Text(
-            message,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
+    return Center(
+      child: SizedBox(
+        width: 160,
+        child: Text(
+          message,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
       ),
     );

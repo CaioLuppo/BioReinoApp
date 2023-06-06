@@ -31,7 +31,10 @@ void tryLogin({
     }
     // Login
     await Future.delayed(const Duration(seconds: 1));
-    final result = await StudentDAO.login(formKey, email, password);
+    LoginState result = LoginState.error;
+    if (context.mounted) {
+      result = await StudentDAO.login(context, formKey, email, password);
+    }
     if (result == LoginState.logged) {
       if (context.mounted) changeScreen(context, const ScreenNavigator());
       return;

@@ -1,13 +1,14 @@
 part of home_page;
 
 class CategoriesList extends StatelessWidget {
-  final List<List<Category>> lists;
+  /// Lista adaptada
+  final List<List<Category>> adaptedList;
   final List<Category> defaultList;
   final GlobalKey<BulletState> bulletKey;
   final PageController controller;
 
   const CategoriesList({
-    required this.lists,
+    required this.adaptedList,
     required this.defaultList,
     required this.controller,
     required this.bulletKey,
@@ -21,7 +22,7 @@ class CategoriesList extends StatelessWidget {
       child: PageView.builder(
         physics: const BouncingScrollPhysics(),
         controller: controller,
-        itemCount: lists.length,
+        itemCount: adaptedList.length,
         onPageChanged: (index) => bulletKey.currentState?.update(index),
         itemBuilder: (context, listIndex) {
           return GridView.count(
@@ -34,8 +35,11 @@ class CategoriesList extends StatelessWidget {
                     : 5,
             shrinkWrap: true,
             children: List.generate(
-              lists[listIndex].length,
-              (catIndex) => CategoryCard(lists[listIndex][catIndex], catIndex),
+              adaptedList[listIndex].length,
+              (catIndex) {
+                final Category category = adaptedList[listIndex][catIndex];
+                return CategoryCard(category, defaultList.indexOf(category));
+              },
             ),
           );
         },

@@ -33,6 +33,13 @@ class _CourseListSessionState extends State<CourseListSession> {
                 ),
                 const Spacer(),
                 TextButton(
+                  style: ButtonStyle(
+                    shape: MaterialStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
                   child: Text(
                     allText,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -44,13 +51,14 @@ class _CourseListSessionState extends State<CourseListSession> {
               ],
             ),
           ),
-          FutureBuilder(
-            future: CoursesDAO.getAll(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.hasData) {
-                  return Expanded(
-                    child: ListView.builder(
+          SizedBox(
+            height: 216,
+            child: FutureBuilder(
+              future: CoursesDAO.getAll(context),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+                    return ListView.builder(
                       physics: const BouncingScrollPhysics(),
                       padding: const EdgeInsets.symmetric(
                         horizontal: 12,
@@ -68,14 +76,14 @@ class _CourseListSessionState extends State<CourseListSession> {
                           ),
                         );
                       },
-                    ),
-                  );
-                } else {
-                  return const EmptyList("Nenhum curso disponível.");
+                    );
+                  } else {
+                    return const EmptyList("Nenhum curso disponível.");
+                  }
                 }
-              }
-              return const LoadingBar();
-            },
+                return const LoadingBar();
+              },
+            ),
           ),
         ],
       ),

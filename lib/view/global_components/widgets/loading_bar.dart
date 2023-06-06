@@ -8,13 +8,15 @@ class LoadingBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 80,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: LinearProgressIndicator(
-          backgroundColor: Colors.white12,
-          color: BRColors.greyText,
+    return Center(
+      child: SizedBox(
+        width: 80,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: LinearProgressIndicator(
+            backgroundColor: Colors.white12,
+            color: BRColors.greyText,
+          ),
         ),
       ),
     );

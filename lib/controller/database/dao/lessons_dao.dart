@@ -1,9 +1,12 @@
 import 'package:bioreino_mobile/controller/database/dao/courses_dao.dart';
 import 'package:bioreino_mobile/controller/database/mongodb_database.dart';
 import 'package:bioreino_mobile/model/lesson.dart';
+import 'package:flutter/widgets.dart';
 
 class LessonsDAO {
-  static Future<List<Lesson>> getAllFrom(String courseTitle) async {
+  static Future<List<Lesson>> getAllFrom(String courseTitle, BuildContext context) async {
+    await Database.connectOrError(context);
+
     List<Lesson> lessonsList = await _searchLessons(courseTitle);
     _setLessonsToCourse(courseTitle, lessonsList);
     return lessonsList;
