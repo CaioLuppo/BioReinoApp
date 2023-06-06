@@ -47,8 +47,10 @@ class ProgressBar extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: Text(
               "${_percent.toStringAsFixed(0)}%",
-              style:
-                  Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.05),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    height: 1.05,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ),
         ),
