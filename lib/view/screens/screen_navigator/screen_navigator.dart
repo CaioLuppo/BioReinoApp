@@ -33,7 +33,11 @@ class _ScreenNavigatorState extends State<ScreenNavigator>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar,
-      drawer: BRDrawer(context, this),
+      drawerEnableOpenDragGesture: false,
+      drawer: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: BRDrawer(context, this),
+      ),
       body: pagesList[page.index],
     );
   }

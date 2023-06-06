@@ -5,7 +5,7 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bcrypt/bcrypt.dart';
 
-import 'package:bioreino_mobile/controller/database/mongodb.dart';
+import 'package:bioreino_mobile/controller/database/mongodb_database.dart';
 
 abstract class StudentDAO {
   static Student? student;

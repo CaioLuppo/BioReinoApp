@@ -1,7 +1,7 @@
 part of home_page;
 
-class LastCourse extends StatelessWidget {
-  const LastCourse({super.key});
+class LastCourseSession extends StatelessWidget {
+  const LastCourseSession({super.key});
 
   final String lastCourseText = "ÚLTIMO CURSO";
 
@@ -13,7 +13,7 @@ class LastCourse extends StatelessWidget {
           lastCourseText,
           style: Theme.of(context).textTheme.titleMedium,
         ),
-        const NoLastCourse()
+        const NoLastCourse(),
       ],
     );
   }

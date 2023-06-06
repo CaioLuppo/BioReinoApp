@@ -1,5 +1,5 @@
 import 'package:bioreino_mobile/controller/database/dao/courses_dao.dart';
-import 'package:bioreino_mobile/controller/database/mongodb.dart';
+import 'package:bioreino_mobile/controller/database/mongodb_database.dart';
 import 'package:bioreino_mobile/model/lesson.dart';
 
 class LessonsDAO {

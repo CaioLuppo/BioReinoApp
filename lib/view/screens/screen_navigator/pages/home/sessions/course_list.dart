@@ -1,13 +1,13 @@
 part of home_page;
 
-class CourseList extends StatefulWidget {
-  const CourseList({super.key});
+class CourseListSession extends StatefulWidget {
+  const CourseListSession({super.key});
 
   @override
-  State<CourseList> createState() => _CourseListState();
+  State<CourseListSession> createState() => _CourseListSessionState();
 }
 
-class _CourseListState extends State<CourseList> {
+class _CourseListSessionState extends State<CourseListSession> {
   final String myCoursesTitle = "MEUS CURSOS";
   final String allText = "Mostrar tudo";
 
@@ -47,41 +47,34 @@ class _CourseListState extends State<CourseList> {
           FutureBuilder(
             future: CoursesDAO.getAll(),
             builder: (context, snapshot) {
-              switch (snapshot.connectionState) {
-                case ConnectionState.none:
-                  return const EmptyList();
-                case ConnectionState.waiting:
-                  return const Expanded(child: Center(child: LoadingBar()));
-                case ConnectionState.active:
-                  return const Expanded(child: Center(child: LoadingBar()));
-                case ConnectionState.done:
-                  if (snapshot.hasData) {
-                    return Expanded(
-                      child: ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (context, index) {
-                          Course course = CoursesDAO.coursesList[index];
-                          return Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 12.0),
-                            child: CourseCard(
-                              course: course,
-                              progress: StudentDAO.student!.getProgress(course),
-                            ),
-                          );
-                        },
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasData) {
+                  return Expanded(
+                    child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 8,
                       ),
-                    );
-                  } else {
-                    return const EmptyList();
-                  }
+                      scrollDirection: Axis.horizontal,
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        Course course = CoursesDAO.coursesList[index];
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          child: CourseCard(
+                            course: course,
+                            progress: StudentDAO.student!.getProgress(course),
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                } else {
+                  return const EmptyList("Nenhum curso disponível.");
+                }
               }
+              return const LoadingBar();
             },
           ),
         ],

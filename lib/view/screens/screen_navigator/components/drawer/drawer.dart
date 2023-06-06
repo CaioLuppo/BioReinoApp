@@ -22,6 +22,7 @@ class BRDrawer extends Drawer {
   BRDrawer(final BuildContext context, final UpdatableDrawer navigator,
       {super.key})
       : super(
+        
           elevation: 0,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           shape: RoundedRectangleBorder(

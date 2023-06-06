@@ -1,7 +1,10 @@
 part of home_page;
 
 class EmptyList extends StatelessWidget {
-  const EmptyList({
+  final String message;
+
+  const EmptyList(
+    this.message, {
     super.key,
   });
 
@@ -12,7 +15,7 @@ class EmptyList extends StatelessWidget {
         child: SizedBox(
           width: 150,
           child: Text(
-            "Nenhum curso disponível",
+            message,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
