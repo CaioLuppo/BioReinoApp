@@ -75,6 +75,15 @@ abstract class StudentDAO {
     student = null;
     await DefaultCacheManager().emptyCache();
   }
+
+  static Map<String, dynamic> defineQuery() {
+    if (StudentDAO.student?.plan != "professional") {
+      return {"plan": StudentDAO.student!.plan};
+    } else {
+      return {};
+    }
+  }
+
 }
 
 class WrongCredentialsException implements Exception {}

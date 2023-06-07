@@ -1,5 +1,6 @@
 library home_page;
 
+import 'package:bioreino_mobile/controller/database/dao/categories_dao.dart';
 import 'package:bioreino_mobile/controller/database/dao/courses_dao.dart';
 import 'package:bioreino_mobile/controller/database/dao/student_dao.dart';
 import 'package:bioreino_mobile/controller/screens/screen_navigator/pages_enum.dart';

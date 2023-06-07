@@ -22,7 +22,7 @@ class CategoriesSession extends StatelessWidget {
           child: SizedBox(
             height: 250,
             child: FutureBuilder(
-              future: CoursesDAO.getCategories(context),
+              future: CategoriesDAO.getCategories(context),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.hasData) {

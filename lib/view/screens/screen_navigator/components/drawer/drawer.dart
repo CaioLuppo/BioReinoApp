@@ -27,51 +27,61 @@ class BRDrawer extends Drawer {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+          child: CustomScrollView(
+            physics: MediaQuery.of(context).orientation == Orientation.portrait
+                ? const NeverScrollableScrollPhysics()
+                : const BouncingScrollPhysics(),
+            slivers: [
+              SliverFillRemaining(
+                hasScrollBody: false,
                 child: Column(
                   children: [
-                    DrawerTitle("menu", context),
-                    DrawerContent(
-                      navigator,
-                      context,
-                      page: Pages.home,
-                      leadingSvgPath: "assets/drawer_icons/home_icon.svg",
-                      text: "home",
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                      child: Column(
+                        children: [
+                          DrawerTitle("menu", context),
+                          DrawerContent(
+                            navigator,
+                            context,
+                            page: Pages.home,
+                            leadingSvgPath: "assets/drawer_icons/home_icon.svg",
+                            text: "home",
+                          ),
+                          DrawerContent(
+                            navigator,
+                            context,
+                            page: Pages.courses,
+                            leadingSvgPath: "assets/drawer_icons/home_icon.svg",
+                            text: "cursos",
+                          ),
+                        ],
+                      ),
                     ),
-                    DrawerContent(
-                      navigator,
-                      context,
-                      page: Pages.courses,
-                      leadingSvgPath: "assets/drawer_icons/home_icon.svg",
-                      text: "cursos",
+                    Divider(color: BRColors.greyText),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0,
+                        vertical: 8.0,
+                      ),
+                      child: Column(
+                        children: [
+                          DrawerTitle("perfil", context),
+                          DrawerContent(
+                            navigator,
+                            context,
+                            page: Pages.account,
+                            leadingSvgPath: "assets/drawer_icons/user_icon.svg",
+                            text: "conta",
+                          ),
+                        ],
+                      ),
                     ),
+                    const Spacer(),
+                    const ExitButton(),
                   ],
                 ),
-              ),
-              Divider(color: BRColors.greyText),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8.0,
-                  vertical: 8.0,
-                ),
-                child: Column(
-                  children: [
-                    DrawerTitle("perfil", context),
-                    DrawerContent(
-                      navigator,
-                      context,
-                      page: Pages.account,
-                      leadingSvgPath: "assets/drawer_icons/user_icon.svg",
-                      text: "conta",
-                    ),
-                  ],
-                ),
-              ),
-              const Spacer(),
-              const ExitButton(),
+              )
             ],
           ),
         );
