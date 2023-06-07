@@ -3,13 +3,11 @@ part of home_page;
 class CategoriesList extends StatelessWidget {
   /// Lista adaptada
   final List<List<Category>> adaptedList;
-  final List<Category> defaultList;
   final GlobalKey<BulletState> bulletKey;
   final PageController controller;
 
   const CategoriesList({
     required this.adaptedList,
-    required this.defaultList,
     required this.controller,
     required this.bulletKey,
     super.key,
@@ -38,7 +36,7 @@ class CategoriesList extends StatelessWidget {
               adaptedList[listIndex].length,
               (catIndex) {
                 final Category category = adaptedList[listIndex][catIndex];
-                return CategoryCard(category, defaultList.indexOf(category));
+                return CategoryCard(category, CategoriesDAO.categories.indexOf(category));
               },
             ),
           );

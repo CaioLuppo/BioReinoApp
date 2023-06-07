@@ -24,7 +24,6 @@ class DrawerContent extends ListTile {
               child: SvgPicture.asset(
                 width: 28,
                 leadingSvgPath,
-                height: 28,
                 alignment: Alignment.center,
               ),
             ),

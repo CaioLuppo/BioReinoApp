@@ -52,7 +52,8 @@ class BRDrawer extends Drawer {
                             navigator,
                             context,
                             page: Pages.courses,
-                            leadingSvgPath: "assets/drawer_icons/home_icon.svg",
+                            leadingSvgPath:
+                                "assets/drawer_icons/courses_icon.svg",
                             text: "cursos",
                           ),
                         ],

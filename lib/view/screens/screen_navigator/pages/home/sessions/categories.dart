@@ -3,6 +3,7 @@ part of home_page;
 class CategoriesSession extends StatelessWidget {
   final GlobalKey<BulletState> _bulletKey = GlobalKey();
   final _pageController = PageController();
+  static final List<List<Category>> adaptedList = [];
 
   CategoriesSession({super.key});
 
@@ -26,14 +27,11 @@ class CategoriesSession extends StatelessWidget {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.hasData) {
-                    final defaultList = snapshot.data!;
-                    final List<List<Category>> adaptedList = [];
-                    organizeLists(defaultList, adaptedList, 6);
+                    organizeLists(CategoriesDAO.categories, adaptedList, 6);
                     return Column(
                       children: [
                         CategoriesList(
                           adaptedList: adaptedList,
-                          defaultList: defaultList,
                           controller: _pageController,
                           bulletKey: _bulletKey,
                         ),
