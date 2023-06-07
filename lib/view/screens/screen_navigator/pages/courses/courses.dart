@@ -64,19 +64,21 @@ class _CoursesPageState extends State<CoursesPage> {
             ),
           ),
           Expanded(
-            child: Container(
-              clipBehavior: Clip.antiAlias,
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(10)),
-              child: ListView(
-                padding: orientation == Orientation.landscape
-                    ? const EdgeInsets.all(16)
-                    : const EdgeInsets.all(24),
-                scrollDirection: orientation == Orientation.landscape
-                    ? Axis.horizontal
-                    : Axis.vertical,
-                physics: const BouncingScrollPhysics(),
-                children: courseFilter(editingController.text, context),
+            child: Padding(
+              padding: orientation == Orientation.landscape
+                  ? const EdgeInsets.all(16)
+                  : const EdgeInsets.all(24),
+              child: Container(
+                clipBehavior: Clip.antiAlias,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                child: ListView(
+                  scrollDirection: orientation == Orientation.landscape
+                      ? Axis.horizontal
+                      : Axis.vertical,
+                  physics: const BouncingScrollPhysics(),
+                  children: courseFilter(editingController.text, context),
+                ),
               ),
             ),
           )
