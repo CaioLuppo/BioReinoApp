@@ -37,7 +37,13 @@ List<Widget> courseListFilter({
     }
   }
 
-  return list;
+  return list.isNotEmpty
+      ? list
+      : [
+          const EmptyList(
+            "Não há cursos correspondentes.",
+          )
+        ];
 }
 
 List<DropdownMenuItem<String>> generateCategoriesMenuList() {

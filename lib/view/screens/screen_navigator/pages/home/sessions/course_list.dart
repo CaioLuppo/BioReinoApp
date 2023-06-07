@@ -82,7 +82,7 @@ class _CourseListSessionState extends State<CourseListSession> {
                     return const EmptyList("Nenhum curso disponível.");
                   }
                 }
-                return const LoadingBar();
+                return const Center(child: LoadingBar());
               },
             ),
           ),

@@ -51,7 +51,7 @@ class CategoriesSession extends StatelessWidget {
                     "Houve um erro. Por favor, reinicie o app.",
                   );
                 }
-                return const LoadingBar();
+                return const Center(child: LoadingBar());
               },
             ),
           ),
