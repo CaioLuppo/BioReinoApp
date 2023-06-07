@@ -1,13 +1,11 @@
 import 'dart:convert';
-import 'package:bioreino_mobile/controller/screens/route_animation.dart';
+
+import 'package:bcrypt/bcrypt.dart';
+import 'package:bioreino_mobile/controller/database/mongodb_database.dart';
 import 'package:bioreino_mobile/model/student.dart';
-import 'package:bioreino_mobile/view/screens/connection_error_screen/connection_error_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:bcrypt/bcrypt.dart';
-
-import 'package:bioreino_mobile/controller/database/mongodb_database.dart';
 
 abstract class StudentDAO {
   static Student? student;
