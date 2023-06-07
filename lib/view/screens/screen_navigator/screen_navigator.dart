@@ -13,7 +13,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 part 'components/app_bar.dart';
 part 'components/base_screen.dart';
-part 'pages/courses/components/back_button.dart';
+part 'components/drawer/components/back_button.dart';
 
 class ScreenNavigator extends StatefulWidget {
   const ScreenNavigator({super.key});

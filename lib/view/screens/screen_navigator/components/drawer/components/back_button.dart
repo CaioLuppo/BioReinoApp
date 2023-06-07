@@ -9,6 +9,10 @@ class BackButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 16.0),
       child: IconButton(
+        tooltip: "Volta pra tela inicial",
+        highlightColor: splashColor,
+        hoverColor: splashColor,
+        splashColor: splashColor,
         onPressed: () => drawer.updatePage(Pages.home),
         splashRadius: 24,
         icon: SvgPicture.asset(

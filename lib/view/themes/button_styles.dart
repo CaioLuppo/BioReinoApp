@@ -1,5 +1,7 @@
 part of br_themes;
 
+final Color splashColor = BRColors.greenLight.withAlpha(20);
+
 ButtonStyle flatButtonStyle() {
   return ButtonStyle(
     overlayColor: mStateColor(BRColors.greenLight.withAlpha(20)),
