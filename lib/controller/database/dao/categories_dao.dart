@@ -15,9 +15,12 @@ class CategoriesDAO {
     if (result != null) {
       for (var categoryMap in result) {
         final category = Category(categoryMap);
-        if (!categories.contains(category)) {
-          categories.add(category);
+        for (var categoryInList in categories) {
+          if (category.name == categoryInList.name) {
+            return categories;
+          }
         }
+        categories.add(category);
       }
     }
 

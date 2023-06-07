@@ -1,5 +1,5 @@
 import 'package:bioreino_mobile/controller/database/private/credentials.dart';
-import 'package:bioreino_mobile/controller/screens/route_animation.dart';
+import 'package:bioreino_mobile/controller/screens/route_handler.dart';
 import 'package:bioreino_mobile/view/screens/connection_error_screen/connection_error_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';

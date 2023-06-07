@@ -1,5 +1,5 @@
 import 'package:bioreino_mobile/controller/database/mongodb_database.dart';
-import 'package:bioreino_mobile/controller/screens/route_animation.dart';
+import 'package:bioreino_mobile/controller/screens/route_handler.dart';
 import 'package:bioreino_mobile/view/screens/connection_error_screen/connection_error_screen.dart';
 import 'package:bioreino_mobile/view/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/widgets.dart';

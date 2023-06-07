@@ -35,6 +35,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  void initState() {
+    CoursesDAO.getAll(context);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BasePage(
       widget.drawer,

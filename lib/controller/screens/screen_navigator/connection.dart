@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bioreino_mobile/controller/screens/route_animation.dart';
+import 'package:bioreino_mobile/controller/screens/route_handler.dart';
 import 'package:bioreino_mobile/view/screens/connection_error_screen/connection_error_screen.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';

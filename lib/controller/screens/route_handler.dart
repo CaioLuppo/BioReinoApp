@@ -1,9 +1,12 @@
 import 'package:bioreino_mobile/controller/database/mongodb_database.dart';
 import 'package:bioreino_mobile/controller/screens/login_screen/login_controller.dart';
+import 'package:bioreino_mobile/controller/screens/screen_navigator/pages_enum.dart';
+import 'package:bioreino_mobile/controller/screens/screen_navigator/updatable_drawer_mixin.dart';
 import 'package:bioreino_mobile/view/screens/connection_error_screen/connection_error_screen.dart';
 import 'package:bioreino_mobile/view/screens/login_screen/login_screen.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 Future<void> connectAndChangeScreen(BuildContext context) async {
   final bool connected = await Database.connect();
@@ -46,4 +49,13 @@ PageRouteBuilder _animatedRoute(Widget page, bool leftToRight) {
       );
     },
   );
+}
+
+Future<bool> exitPage(bool showBackButton, UpdatableDrawer drawer) {
+  if (showBackButton) {
+    drawer.updatePage(Pages.home);
+    return true as Future<bool>;
+  }
+  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+  return true as Future<bool>;
 }

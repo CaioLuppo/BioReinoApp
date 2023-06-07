@@ -1,16 +1,26 @@
+import 'package:bioreino_mobile/controller/database/dao/categories_dao.dart';
 import 'package:bioreino_mobile/controller/database/dao/courses_dao.dart';
 import 'package:bioreino_mobile/controller/database/dao/student_dao.dart';
+import 'package:bioreino_mobile/controller/util/string_util.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/pages/home/home.dart';
 import 'package:flutter/material.dart';
 
-List<Widget> courseFilter(String filter, BuildContext context) {
+List<Widget> courseListFilter({
+  required BuildContext context,
+  required String filter,
+  String categoryName = "",
+}) {
   Orientation orientation = MediaQuery.of(context).orientation;
+
   final List<Widget> list = [];
   for (var course in CoursesDAO.coursesList) {
     filter = filter.toLowerCase();
     final name = course.name.toLowerCase();
     final professor = course.professor.toLowerCase();
-    if (name.contains(filter) || professor.contains(filter)) {
+    final courseCategory = course.category.name.toLowerCase();
+
+    if ((name.contains(filter) || professor.contains(filter)) &&
+        courseCategory.contains(categoryName)) {
       list.add(
         Padding(
           padding: EdgeInsets.only(
@@ -26,5 +36,21 @@ List<Widget> courseFilter(String filter, BuildContext context) {
       );
     }
   }
+
+  return list;
+}
+
+List<DropdownMenuItem<String>> generateCategoriesMenuList() {
+  final List<DropdownMenuItem<String>> list = List.generate(
+    CategoriesDAO.categories.length,
+    (index) => DropdownMenuItem<String>(
+      value: CategoriesDAO.categories[index].name,
+      child: Text(
+        CategoriesDAO.categories[index].name.capitalize(),
+      ),
+    ),
+  );
+  list.insert(
+      0, const DropdownMenuItem<String>(value: "", child: Text("Qualquer")));
   return list;
 }

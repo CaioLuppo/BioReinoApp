@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:bioreino_mobile/controller/database/dao/student_dao.dart';
 import 'package:bioreino_mobile/controller/database/mongodb_database.dart';
 import 'package:bioreino_mobile/controller/screens/login_screen/login_form_controller.dart';
-import 'package:bioreino_mobile/controller/screens/route_animation.dart';
+import 'package:bioreino_mobile/controller/screens/route_handler.dart';
 import 'package:bioreino_mobile/model/student.dart';
 import 'package:bioreino_mobile/view/screens/connection_error_screen/connection_error_screen.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';

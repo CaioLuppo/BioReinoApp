@@ -1,12 +1,13 @@
 library courses_page;
 
+import 'package:bioreino_mobile/controller/database/dao/categories_dao.dart';
+import 'package:bioreino_mobile/controller/screens/route_handler.dart';
 import 'package:bioreino_mobile/controller/screens/screen_navigator/pages/courses_filter.dart';
-import 'package:bioreino_mobile/controller/screens/screen_navigator/pages_enum.dart';
 import 'package:bioreino_mobile/controller/screens/screen_navigator/updatable_drawer_mixin.dart';
+import 'package:bioreino_mobile/controller/util/string_util.dart';
+import 'package:bioreino_mobile/view/global_components/widgets/search_field.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';
-import 'package:bioreino_mobile/view/themes/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class CoursesPage extends StatefulWidget {
   final UpdatableDrawer drawer;
@@ -20,6 +21,7 @@ class CoursesPage extends StatefulWidget {
 
 class _CoursesPageState extends State<CoursesPage> {
   final TextEditingController editingController = TextEditingController();
+  String category = "";
 
   @override
   Widget build(BuildContext context) {
@@ -37,37 +39,51 @@ class _CoursesPageState extends State<CoursesPage> {
   Widget _buildBody(BuildContext context) {
     Orientation orientation = MediaQuery.of(context).orientation;
     return WillPopScope(
-      onWillPop: () {
-        if (widget.showBackButton) {
-          widget.drawer.updatePage(Pages.home);
-          return true as Future<bool>;
-        }
-        SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-        return true as Future<bool>;
-      },
+      onWillPop: () => exitPage(
+        widget.showBackButton,
+        widget.drawer,
+      ),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: TextField(
-              onChanged: (_) => setState(() {}),
-              controller: editingController,
-              decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                  hintText: "Search",
-                  suffixIcon: Icon(
-                    Icons.search,
-                    color: BRColors.greyText,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                flex: 3,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: SearchField(
+                    controller: editingController,
+                    onChanged: setState,
                   ),
-                  border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)))),
-            ),
+                ),
+              ),
+              Flexible(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 24.0, top: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("Categorias"),
+                      DropdownButton(
+                        hint: const Text("Qualquer"),
+                        menuMaxHeight: 200,
+                        items: generateCategoriesMenuList(),
+                        value: category,
+                        onChanged: (selected) => updateCategoryFilter(selected),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
           Expanded(
             child: Padding(
               padding: orientation == Orientation.landscape
-                  ? const EdgeInsets.all(16)
-                  : const EdgeInsets.all(24),
+                  ? const EdgeInsets.fromLTRB(16, 8, 16, 16)
+                  : const EdgeInsets.fromLTRB(24, 16, 24, 24),
               child: Container(
                 clipBehavior: Clip.antiAlias,
                 decoration:
@@ -77,7 +93,11 @@ class _CoursesPageState extends State<CoursesPage> {
                       ? Axis.horizontal
                       : Axis.vertical,
                   physics: const BouncingScrollPhysics(),
-                  children: courseFilter(editingController.text, context),
+                  children: courseListFilter(
+                    filter: editingController.text,
+                    categoryName: category,
+                    context: context,
+                  ),
                 ),
               ),
             ),
@@ -85,5 +105,11 @@ class _CoursesPageState extends State<CoursesPage> {
         ],
       ),
     );
+  }
+
+  void updateCategoryFilter(String? selectedCategory) {
+    setState(() {
+      selectedCategory != null ? category = selectedCategory : category = "";
+    });
   }
 }

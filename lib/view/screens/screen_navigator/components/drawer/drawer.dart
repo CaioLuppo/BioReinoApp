@@ -3,7 +3,7 @@ library drawer;
 import 'package:bioreino_mobile/controller/screens/screen_navigator/components/drawer_controller.dart';
 import 'package:bioreino_mobile/controller/screens/screen_navigator/pages_enum.dart';
 import 'package:bioreino_mobile/controller/screens/screen_navigator/updatable_drawer_mixin.dart';
-import 'package:bioreino_mobile/controller/screens/route_animation.dart';
+import 'package:bioreino_mobile/controller/screens/route_handler.dart';
 import 'package:bioreino_mobile/controller/util/string_util.dart';
 import 'package:bioreino_mobile/controller/util/theme_util.dart';
 import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
