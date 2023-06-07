@@ -5,23 +5,26 @@ import 'package:bioreino_mobile/controller/screens/screen_navigator/pages_enum.d
 import 'package:bioreino_mobile/controller/screens/screen_navigator/updatable_drawer_mixin.dart';
 import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/components/drawer/drawer.dart';
+import 'package:bioreino_mobile/view/screens/screen_navigator/pages/courses/courses.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/pages/home/home.dart';
+import 'package:bioreino_mobile/view/themes/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 part 'components/app_bar.dart';
+part 'components/base_screen.dart';
+part 'pages/courses/components/back_button.dart';
 
 class ScreenNavigator extends StatefulWidget {
   const ScreenNavigator({super.key});
 
   @override
-  State<ScreenNavigator> createState() => _ScreenNavigatorState();
+  State<ScreenNavigator> createState() => ScreenNavigatorState();
 }
 
-class _ScreenNavigatorState extends State<ScreenNavigator>
-    with UpdatableDrawer {
-  final List pagesList = [const HomePage(), const Text("ola mundo")];
+class ScreenNavigatorState extends State<ScreenNavigator> with UpdatableDrawer {
   Pages page = Pages.home;
+  bool showBackButton = false;
 
   @override
   void initState() {
@@ -31,20 +34,18 @@ class _ScreenNavigatorState extends State<ScreenNavigator>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar,
-      drawerEnableOpenDragGesture: false,
-      drawer: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: BRDrawer(context, this),
-      ),
-      body: pagesList[page.index],
-    );
+    List<Widget> pagesList = [
+      HomePage(this),
+      CoursesPage(this, showBackButton: showBackButton),
+      const Text("ola mundo")
+    ];
+    return pagesList[page.index];
   }
 
   @override
-  void updatePage(page) {
+  void updatePage(page, {bool showBackButton = false}) {
     setState(() {
+      this.showBackButton = showBackButton;
       this.page = page;
     });
   }

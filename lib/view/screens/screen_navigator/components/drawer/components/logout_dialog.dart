@@ -67,7 +67,7 @@ class LogoutDialog extends StatelessWidget {
             SizedBox(
               width: 250,
               child: Text(
-                "Deseja mesmo sair? Poderá logar novamente sempre quando quiser!",
+                "Deseja mesmo se desconectar? Poderá logar novamente sempre quando quiser!",
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: fromBrightnessColor(
                         context,

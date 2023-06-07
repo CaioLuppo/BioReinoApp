@@ -33,8 +33,10 @@ class BulletState extends State<Bullet> {
           return InkWell(
             borderRadius: BorderRadius.circular(30),
             onTap: () => setState(
-              () => widget.pageController.jumpToPage(
+              () => widget.pageController.animateToPage(
                 widget.adaptedList.indexOf(c),
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.ease,
               ),
             ),
             child: AnimatedContainer(

@@ -1,7 +1,7 @@
 import 'package:bioreino_mobile/controller/database/mongodb_database.dart';
 import 'package:bioreino_mobile/controller/screens/login_screen/login_controller.dart';
 import 'package:bioreino_mobile/view/screens/connection_error_screen/connection_error_screen.dart';
-import 'package:bioreino_mobile/view/screens/login/login_screen.dart';
+import 'package:bioreino_mobile/view/screens/login_screen/login_screen.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';
 import 'package:flutter/material.dart';
 

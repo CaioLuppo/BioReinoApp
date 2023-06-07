@@ -1,7 +1,6 @@
 enum Pages {
   home,
-  // lessons,
-  // courses,
+  courses,
   // categories,
   account,
 }

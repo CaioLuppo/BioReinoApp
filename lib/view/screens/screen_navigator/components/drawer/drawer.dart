@@ -22,7 +22,6 @@ class BRDrawer extends Drawer {
   BRDrawer(final BuildContext context, final UpdatableDrawer navigator,
       {super.key})
       : super(
-        
           elevation: 0,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           shape: RoundedRectangleBorder(
@@ -31,10 +30,7 @@ class BRDrawer extends Drawer {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 8,
-                ),
+                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
                 child: Column(
                   children: [
                     DrawerTitle("menu", context),
@@ -44,7 +40,13 @@ class BRDrawer extends Drawer {
                       page: Pages.home,
                       leadingSvgPath: "assets/drawer_icons/home_icon.svg",
                       text: "home",
-                      index: 0,
+                    ),
+                    DrawerContent(
+                      navigator,
+                      context,
+                      page: Pages.courses,
+                      leadingSvgPath: "assets/drawer_icons/home_icon.svg",
+                      text: "cursos",
                     ),
                   ],
                 ),
@@ -64,7 +66,6 @@ class BRDrawer extends Drawer {
                       page: Pages.account,
                       leadingSvgPath: "assets/drawer_icons/user_icon.svg",
                       text: "conta",
-                      index: 1,
                     ),
                   ],
                 ),

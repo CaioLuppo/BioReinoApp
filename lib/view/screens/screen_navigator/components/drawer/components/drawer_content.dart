@@ -10,16 +10,15 @@ class DrawerContent extends ListTile {
     required String text,
     required String leadingSvgPath,
     required Pages page,
-    required int index,
   }) : super(
             onTap: () {
               drawerOnTap(updatableDrawer, page, context);
-              selectedIndex = index;
+              selectedIndex = page.index;
             },
             minLeadingWidth: 0,
             leading: ColorFiltered(
               colorFilter: ColorFilter.mode(
-                selectedIndex == index ? BRColors.green : BRColors.greyText,
+                selectedIndex == page.index ? BRColors.green : BRColors.greyText,
                 BlendMode.srcIn,
               ),
               child: SvgPicture.asset(
@@ -34,9 +33,9 @@ class DrawerContent extends ListTile {
               context,
               uppercase: false,
               fontWeight:
-                  selectedIndex == index ? FontWeight.w600 : FontWeight.normal,
+                  selectedIndex == page.index ? FontWeight.w600 : FontWeight.normal,
             ),
-            selected: selectedIndex == index,
+            selected: selectedIndex == page.index,
             selectedTileColor: BRColors.greenLight.withAlpha(20),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20)));
@@ -44,7 +43,7 @@ class DrawerContent extends ListTile {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8, right: 8 * 1.06),
+      padding: const EdgeInsets.only(left: 8, right: 8 * 1.06, bottom: 16),
       child: super.build(context),
     );
   }

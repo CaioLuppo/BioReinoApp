@@ -3,13 +3,21 @@ part of home_page;
 class CourseCard extends StatelessWidget {
   final Course course;
   final double progress;
+  final double imageHeight;
+  final bool side;
 
-  const CourseCard({required this.course, required this.progress, super.key});
+  const CourseCard({
+    required this.course,
+    required this.progress,
+    this.imageHeight = 190,
+    this.side = false,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100,
+      height: 200,
       width: 300,
       child: Card(
         margin: const EdgeInsets.all(0),
@@ -20,12 +28,12 @@ class CourseCard extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.topCenter,
-              child: Column(
+              child: Wrap(
                 children: [
                   Image.network(
                     course.imageUrl,
                     fit: BoxFit.cover,
-                    height: 190,
+                    height: imageHeight,
                     width: double.maxFinite,
                   ),
                   const SizedBox(

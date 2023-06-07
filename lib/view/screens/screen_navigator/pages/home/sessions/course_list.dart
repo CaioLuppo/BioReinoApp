@@ -1,7 +1,8 @@
 part of home_page;
 
 class CourseListSession extends StatefulWidget {
-  const CourseListSession({super.key});
+  final UpdatableDrawer drawer;
+  const CourseListSession(this.drawer, {super.key});
 
   @override
   State<CourseListSession> createState() => _CourseListSessionState();
@@ -46,7 +47,7 @@ class _CourseListSessionState extends State<CourseListSession> {
                           color: BRColors.greyText,
                         ),
                   ),
-                  onPressed: () {},
+                  onPressed: () => widget.drawer.updatePage(Pages.courses, showBackButton: true),
                 )
               ],
             ),

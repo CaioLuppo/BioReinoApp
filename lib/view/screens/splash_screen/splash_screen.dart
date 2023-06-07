@@ -5,7 +5,7 @@ import 'package:bioreino_mobile/controller/screens/route_animation.dart';
 import 'package:bioreino_mobile/controller/util/theme_util.dart';
 import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
 import 'package:bioreino_mobile/view/global_components/widgets/loading_bar.dart';
-import 'package:bioreino_mobile/view/screens/login/login_screen.dart';
+import 'package:bioreino_mobile/view/screens/login_screen/login_screen.dart';
 import 'package:bioreino_mobile/view/themes/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

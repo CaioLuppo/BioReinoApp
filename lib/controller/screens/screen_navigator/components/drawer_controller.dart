@@ -4,8 +4,11 @@ import 'package:bioreino_mobile/view/screens/screen_navigator/components/drawer/
 import 'package:flutter/material.dart';
 
 void drawerOnTap(
-    UpdatableDrawer updatableDrawer, Pages page, BuildContext context) {
-  updatableDrawer.updatePage(page);
+  UpdatableDrawer updatableDrawer,
+  Pages page,
+  BuildContext context,
+) {
+  updatableDrawer.updatePage(page, showBackButton: false);
   Navigator.pop(context);
 }
 

@@ -2,7 +2,7 @@ import 'package:bioreino_mobile/controller/screens/login_screen/login_controller
 import 'package:bioreino_mobile/view/global_components/widgets/loading_bar.dart';
 import 'package:flutter/material.dart';
 
-import 'package:bioreino_mobile/view/screens/login/login_screen.dart';
+import 'package:bioreino_mobile/view/screens/login_screen/login_screen.dart';
 import 'package:bioreino_mobile/view/themes/theme.dart';
 
 void setLoginButtonPressed(bool value) {
