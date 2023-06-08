@@ -47,7 +47,8 @@ class _CourseListSessionState extends State<CourseListSession> {
                           color: BRColors.greyText,
                         ),
                   ),
-                  onPressed: () => widget.drawer.updatePage(Pages.courses, showBackButton: true),
+                  onPressed: () => widget.drawer
+                      .updatePage(Pages.courses, showBackButton: true),
                 )
               ],
             ),

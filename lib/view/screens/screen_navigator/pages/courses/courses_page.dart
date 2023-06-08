@@ -2,9 +2,10 @@ library courses_page;
 
 import 'package:bioreino_mobile/controller/screens/route_handler.dart';
 import 'package:bioreino_mobile/controller/screens/screen_navigator/pages/courses_filter.dart';
+import 'package:bioreino_mobile/controller/screens/screen_navigator/pages_enum.dart';
 import 'package:bioreino_mobile/controller/screens/screen_navigator/updatable_drawer_mixin.dart';
 import 'package:bioreino_mobile/view/global_components/widgets/search_field.dart';
-import 'package:bioreino_mobile/view/screens/screen_navigator/pages/home/home.dart';
+import 'package:bioreino_mobile/view/screens/screen_navigator/pages/home/home_page.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';
 import 'package:bioreino_mobile/view/themes/theme.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,9 @@ class _CoursesPageState extends State<CoursesPage> {
   Widget build(BuildContext context) {
     return widget.showBackButton
         ? Scaffold(
-            appBar: BRAppBar(drawer: widget.drawer),
+            appBar: BRAppBar(
+              leading: BRBackButton(() => widget.drawer.updatePage(Pages.home)),
+            ),
             body: _buildBody(context),
           )
         : BasePage(
@@ -119,18 +122,21 @@ class _CoursesPageState extends State<CoursesPage> {
           Expanded(
             child: Padding(
               padding: orientation == Orientation.landscape
-                  ? const EdgeInsets.fromLTRB(16, 8, 16, 16)
-                  : const EdgeInsets.fromLTRB(24, 16, 24, 24),
+                  ? const EdgeInsets.fromLTRB(8, 8, 8, 16)
+                  : const EdgeInsets.fromLTRB(16, 16, 16, 24),
               child: Container(
                 clipBehavior: Clip.antiAlias,
                 decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                    BoxDecoration(borderRadius: BorderRadius.circular(30)),
                 child: list.isNotEmpty
                     ? ListView(
+                        padding: const EdgeInsets.all(8),
                         scrollDirection: orientation == Orientation.landscape
                             ? Axis.horizontal
                             : Axis.vertical,
-                        physics: const BouncingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(
+                          parent: AlwaysScrollableScrollPhysics(),
+                        ),
                         children: list,
                       )
                     : const EmptyList("Não há cursos correspondentes."),

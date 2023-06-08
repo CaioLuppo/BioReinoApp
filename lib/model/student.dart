@@ -1,5 +1,7 @@
 import 'package:bioreino_mobile/model/course.dart';
-import 'package:realm/realm.dart';
+import 'package:mongo_dart/mongo_dart.dart';
+
+import '../controller/database/mongodb_database.dart';
 
 class Student {
   final ObjectId? id;
@@ -8,8 +10,8 @@ class Student {
   final DateTime subscriptionDate;
   final String email;
   final String? password;
-  final Map<String, dynamic>? coursesProgress;
-  final Map<String, dynamic>? lastCourse;
+  Map<String, dynamic>? coursesProgress;
+  Map<String, dynamic>? lastCourse;
 
   Student(
     this.id,
@@ -52,7 +54,7 @@ class Student {
     if (coursesProgress?[course.name] == null) {
       return 0;
     } else {
-      final List<dynamic> lessons = coursesProgress?[course.name];
+      final List<dynamic> lessons = coursesProgress?[course.name] ?? [];
       final int? max = course.lessons?.length;
 
       if (max == null) return 0;
@@ -64,5 +66,34 @@ class Student {
 
       return (completed * 100) / max;
     }
+  }
+
+  bool isLessonComplete(String courseName, String lessonTitle) {
+    if (coursesProgress != null) {
+      List progressList = coursesProgress![courseName] ?? [];
+      for (var lessonNameInList in progressList) {
+        if (lessonNameInList == lessonTitle) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  void addProgress(String courseName, {String? lessonTitle}) {
+    coursesProgress ??= {};
+    if (coursesProgress![courseName] == null) {
+      coursesProgress![courseName] = [];
+    }
+    if (lessonTitle != null) {
+      List<String> progressList = coursesProgress![courseName]!;
+      if (!progressList.contains(lessonTitle)) {
+        progressList.add(lessonTitle);
+      }
+    }
+    Database.studentsCollection!.updateOne(
+      where.eq("email", email),
+      ModifierBuilder().set("coursesProgress", coursesProgress),
+    );
   }
 }

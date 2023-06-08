@@ -27,8 +27,11 @@ Future<dynamic> changeScreen(
   BuildContext context,
   Widget page, {
   bool leftToRight = false,
+  bool dontReplace = false,
 }) {
-  return Navigator.pushReplacement(context, _animatedRoute(page, leftToRight));
+  return dontReplace
+      ? Navigator.push(context, _animatedRoute(page, leftToRight))
+      : Navigator.pushReplacement(context, _animatedRoute(page, leftToRight));
 }
 
 PageRouteBuilder _animatedRoute(Widget page, bool leftToRight) {

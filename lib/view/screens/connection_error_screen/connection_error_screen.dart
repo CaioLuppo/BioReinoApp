@@ -56,54 +56,56 @@ class _ConnectionErrorScreenState extends State<ConnectionErrorScreen> {
       bottomWidget = const LoadingBar();
     }
 
-    return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 32.0, right: 32.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Flexible(
-              // Image
-              fit: FlexFit.loose,
-              flex: 4,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 32.0, top: 8),
-                child: ConnectionErrorScreen.errorImage,
+    return SafeArea(
+      child: Container(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 32.0, right: 32.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Flexible(
+                // Image
+                fit: FlexFit.loose,
+                flex: 4,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 32.0, top: 8),
+                  child: ConnectionErrorScreen.errorImage,
+                ),
               ),
-            ),
-            Flexible(
-              // Title
-              flex: 2,
-              child: Text(
-                widget.errorTitleText,
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                      color: fromBrightnessColor(
-                        context,
-                        Colors.black,
-                        Colors.white,
+              Flexible(
+                // Title
+                flex: 2,
+                child: Text(
+                  widget.errorTitleText,
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        color: fromBrightnessColor(
+                          context,
+                          Colors.black,
+                          Colors.white,
+                        ),
                       ),
-                    ),
+                ),
               ),
-            ),
-            Flexible(
-              // Body
-              flex: 2,
-              child: Text(
-                widget.errorBodyText,
-                style: Theme.of(context).textTheme.bodyLarge,
-                textAlign: TextAlign.center,
+              Flexible(
+                // Body
+                flex: 2,
+                child: Text(
+                  widget.errorBodyText,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            Flexible(
-              // Bottom Widget (Loading or Button)
-              flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 32.0),
-                child: bottomWidget,
+              Flexible(
+                // Bottom Widget (Loading or Button)
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 32.0),
+                  child: bottomWidget,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

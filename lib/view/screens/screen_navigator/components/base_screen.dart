@@ -8,13 +8,15 @@ class BasePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BRAppBar(),
+      appBar: BRAppBar(
+        leading: const HamburguerMenu(),
+      ),
       drawerEnableOpenDragGesture: false,
       drawer: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BRDrawer(context, drawer),
       ),
-      body: body,
+      body: SafeArea(child: body),
     );
   }
 }

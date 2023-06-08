@@ -1,8 +1,15 @@
 part of screen_navigator;
 
-class BackButton extends StatelessWidget {
-  final UpdatableDrawer drawer;
-  const BackButton(this.drawer, {super.key});
+class BRBackButton extends StatelessWidget {
+  final Function() onPressed;
+  final double splashRadius;
+  final double iconSize;
+  const BRBackButton(
+    this.onPressed, {
+    this.splashRadius = 24,
+    this.iconSize = 64,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +20,11 @@ class BackButton extends StatelessWidget {
         highlightColor: splashColor,
         hoverColor: splashColor,
         splashColor: splashColor,
-        onPressed: () => drawer.updatePage(Pages.home),
-        splashRadius: 24,
+        onPressed: () => onPressed(),
+        splashRadius: splashRadius,
         icon: SvgPicture.asset(
           "assets/drawer_icons/back_button_icon.svg",
+          width: iconSize,
           colorFilter: ColorFilter.mode(BRColors.greyText, BlendMode.srcIn),
         ),
       ),

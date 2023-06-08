@@ -3,5 +3,9 @@ import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.d
 import 'package:flutter/material.dart';
 
 mixin UpdatableDrawer on State<ScreenNavigator> {
-  void updatePage(Pages page, {bool showBackButton = false, String categoryName = ""});
+  void updatePage(
+    Pages page, {
+    bool showBackButton = false,
+    String categoryName = "",
+  });
 }

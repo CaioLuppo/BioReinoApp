@@ -19,7 +19,6 @@ abstract class StudentDAO {
   ) async {
     bool isLogged = false;
     dynamic catchedError;
-    
     await Database.connectOrError(context);
 
     await Database.studentsCollection?.findOne({"email": email}).then(
@@ -83,7 +82,6 @@ abstract class StudentDAO {
       return {};
     }
   }
-
 }
 
 class WrongCredentialsException implements Exception {}
