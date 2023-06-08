@@ -1,21 +1,10 @@
 part of watch_lesson_screen;
 
-class Video extends StatelessWidget {
-  const Video({
+class Video extends yt.YoutubePlayer {
+  Video({
     super.key,
-    required this.controller,
-  });
-
-  final yt.YoutubePlayerController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: ClipRRect(
-        clipBehavior: Clip.antiAlias,
-        borderRadius: BorderRadius.circular(20),
-        child: yt.YoutubePlayer(
+    required yt.YoutubePlayerController controller,
+  }) : super(
           controller: controller,
           showVideoProgressIndicator: false,
           actionsPadding: const EdgeInsets.only(left: 16, right: 8),
@@ -31,8 +20,5 @@ class Video extends StatelessWidget {
             const yt.PlaybackSpeedButton(),
             yt.FullScreenButton(),
           ],
-        ),
-      ),
-    );
-  }
+        );
 }

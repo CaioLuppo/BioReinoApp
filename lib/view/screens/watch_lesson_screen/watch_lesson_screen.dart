@@ -42,20 +42,35 @@ class _WatchLessonScreenState extends State<WatchLessonScreen> {
     return WillPopScope(
       onWillPop: () => _pop(),
       child: Scaffold(
-        body: SafeArea(
-          child: Stack(
-            children: [
-              Column(
+        body: yt.YoutubePlayerBuilder(
+          player: Video(controller: controller),
+          builder: (context, player) {
+            if (MediaQuery.of(context).orientation == Orientation.portrait) {
+              SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+            }
+            return SafeArea(
+              child: Stack(
                 children: [
-                  Video(controller: controller),
-                  // Texts
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      widget.lesson.title,
-                      textAlign: TextAlign.center,
-                      style:
-                          Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: ClipRRect(
+                          clipBehavior: Clip.antiAlias,
+                          borderRadius: BorderRadius.circular(20),
+                          child: player,
+                        ),
+                      ),
+                      // Texts
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text(
+                          widget.lesson.title,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall
+                              ?.copyWith(
                                 color: fromBrightnessColor(
                                   context,
                                   Colors.black,
@@ -64,77 +79,80 @@ class _WatchLessonScreenState extends State<WatchLessonScreen> {
                                 fontFamily: GoogleFonts.fredoka().fontFamily,
                                 fontWeight: FontWeight.bold,
                               ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0,
+                          vertical: 8.0,
+                        ),
+                        child: Text(
+                          widget.lesson.description,
+                          textAlign: TextAlign.center,
+                          style:
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    color: fromBrightnessColor(
+                                      context,
+                                      Colors.black,
+                                      Colors.white70,
+                                    ),
+                                  ),
+                        ),
+                      ),
+                      // Divider
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Divider(
+                          color: BRColors.greyText,
+                          thickness: 2,
+                        ),
+                      ),
+                      // Text
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "TRANSCRIÇÃO",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      widget.lesson.transcription.isEmpty
+                          ? const Expanded(
+                              child: EmptyList(
+                                "Ainda não há transcrição disponível.",
+                              ),
+                            )
+                          : Transcription(text: widget.lesson.transcription),
+                    ],
+                  ),
+                  // BackButton
+                  Align(
+                    alignment: const Alignment(-1, -1),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0, top: 22.0),
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          borderRadius: BorderRadius.circular(64),
+                        ),
+                      ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 8.0,
-                    ),
-                    child: Text(
-                      widget.lesson.description,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: fromBrightnessColor(
-                              context,
-                              Colors.black,
-                              Colors.white70,
-                            ),
-                          ),
+                  Align(
+                    alignment: const Alignment(-1, -0.95),
+                    child: BRBackButton(
+                      () => _pop(),
+                      iconSize: 24,
                     ),
                   ),
-                  // Divider
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Divider(
-                      color: BRColors.greyText,
-                      thickness: 2,
-                    ),
-                  ),
-                  // Text
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "TRANSCRIÇÃO",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge
-                          ?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  widget.lesson.transcription.isEmpty
-                      ? const Expanded(
-                          child: EmptyList(
-                            "Ainda não há transcrição disponível.",
-                          ),
-                        )
-                      : Transcription(text: widget.lesson.transcription),
                 ],
               ),
-              // BackButton
-              Align(
-                alignment: const Alignment(-1, -1),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0, top: 22.0),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).scaffoldBackgroundColor,
-                      borderRadius: BorderRadius.circular(64),
-                    ),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: const Alignment(-1, -0.95),
-                child: BRBackButton(
-                  () => _pop(),
-                  iconSize: 24,
-                ),
-              ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
