@@ -36,16 +36,21 @@ class ScreenNavigatorState extends State<ScreenNavigator> with UpdatableDrawer {
   Widget build(BuildContext context) {
     List<Widget> pagesList = [
       HomePage(this),
-      CoursesPage(this, showBackButton: showBackButton),
+      CoursesPage(
+        this,
+        showBackButton: showBackButton,
+      ),
       const Text("ola mundo")
     ];
     return pagesList[page.index];
   }
 
   @override
-  void updatePage(page, {bool showBackButton = false}) {
+  void updatePage(page,
+      {bool showBackButton = false, String categoryName = ""}) {
     setState(() {
       this.showBackButton = showBackButton;
+      CoursesPage.categoryName = categoryName;
       this.page = page;
     });
   }

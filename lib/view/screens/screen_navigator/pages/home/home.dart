@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
               child: LastCourseSession(),
             ),
             CourseListSession(widget.drawer),
-            CategoriesSession(),
+            CategoriesSession(widget.drawer),
           ],
         ),
       ),

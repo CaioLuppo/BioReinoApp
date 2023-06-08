@@ -29,25 +29,35 @@ class CategoryCard extends StatelessWidget {
     BRColors.greenLightBlue,
   ];
 
-  const CategoryCard(this.category, this._index, {super.key});
+  final Function() onTap;
+
+  const CategoryCard(
+    this.category,
+    this._index, {
+    required this.onTap,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final color = _colorsList[index];
-    return Card(
-      color: fromBrightnessColor(context, color, color.withOpacity(0.85)),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      margin: const EdgeInsets.all(8),
-      elevation: 5,
-      child: Center(
-        child: Text(
-          category.name.toUpperCase(),
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+    return InkWell(
+      onTap: () => onTap(),
+      child: Card(
+        color: fromBrightnessColor(context, color, color.withOpacity(0.85)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        margin: const EdgeInsets.all(8),
+        elevation: 5,
+        child: Center(
+          child: Text(
+            category.name.toUpperCase(),
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
         ),
       ),
     );

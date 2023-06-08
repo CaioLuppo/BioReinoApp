@@ -5,11 +5,13 @@ class CategoriesList extends StatelessWidget {
   final List<List<Category>> adaptedList;
   final GlobalKey<BulletState> bulletKey;
   final PageController controller;
+  final UpdatableDrawer updatableDrawer;
 
   const CategoriesList({
     required this.adaptedList,
     required this.controller,
     required this.bulletKey,
+    required this.updatableDrawer,
     super.key,
   });
 
@@ -36,7 +38,15 @@ class CategoriesList extends StatelessWidget {
               adaptedList[listIndex].length,
               (catIndex) {
                 final Category category = adaptedList[listIndex][catIndex];
-                return CategoryCard(category, CategoriesDAO.categories.indexOf(category));
+                return CategoryCard(
+                  category,
+                  CategoriesDAO.categories.indexOf(category),
+                  onTap: () => updatableDrawer.updatePage(
+                    Pages.courses,
+                    categoryName: category.name,
+                    showBackButton: true,
+                  ),
+                );
               },
             ),
           );

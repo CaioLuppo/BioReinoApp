@@ -18,6 +18,11 @@ final TextTheme textTheme = TextTheme(
     fontFamily: GoogleFonts.fredoka().fontFamily,
     fontWeight: FontWeight.normal,
   ),
+  bodyMedium: TextStyle(
+    fontSize: 16,
+    fontFamily: GoogleFonts.fredoka().fontFamily,
+    fontWeight: FontWeight.normal,
+  ),
   labelLarge: TextStyle(
       fontSize: 18,
       fontFamily: GoogleFonts.fredoka().fontFamily,

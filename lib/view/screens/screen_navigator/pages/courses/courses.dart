@@ -1,19 +1,24 @@
 library courses_page;
 
-import 'package:bioreino_mobile/controller/database/dao/categories_dao.dart';
 import 'package:bioreino_mobile/controller/screens/route_handler.dart';
 import 'package:bioreino_mobile/controller/screens/screen_navigator/pages/courses_filter.dart';
 import 'package:bioreino_mobile/controller/screens/screen_navigator/updatable_drawer_mixin.dart';
-import 'package:bioreino_mobile/controller/util/string_util.dart';
 import 'package:bioreino_mobile/view/global_components/widgets/search_field.dart';
+import 'package:bioreino_mobile/view/screens/screen_navigator/pages/home/home.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';
+import 'package:bioreino_mobile/view/themes/theme.dart';
 import 'package:flutter/material.dart';
 
 class CoursesPage extends StatefulWidget {
   final UpdatableDrawer drawer;
   final bool showBackButton;
+  static String categoryName = "";
 
-  const CoursesPage(this.drawer, {this.showBackButton = false, super.key});
+  const CoursesPage(
+    this.drawer, {
+    this.showBackButton = false,
+    super.key,
+  });
 
   @override
   State<CoursesPage> createState() => _CoursesPageState();
@@ -21,7 +26,6 @@ class CoursesPage extends StatefulWidget {
 
 class _CoursesPageState extends State<CoursesPage> {
   final TextEditingController editingController = TextEditingController();
-  String category = "";
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +42,11 @@ class _CoursesPageState extends State<CoursesPage> {
 
   Widget _buildBody(BuildContext context) {
     Orientation orientation = MediaQuery.of(context).orientation;
+    final list = courseListFilter(
+      filter: editingController.text,
+      categoryName: CoursesPage.categoryName,
+      context: context,
+    );
     return WillPopScope(
       onWillPop: () => exitPage(
         widget.showBackButton,
@@ -58,20 +67,48 @@ class _CoursesPageState extends State<CoursesPage> {
                   ),
                 ),
               ),
+              const SizedBox(
+                width: 24,
+              ),
               Flexible(
                 flex: 2,
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 24.0, top: 10),
+                  padding: const EdgeInsets.only(right: 24.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text("Categorias"),
-                      DropdownButton(
-                        hint: const Text("Qualquer"),
-                        menuMaxHeight: 200,
-                        items: generateCategoriesMenuList(),
-                        value: category,
-                        onChanged: (selected) => updateCategoryFilter(selected),
+                      Text(
+                        "Categorias",
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 8),
+                        height: 32,
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                            border: Border.all(color: BRColors.greyText)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                              underline: null,
+                              isExpanded: true,
+                              borderRadius: BorderRadius.circular(10),
+                              style: Theme.of(context).textTheme.bodyMedium,
+                              hint: const Text(
+                                "Qualquer",
+                              ),
+                              menuMaxHeight: 200,
+                              items: generateCategoriesMenuList(context),
+                              value: CoursesPage.categoryName,
+                              onChanged: (selected) =>
+                                  updateCategoryFilter(selected),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -88,17 +125,15 @@ class _CoursesPageState extends State<CoursesPage> {
                 clipBehavior: Clip.antiAlias,
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                child: ListView(
-                  scrollDirection: orientation == Orientation.landscape
-                      ? Axis.horizontal
-                      : Axis.vertical,
-                  physics: const BouncingScrollPhysics(),
-                  children: courseListFilter(
-                    filter: editingController.text,
-                    categoryName: category,
-                    context: context,
-                  ),
-                ),
+                child: list.isNotEmpty
+                    ? ListView(
+                        scrollDirection: orientation == Orientation.landscape
+                            ? Axis.horizontal
+                            : Axis.vertical,
+                        physics: const BouncingScrollPhysics(),
+                        children: list,
+                      )
+                    : const EmptyList("Não há cursos correspondentes."),
               ),
             ),
           )
@@ -109,7 +144,9 @@ class _CoursesPageState extends State<CoursesPage> {
 
   void updateCategoryFilter(String? selectedCategory) {
     setState(() {
-      selectedCategory != null ? category = selectedCategory : category = "";
+      selectedCategory != null
+          ? CoursesPage.categoryName = selectedCategory
+          : CoursesPage.categoryName = "";
     });
   }
 }

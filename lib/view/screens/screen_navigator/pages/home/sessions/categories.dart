@@ -4,8 +4,9 @@ class CategoriesSession extends StatelessWidget {
   final GlobalKey<BulletState> _bulletKey = GlobalKey();
   final _pageController = PageController();
   static final List<List<Category>> adaptedList = [];
+  final UpdatableDrawer drawer;
 
-  CategoriesSession({super.key});
+  CategoriesSession(this.drawer, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,7 @@ class CategoriesSession extends StatelessWidget {
                           adaptedList: adaptedList,
                           controller: _pageController,
                           bulletKey: _bulletKey,
+                          updatableDrawer: drawer,
                         ),
                         Bullet(
                           adaptedList: adaptedList,

@@ -37,26 +37,30 @@ List<Widget> courseListFilter({
     }
   }
 
-  return list.isNotEmpty
-      ? list
-      : [
-          const EmptyList(
-            "Não há cursos correspondentes.",
-          )
-        ];
+  return list;
 }
 
-List<DropdownMenuItem<String>> generateCategoriesMenuList() {
+List<DropdownMenuItem<String>> generateCategoriesMenuList(
+    BuildContext context) {
   final List<DropdownMenuItem<String>> list = List.generate(
     CategoriesDAO.categories.length,
     (index) => DropdownMenuItem<String>(
       value: CategoriesDAO.categories[index].name,
       child: Text(
         CategoriesDAO.categories[index].name.capitalize(),
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
     ),
   );
   list.insert(
-      0, const DropdownMenuItem<String>(value: "", child: Text("Qualquer")));
+    0,
+    DropdownMenuItem<String>(
+      value: "",
+      child: Text(
+        "Qualquer",
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
+    ),
+  );
   return list;
 }
