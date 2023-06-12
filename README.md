@@ -5,10 +5,10 @@ BioReino é uma plataforma online fictícia de cursos de biologia, possuindo div
 
 #### Checklist:
 - [x] Migrar o código para Flutter
-- [ ] Terminar a documentação do projeto
+- [x] Terminar a documentação do projeto
 - [x] Desenvolver sistema de login e conta
-- [ ] Possibilidade de ver aulas
-- [ ] Sessão com todos os cursos
+- [x] Possibilidade de ver aulas
+- [x] Sessão com todos os cursos
 
 # Download ⏬
 
