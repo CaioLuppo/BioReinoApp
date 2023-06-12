@@ -1,5 +1,5 @@
 # BioReinoApp
-BioReino é uma plataforma online fictícia de cursos de biologia, possuindo diversos cursos nos planos KIDS, PROFESSIONAL e SCHOLAR.
+BioReino é uma plataforma online fictícia de cursos de biologia, possuindo diversos cursos nos planos PROFESSIONAL e SCHOLAR.
 
 # Retomada do desenvolvimento - 14/03/2023 🎉 
 
