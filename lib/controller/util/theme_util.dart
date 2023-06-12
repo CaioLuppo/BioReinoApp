@@ -20,14 +20,14 @@ MaterialStateColor mStateColor(Color color) {
 }
 
 void handleUIStyle() {
-  final window = SchedulerBinding.instance.window;
+  final window = SchedulerBinding.instance.platformDispatcher;
   _setUIStyle(window);
   window.onPlatformBrightnessChanged = () {
     _setUIStyle(window);
   };
 }
 
-void _setUIStyle(SingletonFlutterWindow window) {
+void _setUIStyle(PlatformDispatcher window) {
   final brightness = window.platformBrightness;
   SystemChrome.setSystemUIOverlayStyle(
     brightness == Brightness.dark

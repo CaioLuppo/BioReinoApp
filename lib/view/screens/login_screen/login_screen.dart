@@ -4,9 +4,12 @@ import 'package:bioreino_mobile/controller/screens/login_screen/login_form_contr
 import 'package:bioreino_mobile/controller/screens/screen_navigator/connection.dart';
 import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
 import 'package:bioreino_mobile/view/global_components/widgets/green_button.dart';
+import 'package:bioreino_mobile/view/themes/theme.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part 'components/arara_bg.dart';
 part 'components/login_box_bg.dart';

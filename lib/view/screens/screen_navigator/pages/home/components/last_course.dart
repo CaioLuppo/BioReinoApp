@@ -82,19 +82,18 @@ class LastCourse extends StatelessWidget {
                                 "Prof: ${lastCourse["professor"]}",
                                 style: Theme.of(context).textTheme.labelMedium,
                               ),
-                              if (lesson != null)
-                                Flexible(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 8.0),
-                                    child: LessonCard(
-                                      course!,
-                                      lesson,
-                                      complete,
-                                      () {},
-                                      spacing: 0,
-                                    ),
+                              Flexible(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: LessonCard(
+                                    course!,
+                                    lesson!,
+                                    complete,
+                                    () {},
+                                    spacing: 0,
                                   ),
                                 ),
+                              ),
                             ],
                           ),
                         ),

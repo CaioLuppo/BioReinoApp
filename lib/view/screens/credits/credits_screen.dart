@@ -1,4 +1,3 @@
-import 'package:bioreino_mobile/controller/screens/route_handler.dart';
 import 'package:bioreino_mobile/controller/util/theme_util.dart';
 import 'package:bioreino_mobile/view/global_components/widgets/info_text.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';
@@ -13,11 +12,7 @@ class CreditsScreen extends StatelessWidget {
     return Scaffold(
       appBar: BRAppBar(
         leading: BRBackButton(
-          () => changeScreen(
-            context,
-            const ScreenNavigator(),
-            leftToRight: true,
-          ),
+          () => Navigator.pop(context),
         ),
       ),
       body: Padding(

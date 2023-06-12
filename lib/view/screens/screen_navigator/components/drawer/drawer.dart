@@ -92,7 +92,7 @@ class BRDrawer extends Drawer {
                             onPressed: () => changeScreen(
                               context,
                               const CreditsScreen(),
-                              dontReplace: true,
+                              dontReplace: true
                             ),
                             style: flatButtonStyle().copyWith(
                               foregroundColor: MaterialStatePropertyAll(

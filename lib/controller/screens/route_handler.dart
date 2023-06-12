@@ -38,7 +38,7 @@ Future<dynamic> changeScreen(
 PageRouteBuilder _animatedRoute(Widget page, bool leftToRight) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => page,
-    transitionDuration: const Duration(seconds: 1),
+    transitionDuration: const Duration(milliseconds: 600),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       final begin =
           leftToRight ? const Offset(-1.0, 00) : const Offset(1.0, 0.0);
