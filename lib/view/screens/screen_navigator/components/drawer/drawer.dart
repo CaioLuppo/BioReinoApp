@@ -7,6 +7,7 @@ import 'package:bioreino_mobile/controller/screens/route_handler.dart';
 import 'package:bioreino_mobile/controller/util/string_util.dart';
 import 'package:bioreino_mobile/controller/util/theme_util.dart';
 import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
+import 'package:bioreino_mobile/view/screens/credits/credits_screen.dart';
 import 'package:bioreino_mobile/view/screens/splash_screen/splash_screen.dart';
 import 'package:bioreino_mobile/view/themes/theme.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +80,35 @@ class BRDrawer extends Drawer {
                       ),
                     ),
                     const Spacer(),
-                    const ExitButton(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 12.0,
+                            bottom: 8.0,
+                          ),
+                          child: TextButton(
+                            onPressed: () => changeScreen(
+                              context,
+                              const CreditsScreen(),
+                              dontReplace: true,
+                            ),
+                            style: flatButtonStyle().copyWith(
+                              foregroundColor: MaterialStatePropertyAll(
+                                BRColors.greyText,
+                              ),
+                            ),
+                            child: DrawerText(
+                              "Créditos",
+                              context,
+                              color: BRColors.greyText,
+                            ),
+                          ),
+                        ),
+                        const ExitButton(),
+                      ],
+                    ),
                   ],
                 ),
               )

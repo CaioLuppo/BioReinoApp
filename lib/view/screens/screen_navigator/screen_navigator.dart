@@ -5,6 +5,7 @@ import 'package:bioreino_mobile/controller/screens/screen_navigator/pages_enum.d
 import 'package:bioreino_mobile/controller/screens/screen_navigator/updatable_drawer_mixin.dart';
 import 'package:bioreino_mobile/view/global_components/assets/brassets.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/components/drawer/drawer.dart';
+import 'package:bioreino_mobile/view/screens/screen_navigator/pages/account/account_page.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/pages/courses/courses_page.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/pages/home/home_page.dart';
 import 'package:bioreino_mobile/view/themes/theme.dart';
@@ -38,7 +39,7 @@ class ScreenNavigatorState extends State<ScreenNavigator> with UpdatableDrawer {
     List<Widget> pagesList = [
       HomePage(this),
       CoursesPage(this, showBackButton: showBackButton),
-      const Text("ola mundo")
+      AccountPage(this),
     ];
     return pagesList[page.index];
   }
