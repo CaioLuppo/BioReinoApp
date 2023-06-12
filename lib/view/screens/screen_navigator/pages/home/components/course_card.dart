@@ -4,11 +4,13 @@ class CourseCard extends StatelessWidget {
   final Course course;
   final double progress;
   final double imageHeight;
+  final Function setState;
   final bool side;
 
   const CourseCard({
     required this.course,
     required this.progress,
+    required this.setState,
     this.imageHeight = 190,
     this.side = false,
     super.key,
@@ -21,12 +23,12 @@ class CourseCard extends StatelessWidget {
       width: 300,
       child: InkWell(
         onTap: () => {
-          StudentDAO.student!.addProgress(course.name),
+          StudentDAO.student!.addProgress(course),
           changeScreen(
             context,
             LessonsScreen(course),
             dontReplace: true,
-          )
+          ).then((_) => setState())
         },
         child: Card(
           margin: const EdgeInsets.all(0),
@@ -56,7 +58,7 @@ class CourseCard extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Theme.of(context).scaffoldBackgroundColor,
+                    color: Theme.of(context).cardColor,
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(10),
                       topRight: Radius.circular(10),

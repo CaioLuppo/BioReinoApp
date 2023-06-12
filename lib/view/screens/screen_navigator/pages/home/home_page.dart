@@ -10,6 +10,7 @@ import 'package:bioreino_mobile/controller/util/list_util.dart';
 import 'package:bioreino_mobile/controller/util/theme_util.dart';
 import 'package:bioreino_mobile/model/category.dart';
 import 'package:bioreino_mobile/model/course.dart';
+import 'package:bioreino_mobile/model/lesson.dart';
 import 'package:bioreino_mobile/view/global_components/widgets/loading_bar.dart';
 import 'package:bioreino_mobile/view/screens/lessons_screen/lessons_screen.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';
@@ -23,6 +24,7 @@ part 'components/course_card.dart';
 part 'components/empty_list.dart';
 part 'components/no_last_course.dart';
 part 'components/progress_bar.dart';
+part 'components/last_course.dart';
 part 'sessions/categories.dart';
 part 'sessions/course_list.dart';
 part 'sessions/last_course.dart';
@@ -51,11 +53,13 @@ class _HomePageState extends State<HomePage> {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.fromLTRB(24, 8, 24, 24),
+            // ignore: prefer_const_constructors
+            Padding(
+              padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+              // ignore: prefer_const_constructors
               child: LastCourseSession(),
             ),
-            CourseListSession(widget.drawer),
+            CourseListSession(() => setState(() {}), widget.drawer),
             CategoriesSession(widget.drawer),
           ],
         ),

@@ -13,7 +13,6 @@ abstract class StudentDAO {
 
   static Future<LoginState> login(
     BuildContext context,
-    GlobalKey<FormState> formKey,
     String email,
     String password,
   ) async {
@@ -30,7 +29,7 @@ abstract class StudentDAO {
         }
         if (isLogged) {
           student = Student.fromMap(queryStudent!);
-          _storeStudentPrefs();
+          _storeStudentPrefs(password);
         } else {
           throw WrongCredentialsException();
         }
@@ -55,10 +54,11 @@ abstract class StudentDAO {
     return BCrypt.checkpw(password, hashedPassword);
   }
 
-  static Future<void> _storeStudentPrefs() async {
+  static Future<void> _storeStudentPrefs(String password) async {
     if (StudentDAO.student != null) {
       final SharedPreferences preferences =
           await SharedPreferences.getInstance();
+      StudentDAO.student!.password = password;
 
       preferences.setString(
         StudentDAO.studentKey,

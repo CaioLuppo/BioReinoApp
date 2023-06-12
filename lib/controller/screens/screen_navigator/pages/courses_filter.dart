@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 List<Widget> courseListFilter({
   required BuildContext context,
   required String filter,
+  required Function setState,
   String categoryName = "",
 }) {
   Orientation orientation = MediaQuery.of(context).orientation;
@@ -29,9 +30,11 @@ List<Widget> courseListFilter({
             right: orientation == Orientation.landscape ? 8 : 0,
           ),
           child: CourseCard(
-              imageHeight: 175,
-              course: course,
-              progress: StudentDAO.student!.getProgress(course)),
+            imageHeight: 175,
+            course: course,
+            progress: StudentDAO.student!.getProgress(course),
+            setState: () => setState(),
+          ),
         ),
       );
     }

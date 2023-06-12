@@ -15,17 +15,22 @@ import 'package:google_fonts/google_fonts.dart';
 
 part 'components/lesson_card.dart';
 
-class LessonsScreen extends StatelessWidget {
+class LessonsScreen extends StatefulWidget {
   final Course course;
 
   const LessonsScreen(this.course, {super.key});
 
   @override
+  State<LessonsScreen> createState() => _LessonsScreenState();
+}
+
+class _LessonsScreenState extends State<LessonsScreen> {
+  @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
         Navigator.pop(context);
-        return true as Future<bool>;
+        return Future.value(true);
       },
       child: Scaffold(
         appBar: BRAppBar(
@@ -48,7 +53,7 @@ class LessonsScreen extends StatelessWidget {
                           height: 150,
                           width: double.maxFinite,
                           child: Image.network(
-                            course.imageUrl,
+                            widget.course.imageUrl,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -58,10 +63,12 @@ class LessonsScreen extends StatelessWidget {
                         child: Container(
                           height: 20,
                           decoration: BoxDecoration(
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                              borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20))),
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
+                            ),
+                          ),
                         ),
                       )
                     ],
@@ -73,7 +80,7 @@ class LessonsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        course.name,
+                        widget.course.name,
                         textAlign: TextAlign.start,
                         style:
                             Theme.of(context).textTheme.headlineSmall?.copyWith(
@@ -87,7 +94,7 @@ class LessonsScreen extends StatelessWidget {
                                 ),
                       ),
                       Text(
-                        "Prof: ${course.professor}",
+                        "Prof: ${widget.course.professor}",
                         textAlign: TextAlign.start,
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               color: BRColors.greyText,
@@ -113,7 +120,7 @@ class LessonsScreen extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                     scrollDirection: Axis.vertical,
-                    children: _generateLessonsList(),
+                    children: _generateLessonsList(widget.course),
                   ),
                 ),
               ),
@@ -124,15 +131,17 @@ class LessonsScreen extends StatelessWidget {
     );
   }
 
-  List<Widget> _generateLessonsList() {
+  List<Widget> _generateLessonsList(Course course) {
     List<Widget> list = List.generate(
       course.lessons!.length,
       (index) => LessonCard(
+        course,
         course.lessons![index],
         StudentDAO.student!.isLessonComplete(
           course.name,
           course.lessons![index].title,
         ),
+        () => setState(() {}),
       ),
     );
     return list;

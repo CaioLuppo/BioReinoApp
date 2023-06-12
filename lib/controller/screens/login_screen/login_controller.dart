@@ -33,7 +33,7 @@ void tryLogin({
     await Future.delayed(const Duration(seconds: 1));
     LoginState result = LoginState.error;
     if (context.mounted) {
-      result = await StudentDAO.login(context, formKey, email, password);
+      result = await StudentDAO.login(context, email, password);
     }
     if (result == LoginState.logged) {
       if (context.mounted) changeScreen(context, const ScreenNavigator());
@@ -47,12 +47,23 @@ void tryLogin({
   }
 }
 
-Future<bool> checkStudentAlreadyLogged() async {
+Future<bool> checkStudentAlreadyLogged(BuildContext context) async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
   String? studentString = preferences.getString(StudentDAO.studentKey);
   if (studentString != null) {
     Map<String, dynamic> normalizedMap = _normalizedStudentMap(studentString);
     StudentDAO.student = Student.fromMap(normalizedMap);
+    if (context.mounted) {
+      try {
+        await StudentDAO.login(
+          context,
+          StudentDAO.student!.email,
+          StudentDAO.student!.password!,
+        );
+      } catch (e) {
+        return false;
+      }
+    }
     return true;
   }
   return false;

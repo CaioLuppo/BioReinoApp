@@ -12,7 +12,8 @@ Future<void> connectAndChangeScreen(BuildContext context) async {
   final bool connected = await Database.connect();
   if (context.mounted) {
     if (connected) {
-      if (await checkStudentAlreadyLogged()) {
+      // ignore: use_build_context_synchronously
+      if (await checkStudentAlreadyLogged(context)) {
         if (context.mounted) changeScreen(context, const ScreenNavigator());
       } else if (context.mounted) {
         changeScreen(context, const LoginScreen());

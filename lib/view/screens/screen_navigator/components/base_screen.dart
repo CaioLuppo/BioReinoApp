@@ -16,7 +16,11 @@ class BasePage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: BRDrawer(context, drawer),
       ),
-      body: SafeArea(child: body),
+      body: MediaQuery.of(context).orientation == Orientation.landscape
+          ? body
+          : SafeArea(
+              child: body,
+            ),
     );
   }
 }

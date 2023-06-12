@@ -2,7 +2,8 @@ part of home_page;
 
 class CourseListSession extends StatefulWidget {
   final UpdatableDrawer drawer;
-  const CourseListSession(this.drawer, {super.key});
+  final Function setState;
+  const CourseListSession(this.setState, this.drawer, {super.key});
 
   @override
   State<CourseListSession> createState() => _CourseListSessionState();
@@ -62,10 +63,7 @@ class _CourseListSessionState extends State<CourseListSession> {
                   if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                     return ListView.builder(
                       physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 8,
-                      ),
+                      padding: const EdgeInsets.fromLTRB(12, 0, 12, 8),
                       scrollDirection: Axis.horizontal,
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
@@ -75,6 +73,7 @@ class _CourseListSessionState extends State<CourseListSession> {
                           child: CourseCard(
                             course: course,
                             progress: StudentDAO.student!.getProgress(course),
+                            setState: () => widget.setState(),
                           ),
                         );
                       },

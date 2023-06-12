@@ -2,26 +2,43 @@ part of lessons_page;
 
 class LessonCard extends StatelessWidget {
   final Lesson lesson;
+  final Course course;
   final bool complete;
-  const LessonCard(this.lesson, this.complete, {super.key});
+  final Function widgetSetState;
+  final double spacing;
+
+  const LessonCard(
+    this.course,
+    this.lesson,
+    this.complete,
+    this.widgetSetState, {
+    this.spacing = 16,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 88,
-      width: 300,
+      width: double.maxFinite,
       child: Card(
-        color: Theme.of(context).scaffoldBackgroundColor,
+        color: Theme.of(context).cardColor,
         elevation: 5,
-        margin: const EdgeInsets.only(bottom: 16),
+        margin: EdgeInsets.only(bottom: spacing),
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: InkWell(
-          onTap: () => changeScreen(
-            context,
-            WatchLessonScreen(lesson),
-            dontReplace: true,
-          ),
+          onTap: () {
+            StudentDAO.student!.addProgress(
+              course,
+              lesson: lesson,
+            );
+            changeScreen(
+              context,
+              WatchLessonScreen(course, lesson),
+              dontReplace: true,
+            ).then((_) => widgetSetState());
+          },
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(

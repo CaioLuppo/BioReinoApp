@@ -48,6 +48,7 @@ class _CoursesPageState extends State<CoursesPage> {
     final list = courseListFilter(
       filter: editingController.text,
       categoryName: CoursesPage.categoryName,
+      setState: () => setState(() {}),
       context: context,
     );
     return WillPopScope(

@@ -1,4 +1,6 @@
+import 'package:bioreino_mobile/controller/database/dao/student_dao.dart';
 import 'package:bioreino_mobile/model/course.dart';
+import 'package:bioreino_mobile/model/lesson.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
 import '../controller/database/mongodb_database.dart';
@@ -9,7 +11,7 @@ class Student {
   final String plan;
   final DateTime subscriptionDate;
   final String email;
-  final String? password;
+  String? password;
   Map<String, dynamic>? coursesProgress;
   Map<String, dynamic>? lastCourse;
 
@@ -31,7 +33,7 @@ class Student {
       map["plan"],
       map["subscriptionDate"],
       map["email"],
-      null,
+      map["password"],
       map["coursesProgress"],
       map["lastCourse"],
     );
@@ -80,20 +82,39 @@ class Student {
     return false;
   }
 
-  void addProgress(String courseName, {String? lessonTitle}) {
+  void addProgress(Course course, {Lesson? lesson}) {
     coursesProgress ??= {};
-    if (coursesProgress![courseName] == null) {
-      coursesProgress![courseName] = [];
+    if (coursesProgress![course.name] == null) {
+      coursesProgress![course.name] = [];
     }
-    if (lessonTitle != null) {
-      List<String> progressList = coursesProgress![courseName]!;
-      if (!progressList.contains(lessonTitle)) {
-        progressList.add(lessonTitle);
+    if (lesson != null) {
+      List<dynamic> progressList = coursesProgress![course.name]!;
+      if (!progressList.contains(lesson.title)) {
+        progressList.add(lesson.title);
       }
     }
+    _addLastCourse(course, lesson: lesson);
     Database.studentsCollection!.updateOne(
       where.eq("email", email),
       ModifierBuilder().set("coursesProgress", coursesProgress),
+    );
+  }
+
+  void _addLastCourse(Course course, {Lesson? lesson}) {
+    lastCourse = {
+      "courseTitle": course.name,
+      "professor": course.professor,
+      "imageUrl": course.imageUrl,
+      "lastLesson": lesson != null
+          ? {
+              "lessonTitle": lesson.title,
+              "lessonDescription": lesson.description,
+            }
+          : null,
+    };
+    Database.studentsCollection!.updateOne(
+      {"email": StudentDAO.student!.email},
+      ModifierBuilder().set("lastCourse", lastCourse),
     );
   }
 }

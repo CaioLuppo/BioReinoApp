@@ -49,9 +49,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
+    return Scaffold(
+      body: SafeArea(
+        child: Stack(
           children: const [
             Align(alignment: Alignment.center, child: Loading()),
             Align(alignment: Alignment.bottomCenter, child: AraradevsIcon()),

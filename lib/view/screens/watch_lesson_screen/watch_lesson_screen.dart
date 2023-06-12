@@ -1,6 +1,8 @@
 library watch_lesson_screen;
 
+import 'package:bioreino_mobile/controller/screens/watch_lesson_screen/pop.dart';
 import 'package:bioreino_mobile/controller/util/theme_util.dart';
+import 'package:bioreino_mobile/model/course.dart';
 import 'package:bioreino_mobile/model/lesson.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/pages/home/home_page.dart';
 import 'package:bioreino_mobile/view/screens/screen_navigator/screen_navigator.dart';
@@ -14,8 +16,9 @@ part 'components/transcription.dart';
 part 'components/video.dart';
 
 class WatchLessonScreen extends StatefulWidget {
+  final Course course;
   final Lesson lesson;
-  const WatchLessonScreen(this.lesson, {super.key});
+  const WatchLessonScreen(this.course, this.lesson, {super.key});
 
   @override
   State<WatchLessonScreen> createState() => _WatchLessonScreenState();
@@ -40,7 +43,7 @@ class _WatchLessonScreenState extends State<WatchLessonScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () => _pop(),
+      onWillPop: () => popLesson(context, controller),
       child: Scaffold(
         body: yt.YoutubePlayerBuilder(
           player: Video(controller: controller),
@@ -145,7 +148,7 @@ class _WatchLessonScreenState extends State<WatchLessonScreen> {
                   Align(
                     alignment: const Alignment(-1, -0.95),
                     child: BRBackButton(
-                      () => _pop(),
+                      () => popLesson(context, controller),
                       iconSize: 24,
                     ),
                   ),
@@ -156,12 +159,5 @@ class _WatchLessonScreenState extends State<WatchLessonScreen> {
         ),
       ),
     );
-  }
-
-  Future<bool> _pop() {
-    controller.dispose();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-    Navigator.pop(context);
-    return true as Future<bool>;
   }
 }

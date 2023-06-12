@@ -20,7 +20,7 @@ class LoginScreen extends StatefulWidget {
 
   // Strings
   final String _buttonText = "Entrar";
-  final String _headerText = "Entre com sua conta!";
+  final String _headerText = "Fazer Login";
 
   // ScaffoldKey -> Para mostrar snackbar
   static final GlobalKey<ScaffoldState> scaffoldKey =
@@ -51,7 +51,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     tryLoginOnButtonPressed(
       context: context,
       formKey: LoginScreen.formKey,
@@ -76,20 +75,17 @@ class _LoginScreenState extends State<LoginScreen> {
           scaffoldKey: LoginScreen.scaffoldKey,
           child: Form(
             key: LoginScreen.formKey,
-            child: Stack(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Header(widget._headerText),
                 LoginFieldBox(
-                  LoginScreen.emailController,
-                  LoginScreen.passwordController,
-                  () => setState(() => setLoginButtonPressed(true))
-                ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.all(32),
-                    child: bottomWidget,
-                  ),
+                    LoginScreen.emailController,
+                    LoginScreen.passwordController,
+                    () => setState(() => setLoginButtonPressed(true))),
+                Padding(
+                  padding: const EdgeInsets.all(32),
+                  child: bottomWidget,
                 ),
               ],
             ),
