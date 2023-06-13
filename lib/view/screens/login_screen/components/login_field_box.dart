@@ -5,7 +5,7 @@ class LoginFieldBox extends StatelessWidget {
   final TextEditingController passwordController;
   final void Function() enterKeyboardPressed;
   final Uri uri = Uri.parse(
-      "https://bioreino-vercel.vercel.app/login/inscreva/professional");
+      "https://bioreino.vercel.app/login/inscreva/professional");
 
   LoginFieldBox(
     this.emailController,
