@@ -1,9 +1,14 @@
 part of home_page;
 
-class LastCourse extends StatelessWidget {
+class LastCourse extends StatefulWidget {
   final Map<String, dynamic> lastCourse;
   const LastCourse(this.lastCourse, {super.key});
 
+  @override
+  State<LastCourse> createState() => _LastCourseState();
+}
+
+class _LastCourseState extends State<LastCourse> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -14,13 +19,18 @@ class LastCourse extends StatelessWidget {
           Lesson? lesson;
           bool complete = false;
           for (var element in CoursesDAO.coursesList) {
-            if (element.name == lastCourse["courseTitle"]) {
+            if (element.name == widget.lastCourse["courseTitle"]) {
               course = element;
-              if (lastCourse["lastLesson"] != null) {
+              if (widget.lastCourse["lastLesson"] != null) {
                 for (var elementLesson in element.lessons!) {
                   if (elementLesson.title ==
-                      lastCourse["lastLesson"]["lessonTitle"]) {
+                      widget.lastCourse["lastLesson"]["lessonTitle"]) {
                     lesson = elementLesson;
+                    complete = StudentDAO.student!.isLessonComplete(
+                      element.name,
+                      lesson.title,
+                    );
+                    break;
                   }
                 }
               } else if (element.lessons != null) {
@@ -29,6 +39,8 @@ class LastCourse extends StatelessWidget {
                   element.name,
                   element.lessons![0].title,
                 );
+              } else {
+                return const NoLastCourse();
               }
               break;
             }
@@ -38,7 +50,7 @@ class LastCourse extends StatelessWidget {
               context,
               LessonsScreen(course!),
               dontReplace: true,
-            ),
+            ).then((_) => setState(() {})),
             child: Container(
               clipBehavior: Clip.antiAlias,
               margin: const EdgeInsets.only(top: 16),
@@ -47,7 +59,7 @@ class LastCourse extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: const [
                   BoxShadow(
-                    color: Colors.grey,
+                    color: Colors.black12,
                     blurRadius: 5.0,
                     offset: Offset(0, 1),
                   ),
@@ -55,11 +67,17 @@ class LastCourse extends StatelessWidget {
               ),
               child: Stack(
                 children: [
-                  Image.network(
-                    lastCourse["imageUrl"],
-                    height: double.maxFinite,
-                    width: double.maxFinite,
-                    fit: BoxFit.cover,
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: SizedBox(
+                      height: 190,
+                      child: Image.network(
+                        widget.lastCourse["imageUrl"],
+                        height: double.maxFinite,
+                        width: double.maxFinite,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                   Align(
                     alignment: Alignment.bottomCenter,
@@ -75,11 +93,11 @@ class LastCourse extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                lastCourse["courseTitle"],
+                                widget.lastCourse["courseTitle"],
                                 style: Theme.of(context).textTheme.labelLarge,
                               ),
                               Text(
-                                "Prof: ${lastCourse["professor"]}",
+                                "Prof: ${widget.lastCourse["professor"]}",
                                 style: Theme.of(context).textTheme.labelMedium,
                               ),
                               Flexible(
@@ -89,7 +107,7 @@ class LastCourse extends StatelessWidget {
                                     course!,
                                     lesson!,
                                     complete,
-                                    () {},
+                                    () => setState(() {}),
                                     spacing: 0,
                                   ),
                                 ),

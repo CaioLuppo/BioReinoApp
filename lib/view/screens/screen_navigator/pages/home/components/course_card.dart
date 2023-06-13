@@ -40,18 +40,14 @@ class CourseCard extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.topCenter,
-                child: Wrap(
-                  children: [
-                    Image.network(
-                      course.imageUrl,
-                      fit: BoxFit.cover,
-                      height: imageHeight,
-                      width: double.maxFinite,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                  ],
+                child: SizedBox(
+                  height: 190,
+                  child: Image.network(
+                    course.imageUrl,
+                    fit: BoxFit.cover,
+                    height: imageHeight,
+                    width: double.maxFinite,
+                  ),
                 ),
               ),
               Align(
