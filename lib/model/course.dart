@@ -17,7 +17,7 @@ class Course {
           return category;
         }
       }
-      return null;
+      return Category({"plan":"scholar", "name":""});
     }
 
     return Course(
