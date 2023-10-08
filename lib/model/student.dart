@@ -9,7 +9,7 @@ class Student {
   final ObjectId? id;
   final String name;
   final String plan;
-  final DateTime subscriptionDate;
+  final DateTime createdAt;
   final String email;
   String? password;
   Map<String, dynamic>? coursesProgress;
@@ -19,7 +19,7 @@ class Student {
     this.id,
     this.name,
     this.plan,
-    this.subscriptionDate,
+    this.createdAt,
     this.email,
     this.password,
     this.coursesProgress,
@@ -31,7 +31,7 @@ class Student {
       null,
       map["name"],
       map["plan"],
-      map["subscriptionDate"],
+      map["createdAt"],
       map["email"],
       map["password"],
       map["coursesProgress"],
@@ -44,7 +44,7 @@ class Student {
       "_id": id,
       "name": name,
       "plan": plan,
-      "subscriptionDate": subscriptionDate.millisecondsSinceEpoch,
+      "createdAt": createdAt.millisecondsSinceEpoch,
       "email": email,
       "password": password,
       "coursesProgress": coursesProgress,

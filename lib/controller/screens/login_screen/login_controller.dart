@@ -72,7 +72,7 @@ Future<bool> checkStudentAlreadyLogged(BuildContext context) async {
 Map<String, dynamic> _normalizedStudentMap(String studentString) {
   final Map<String, dynamic> studentMap = jsonDecode(studentString);
   final Map<String, dynamic> normalizedMap = studentMap.map((key, value) {
-    if (key == "subscriptionDate") {
+    if (key == "createdAt") {
       return MapEntry(key, DateTime.fromMillisecondsSinceEpoch(value));
     }
     return MapEntry(key, value);

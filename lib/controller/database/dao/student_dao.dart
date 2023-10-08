@@ -36,6 +36,7 @@ abstract class StudentDAO {
       },
     ).catchError(
       (error, stackTrace) {
+        debugPrint("error: $error \n--- \n;stack: $stackTrace");
         isLogged = false;
         catchedError = error;
       },

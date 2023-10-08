@@ -40,7 +40,7 @@ class AccountPage extends StatelessWidget {
               InfoText(
                 theme,
                 "Data de inscrição: ",
-                DateFormat("dd/MM/yyyy", "br").format(student.subscriptionDate),
+                DateFormat("dd/MM/yyyy", "br").format(student.createdAt),
               ),
               InfoText(theme, "Plano: ", student.plan.toUpperCase())
             ],
@@ -50,5 +50,3 @@ class AccountPage extends StatelessWidget {
     );
   }
 }
-
-
